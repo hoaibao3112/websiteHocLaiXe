@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Phone, Mail, MapPin, Calendar, Users, Clock, Award, Shield, Check, ExternalLink, ArrowRight } from "lucide-react";
 import type { Course, NewsWithCategory } from "@/types/database.types";
 import { HomepageContactForm } from "@/components/public/HomepageContactForm";
+import { ScrollReveal } from "@/components/public/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Trường Lái Xe Chiến Thắng — Đào tạo lái xe uy tín tại Tiền Giang",
@@ -160,74 +161,82 @@ export default async function HomePage() {
 
       {/* 3. Courses section "Thông tin các khóa học tại Chiến Thắng" */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-slide-up">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a]">
-              Thông tin các khóa học tại Chiến Thắng
-            </h2>
-            <div className="w-20 h-1 bg-amber-500 mx-auto mt-4 rounded-full" />
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal animation="fade-in" duration={800}>
+            <div className="text-center mb-16">
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a]">
+                Thông tin các khóa học tại Chiến Thắng
+              </h2>
+              <div className="w-20 h-1 bg-amber-500 mx-auto mt-4 rounded-full" />
+            </div>
+          </ScrollReveal>
 
           {courses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {courses.map((course) => (
-                <div
+              {courses.map((course, index) => (
+                <ScrollReveal
                   key={course.id}
-                  className="bg-white rounded-xl overflow-hidden border border-neutral-200/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+                  animation="slide-up"
+                  delay={index * 150}
+                  className="flex flex-col"
                 >
-                  <div>
-                    {/* Course Image */}
-                    <div className="relative aspect-video w-full bg-neutral-100">
-                      {course.image_url ? (
-                        <Image
-                          src={course.image_url}
-                          alt={course.name}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-102"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center text-neutral-300">
-                          <Users className="w-12 h-12" />
-                        </div>
-                      )}
-                      {course.badge && (
-                        <div className="absolute top-3 left-3 bg-[#b45309] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
-                          {course.badge}
-                        </div>
-                      )}
-                    </div>
+                  <div
+                    className="bg-white rounded-xl overflow-hidden border border-neutral-200/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group h-full"
+                  >
+                    <div>
+                      {/* Course Image */}
+                      <div className="relative aspect-video w-full bg-neutral-100">
+                        {course.image_url ? (
+                          <Image
+                            src={course.image_url}
+                            alt={course.name}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-102"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center text-neutral-300">
+                            <Users className="w-12 h-12" />
+                          </div>
+                        )}
+                        {course.badge && (
+                          <div className="absolute top-3 left-3 bg-[#b45309] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+                            {course.badge}
+                          </div>
+                        )}
+                      </div>
 
-                    {/* Info */}
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-neutral-900 mb-3 group-hover:text-amber-700 transition-colors">
-                        {course.name}
-                      </h3>
-                      <p className="text-neutral-500 text-xs leading-relaxed mb-6 line-clamp-3">
-                        {course.description}
-                      </p>
+                      {/* Info */}
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold text-neutral-900 mb-3 group-hover:text-amber-700 transition-colors">
+                          {course.name}
+                        </h3>
+                        <p className="text-neutral-500 text-xs leading-relaxed mb-6 line-clamp-3">
+                          {course.description}
+                        </p>
 
-                      <div className="space-y-2.5 border-t border-neutral-100 pt-4">
-                        <div className="flex items-center gap-2 text-xs font-semibold text-neutral-700">
-                          <span className="text-neutral-400 font-normal">Học phí:</span>
-                          <span className="text-amber-700">{formatPrice(course.sale_price)}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs font-semibold text-neutral-700">
-                          <span className="text-neutral-400 font-normal">Học viên:</span>
-                          <span>{getStudentsCount(course.class_code)}</span>
+                        <div className="space-y-2.5 border-t border-neutral-100 pt-4">
+                          <div className="flex items-center gap-2 text-xs font-semibold text-neutral-700">
+                            <span className="text-neutral-400 font-normal">Học phí:</span>
+                            <span className="text-amber-700">{formatPrice(course.sale_price)}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-xs font-semibold text-neutral-700">
+                            <span className="text-neutral-400 font-normal">Học viên:</span>
+                            <span>{getStudentsCount(course.class_code)}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="p-6 pt-0 mt-4">
-                    <Link
-                      href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" : course.class_code.toLowerCase() === "b" ? "b2" : "c"}`}
-                      className="block text-center bg-[#78350f] hover:bg-[#92400e] text-white font-bold py-2.5 rounded text-xs transition-colors"
-                    >
-                      Xem chi tiết
-                    </Link>
+                    <div className="p-6 pt-0 mt-4">
+                      <Link
+                        href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" : course.class_code.toLowerCase() === "b" ? "b2" : "c"}`}
+                        className="block text-center bg-[#78350f] hover:bg-[#92400e] text-white font-bold py-2.5 rounded text-xs transition-colors"
+                      >
+                        Xem chi tiết
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           ) : (
@@ -298,85 +307,95 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white animate-slide-up">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-10 border-b border-neutral-100 pb-5">
-            <div>
-              <h2 className="font-display text-3xl font-extrabold text-[#1e3a8a]">
-                Cơ sở vật chất hiện đại
-              </h2>
-              <p className="text-neutral-500 text-xs mt-2">
-                Hệ thống sân tập và phòng học đạt tiêu chuẩn của Bộ Giao thông Vận tải.
-              </p>
+          <ScrollReveal animation="fade-in">
+            <div className="flex justify-between items-end mb-10 border-b border-neutral-100 pb-5">
+              <div>
+                <h2 className="font-display text-3xl font-extrabold text-[#1e3a8a]">
+                  Cơ sở vật chất hiện đại
+                </h2>
+                <p className="text-neutral-500 text-xs mt-2">
+                  Hệ thống sân tập và phòng học đạt tiêu chuẩn của Bộ Giao thông Vận tải.
+                </p>
+              </div>
+              <Link
+                href="#"
+                className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-brand-600 font-semibold"
+              >
+                <span>Xem tất cả hình ảnh</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </Link>
             </div>
-            <Link
-              href="#"
-              className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-brand-600 font-semibold"
-            >
-              <span>Xem tất cả hình ảnh</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+          </ScrollReveal>
 
           {/* Grid structure matching cairo layout */}
           <div className="grid lg:grid-cols-2 gap-6">
             
             {/* Left large photo */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto min-h-[350px] shadow-sm group">
-              <Image
-                src="/facility_yard.png"
-                alt="Sân sát hạch chính thức"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-102"
-              />
-              {/* Bottom text */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
-                <h3 className="text-base font-bold">Sân sát hạch chính thức</h3>
+            <ScrollReveal animation="slide-right" className="h-full">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto min-h-[350px] shadow-sm group h-full">
+                <Image
+                  src="/facility_yard.png"
+                  alt="Sân sát hạch chính thức"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-102"
+                />
+                {/* Bottom text */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <h3 className="text-base font-bold">Sân sát hạch chính thức</h3>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right side grid of 3 */}
             <div className="grid gap-6">
               {/* Theory Classroom */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-sm group">
-                <Image
-                  src="/facility_classroom.png"
-                  alt="Phòng học lý thuyết"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-102"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white">
-                  <h3 className="text-sm font-bold">Phòng học lý thuyết</h3>
+              <ScrollReveal animation="slide-left" delay={150}>
+                <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-sm group">
+                  <Image
+                    src="/facility_classroom.png"
+                    alt="Phòng học lý thuyết"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-102"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white">
+                    <h3 className="text-sm font-bold">Phòng học lý thuyết</h3>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Bottom 2 rows */}
               <div className="grid grid-cols-2 gap-6">
                 {/* Cars */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-sm group">
-                  <Image
-                    src="/facility_cars.png"
-                    alt="Đoàn xe tập lái"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-102"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white">
-                    <h3 className="text-xs font-bold">Đoàn xe tập lái</h3>
+                <ScrollReveal animation="slide-left" delay={300}>
+                  <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-sm group">
+                    <Image
+                      src="/facility_cars.png"
+                      alt="Đoàn xe tập lái"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-102"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white">
+                      <h3 className="text-xs font-bold">Đoàn xe tập lái</h3>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
 
                 {/* Simulator */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-sm group">
-                  <Image
-                    src="/facility_simulator.png"
-                    alt="Phòng mô phỏng"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-102"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white">
-                    <h3 className="text-xs font-bold">Phòng mô phỏng</h3>
+                <ScrollReveal animation="slide-left" delay={450}>
+                  <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-sm group">
+                    <Image
+                      src="/facility_simulator.png"
+                      alt="Phòng mô phỏng"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-102"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white">
+                      <h3 className="text-xs font-bold">Phòng mô phỏng</h3>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               </div>
 
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutDashboard, Newspaper, LogOut, ShieldAlert } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -55,26 +56,32 @@ export function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-neutral-900 text-neutral-300 flex flex-col h-screen fixed left-0 top-0 border-r border-neutral-800 z-30">
+    <aside className="w-64 bg-white text-neutral-600 flex flex-col h-screen fixed left-0 top-0 border-r border-neutral-200/80 z-30">
       {/* Brand */}
-      <div className="h-16 px-6 border-b border-neutral-800 flex items-center justify-between">
-        <span className="font-display font-bold text-white text-lg tracking-wide flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
-          CMS Chiến Thắng
-        </span>
+      <div className="h-16 px-6 border-b border-neutral-100 flex items-center justify-between bg-white">
+        <Link href="/admin/dashboard" className="flex items-center gap-3">
+          <Image
+            src="/logo-win.png"
+            alt="Logo Chiến Thắng"
+            width={130}
+            height={40}
+            className="object-contain h-10 w-auto"
+            priority
+          />
+        </Link>
       </div>
 
       {/* Profile info */}
       {profile && (
-        <div className="p-6 border-b border-neutral-850 bg-neutral-950/40 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 flex items-center justify-center font-bold text-base">
+        <div className="p-6 border-b border-neutral-100 bg-emerald-50/20 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-base shadow-sm">
             {profile.full_name.charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0">
-            <h4 className="text-sm font-semibold text-white truncate leading-tight">
+            <h4 className="text-sm font-semibold text-neutral-800 truncate leading-tight">
               {profile.full_name}
             </h4>
-            <span className="text-[11px] font-medium text-brand-500 capitalize bg-brand-500/10 px-2 py-0.5 rounded-full mt-1 inline-block">
+            <span className="text-[11px] font-medium text-emerald-700 capitalize bg-emerald-100/60 px-2 py-0.5 rounded-full mt-1 inline-block">
               {profile.role}
             </span>
           </div>
@@ -92,13 +99,20 @@ export function AdminSidebar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group",
+                "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-r-xl border-l-4 transition-all duration-200 group",
                 isActive
-                  ? "bg-brand-500 text-white shadow-lg shadow-brand-500/10"
-                  : "hover:bg-neutral-800 hover:text-white"
+                  ? "bg-emerald-50 text-emerald-800 border-emerald-500 font-semibold"
+                  : "border-transparent text-neutral-600 hover:bg-amber-50/40 hover:text-amber-800 hover:border-amber-400"
               )}
             >
-              <Icon className={cn("w-5 h-5", isActive ? "text-white" : "text-neutral-500 group-hover:text-neutral-300")} />
+              <Icon
+                className={cn(
+                  "w-5 h-5 transition-colors duration-200",
+                  isActive
+                    ? "text-emerald-600"
+                    : "text-neutral-400 group-hover:text-amber-600"
+                )}
+              />
               {item.label}
             </Link>
           );
@@ -106,12 +120,12 @@ export function AdminSidebar() {
       </nav>
 
       {/* Footer / Logout */}
-      <div className="p-4 border-t border-neutral-800">
+      <div className="p-4 border-t border-neutral-100 bg-white">
         <button
           onClick={handleLogout}
-          className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-neutral-400 hover:bg-red-500/10 hover:text-red-400 transition-colors"
+          className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-neutral-500 hover:bg-red-50 hover:text-red-600 transition-colors cursor-pointer group"
         >
-          <LogOut className="w-5 h-5 text-neutral-500 group-hover:text-red-400" />
+          <LogOut className="w-5 h-5 text-neutral-400 group-hover:text-red-500 transition-colors" />
           Đăng xuất
         </button>
       </div>

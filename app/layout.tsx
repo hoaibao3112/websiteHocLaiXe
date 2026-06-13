@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+const beVietnamPro = Be_Vietnam_Pro({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["vietnamese", "latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const playfairDisplay = Playfair_Display({
+  weight: ["700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -32,19 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="vi" className={`${beVietnamPro.variable} ${playfairDisplay.variable}`}>
       <body>{children}</body>
     </html>
   );

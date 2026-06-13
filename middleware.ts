@@ -6,6 +6,16 @@ type AdminRole = (typeof ADMIN_ROLES)[number];
 
 export async function middleware(req: NextRequest) {
   let response = NextResponse.next({ request: req });
+  const path = req.nextUrl.pathname;
+
+  // Chỉ chạy xác thực Supabase cho các route bảo vệ (/admin hoặc /dashboard)
+  // Các trang công khai (landing page, tin tức, khóa học...) sẽ bỏ qua để tăng tốc độ phản hồi (TTFB)
+  const isProtectedAdmin = path.startsWith("/admin") && !path.startsWith("/admin/dang-nhap");
+  const isProtectedDashboard = path.startsWith("/dashboard");
+
+  if (!isProtectedAdmin && !isProtectedDashboard) {
+    return response;
+  }
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -28,10 +38,8 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const path = req.nextUrl.pathname;
-
   // Bảo vệ /admin/* (trừ trang đăng nhập)
-  if (path.startsWith("/admin") && !path.startsWith("/admin/dang-nhap")) {
+  if (isProtectedAdmin) {
     if (!user) {
       return NextResponse.redirect(new URL("/admin/dang-nhap", req.url));
     }
@@ -50,7 +58,7 @@ export async function middleware(req: NextRequest) {
   }
 
   // Bảo vệ /dashboard/* (student portal)
-  if (path.startsWith("/dashboard") && !user) {
+  if (isProtectedDashboard && !user) {
     return NextResponse.redirect(new URL("/dang-nhap", req.url));
   }
 
