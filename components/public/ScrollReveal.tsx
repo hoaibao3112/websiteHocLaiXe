@@ -6,7 +6,15 @@ import { cn } from "@/lib/utils";
 interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
-  animation?: "fade-in" | "slide-up" | "slide-down" | "slide-left" | "slide-right" | "zoom-in";
+  animation?:
+    | "fade-in"
+    | "slide-up"
+    | "slide-down"
+    | "slide-left"
+    | "slide-right"
+    | "zoom-in"
+    | "scale-in"
+    | "blur-in";
   delay?: number;
   duration?: number;
   threshold?: number;
@@ -19,7 +27,7 @@ export function ScrollReveal({
   animation = "slide-up",
   delay = 0,
   duration = 700,
-  threshold = 0.1,
+  threshold = 0.08,
   once = true,
 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -52,12 +60,12 @@ export function ScrollReveal({
     };
   }, [threshold, once]);
 
-  const getAnimationStyles = () => {
-    const baseStyle = {
+  const getAnimationStyles = (): React.CSSProperties => {
+    const baseStyle: React.CSSProperties = {
       transitionDuration: `${duration}ms`,
-      transitionDelay: `${delay}ms`,
+      transitionDelay: isVisible ? `${delay}ms` : "0ms",
       transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-      willChange: "transform, opacity",
+      willChange: "transform, opacity, filter",
     };
 
     if (isVisible) {
@@ -65,35 +73,28 @@ export function ScrollReveal({
         ...baseStyle,
         opacity: 1,
         transform: "translate(0, 0) scale(1)",
+        filter: "blur(0px)",
       };
     }
 
-    // Initial styles
-    let transform = "";
-    switch (animation) {
-      case "slide-up":
-        transform = "translateY(32px)";
-        break;
-      case "slide-down":
-        transform = "translateY(-32px)";
-        break;
-      case "slide-left":
-        transform = "translateX(32px)";
-        break;
-      case "slide-right":
-        transform = "translateX(-32px)";
-        break;
-      case "zoom-in":
-        transform = "scale(0.96)";
-        break;
-      default:
-        transform = "none";
-    }
+    // Initial (hidden) states
+    const hiddenMap: Record<
+      NonNullable<ScrollRevealProps["animation"]>,
+      React.CSSProperties
+    > = {
+      "fade-in": { opacity: 0, transform: "none", filter: "blur(0px)" },
+      "slide-up": { opacity: 0, transform: "translateY(36px)", filter: "blur(0px)" },
+      "slide-down": { opacity: 0, transform: "translateY(-36px)", filter: "blur(0px)" },
+      "slide-left": { opacity: 0, transform: "translateX(40px)", filter: "blur(0px)" },
+      "slide-right": { opacity: 0, transform: "translateX(-40px)", filter: "blur(0px)" },
+      "zoom-in": { opacity: 0, transform: "scale(0.93)", filter: "blur(0px)" },
+      "scale-in": { opacity: 0, transform: "scale(0.82)", filter: "blur(0px)" },
+      "blur-in": { opacity: 0, transform: "translateY(16px)", filter: "blur(8px)" },
+    };
 
     return {
       ...baseStyle,
-      opacity: 0,
-      transform,
+      ...hiddenMap[animation],
     };
   };
 
@@ -101,7 +102,7 @@ export function ScrollReveal({
     <div
       ref={ref}
       style={getAnimationStyles()}
-      className={cn("transition-all duration-700 ease-out", className)}
+      className={cn("transition-all", className)}
     >
       {children}
     </div>

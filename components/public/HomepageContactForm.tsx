@@ -49,18 +49,50 @@ export function HomepageContactForm() {
       setErrorMessage(null);
       const supabase = createClient();
       
+      let utmMessage = "";
+      try {
+        const storedUtm = sessionStorage.getItem("utm_data");
+        if (storedUtm) {
+          const utm = JSON.parse(storedUtm);
+          utmMessage = `\n\n[UTM Tracking]\nNguồn: ${utm.utm_source || "N/A"}\nKênh: ${utm.utm_medium || "N/A"}\nChiến dịch: ${utm.utm_campaign || "N/A"}\nNội dung: ${utm.utm_content || "N/A"}\nTừ khóa: ${utm.utm_term || "N/A"}`;
+        }
+      } catch (e) {
+        console.error("Lỗi đọc UTM từ sessionStorage:", e);
+      }
+
       const { error } = await (
         supabase.from("contacts") as unknown as ContactsInsertBuilder
       ).insert({
         full_name: "Yêu cầu gọi lại",
         phone: data.phone,
         subject: "Yêu cầu gọi lại từ Trang chủ",
-        message: `Yêu cầu tư vấn tự động gửi từ Trang chủ. Số điện thoại cần liên hệ: ${data.phone}`,
+        message: `Yêu cầu tư vấn tự động gửi từ Trang chủ. Số điện thoại cần liên hệ: ${data.phone}${utmMessage}`,
         status: "pending",
       });
 
       if (error) {
         throw new Error(error.message);
+      }
+
+      // Kích hoạt sự kiện conversion tracking
+      try {
+        if (typeof window !== "undefined") {
+          if ((window as any).fbq) {
+            (window as any).fbq("track", "Lead", {
+              content_name: "Yêu cầu gọi lại",
+              value: 0.00,
+              currency: "VND"
+            });
+          }
+          if ((window as any).gtag) {
+            (window as any).gtag("event", "generate_lead", {
+              event_category: "Engagement",
+              event_label: "Form Trang Chủ"
+            });
+          }
+        }
+      } catch (trackErr) {
+        console.error("Lỗi tracking sự kiện quảng cáo:", trackErr);
       }
 
       setIsSuccess(true);

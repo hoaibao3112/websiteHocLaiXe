@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/public/ContactForm";
-import { Phone, MapPin, Mail, ChevronRight, ArrowRight } from "lucide-react";
+import { Phone, MapPin, Mail, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { ScrollReveal } from "@/components/public/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Liên hệ & Tuyển dụng",
+  title: "Liên hệ & Tuyển dụng - Trường Lái Xe Chiến Thắng",
   description:
     "Liên hệ với trường lái xe Chiến Thắng để được tư vấn khóa học lái xe ô tô hoặc tìm hiểu cơ hội tuyển dụng.",
 };
@@ -14,7 +16,7 @@ const CONTACT_ITEMS = [
     icon: MapPin,
     title: "ĐỊA CHỈ TRỤ SỞ",
     value: "Ấp Phú Hòa, Xã Phú Nhuận, Huyện Cai Lậy, Tỉnh Tiền Giang",
-    sub: null,
+    sub: "Mặt tiền Quốc lộ 1A dễ tìm",
   },
   {
     icon: Phone,
@@ -26,117 +28,146 @@ const CONTACT_ITEMS = [
     icon: Mail,
     title: "EMAIL TUYỂN DỤNG",
     value: "hr.truonglaixechienthangtg@gmail.com",
-    sub: null,
+    sub: "Hỗ trợ 24/7 qua hòm thư điện tử",
   },
 ];
 
 export default function LienHePage() {
   return (
-    <div className="pt-20 bg-neutral-50/50">
-      {/* Hero Banner with custom backdrop styling */}
-      <section className="relative bg-[#1f2937] text-white overflow-hidden py-16 px-4">
-        {/* Background Overlay simulating the car/driving scene */}
-        <div className="absolute inset-0 opacity-15 bg-[url('/driver_student.png')] bg-cover bg-center filter blur-xs" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111827] via-transparent to-[#111827]" />
+    <div className="pt-20 bg-white overflow-x-hidden">
+      {/* Hero Banner */}
+      <section className="relative bg-[#1f2937] text-white py-20 px-4 overflow-hidden">
+        {/* Background Overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero_bg.png"
+            alt="Liên hệ Chiến Thắng"
+            fill
+            className="object-cover object-center opacity-10 filter blur-xs"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-[#1f2937]/90 to-neutral-950/80" />
+        </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-sm text-neutral-400 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">
-              Trang chủ
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-neutral-200">Liên hệ / Tuyển dụng</span>
-          </div>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight mt-1 mb-3">
-            Liên Hệ & Tuyển Dụng
-          </h1>
-          <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Đội ngũ Chiến Thắng luôn sẵn sàng lắng nghe và hỗ trợ bạn trên con đường chinh phục tay lái.
-          </p>
+          <ScrollReveal animation="fade-in">
+            {/* Breadcrumbs */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-6 uppercase tracking-wider font-semibold">
+              <Link href="/" className="hover:text-white transition-colors">
+                Trang chủ
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
+              <span className="text-amber-400">Liên hệ / Tuyển dụng</span>
+            </div>
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-4 uppercase leading-tight text-white">
+              LIÊN HỆ & TUYỂN DỤNG
+            </h1>
+            <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+              Đội ngũ Chiến Thắng luôn sẵn sàng lắng nghe, tư vấn tận tâm và chào đón bạn gia nhập đại gia đình của chúng tôi.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
+      <section className="py-24 bg-white relative">
+        <div className="absolute top-1/4 right-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-10">
+          <div className="grid lg:grid-cols-12 gap-16 items-start">
             
             {/* Left Column: Contact info & Careers (span 5) */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-8">
               
               {/* Contact info list */}
-              <div className="bg-amber-50/40 rounded-xl border border-amber-100 p-8 space-y-6">
-                <h2 className="text-lg font-bold text-neutral-900 border-b border-amber-100 pb-3">
-                  Thông Tin Liên Hệ
-                </h2>
-                
-                <div className="space-y-6">
-                  {CONTACT_ITEMS.map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={index} className="flex gap-4 items-start">
-                        <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0 text-amber-700">
-                          <Icon className="w-5 h-5" />
+              <ScrollReveal animation="slide-right">
+                <div className="bg-slate-50 rounded-2xl border border-neutral-100 p-8 space-y-6">
+                  <h2 className="text-lg font-bold text-neutral-900 border-b border-neutral-200/60 pb-4 flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-amber-500 fill-amber-500" />
+                    Thông Tin Liên Hệ
+                  </h2>
+                  
+                  <div className="space-y-6">
+                    {CONTACT_ITEMS.map((item, index) => {
+                      const Icon = item.icon;
+                      return (
+                        <div key={index} className="flex gap-4 items-start group">
+                          <div className="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-md shadow-amber-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <Icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-1">
+                              {item.title}
+                            </h4>
+                            <p className="text-neutral-850 font-bold text-sm sm:text-base leading-relaxed">
+                              {item.value}
+                            </p>
+                            {item.sub && (
+                              <p className="text-xs text-neutral-400 mt-1 font-medium">{item.sub}</p>
+                            )}
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
-                            {item.title}
-                          </h4>
-                          <p className="text-neutral-900 font-semibold text-sm mt-1 leading-relaxed">
-                            {item.value}
-                          </p>
-                          {item.sub && (
-                            <p className="text-xs text-neutral-400 mt-0.5">{item.sub}</p>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Careers Banner Card */}
-              <div className="bg-[#1e3a8a] text-white rounded-xl shadow-md p-8 relative overflow-hidden group">
-                <div className="absolute right-[-15px] bottom-[-15px] text-white/5 pointer-events-none transition-transform duration-500 group-hover:scale-110">
-                  <Mail className="w-32 h-32" />
+              <ScrollReveal animation="slide-right" delay={150}>
+                <div className="bg-[#1e3a8a] text-white rounded-2xl shadow-xl p-8 relative overflow-hidden group">
+                  <div className="absolute right-[-15px] bottom-[-15px] text-white/5 pointer-events-none transition-transform duration-700 group-hover:scale-110">
+                    <Mail className="w-36 h-36" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-4">
+                    Cơ Hội Nghề Nghiệp
+                  </h3>
+                  <p className="text-neutral-200 text-xs sm:text-sm leading-relaxed mb-6">
+                    Chúng tôi luôn tìm kiếm những người thầy tận tâm và đội ngũ cán bộ hành chính chuyên nghiệp. Hãy cùng kiến tạo môi trường dạy học thân thiện, văn minh tại Chiến Thắng.
+                  </p>
+                  <Link
+                    href="#"
+                    className="inline-flex items-center gap-2 text-amber-400 hover:text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase group/btn transition-colors"
+                  >
+                    <span>Xem vị trí tuyển dụng</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </Link>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-4">
-                  Cơ Hội Nghề Nghiệp
-                </h3>
-                <p className="text-neutral-200 text-sm leading-relaxed mb-6">
-                  Chúng tôi luôn tìm kiếm những người thầy tận tâm và đội ngũ hành chính chuyên nghiệp. Hãy gia nhập môi trường sư phạm năng động tại Chiến Thắng.
-                </p>
-                <Link
-                  href="#"
-                  className="inline-flex items-center gap-2 text-brand-200 hover:text-white font-bold text-sm"
-                >
-                  <span>Xem các vị trí đang tuyển</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+              </ScrollReveal>
 
             </div>
 
             {/* Right Column: Send message card (span 7) */}
-            <div className="lg:col-span-7">
-              <div className="bg-white rounded-xl border border-neutral-200/60 p-8 shadow-sm">
-                <h2 className="text-xl font-bold text-neutral-900 mb-2">
-                  Gửi Tin Nhắn
+            <ScrollReveal animation="slide-left" className="lg:col-span-7">
+              <div className="bg-white rounded-2xl border border-neutral-100 p-8 sm:p-10 shadow-2xl">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-neutral-900 mb-2">
+                  Gửi Tin Nhắn Cho Chúng Tôi
                 </h2>
-                <p className="text-neutral-400 text-xs mb-6">
-                  Vui lòng điền thông tin bên dưới, bộ phận tuyển sinh sẽ phản hồi bạn trong vòng 24 giờ.
+                <p className="text-neutral-400 text-xs sm:text-sm mb-8">
+                  Vui lòng cung cấp thông tin liên hệ và lời nhắn dưới đây, bộ phận tuyển sinh sẽ kết nối lại tư vấn bạn nhanh chóng nhất.
                 </p>
                 <ContactForm />
               </div>
-            </div>
+            </ScrollReveal>
 
           </div>
         </div>
       </section>
 
       {/* Embedded Map Section */}
-      <section className="w-full h-[450px] relative border-t border-neutral-200">
+      <section className="w-full h-[480px] relative border-t border-neutral-100">
+        {/* Floating map marker preview badge */}
+        <div className="absolute top-5 left-5 z-10 bg-white/90 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-2xl border border-neutral-100 flex items-center gap-3 hidden sm:flex">
+          <div className="w-9 h-9 bg-amber-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/20">
+            <MapPin className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
+            <p className="text-[10px] text-neutral-400 font-medium">QL1A, Cai Lậy, Tiền Giang</p>
+          </div>
+        </div>
+
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.63942007817!2d106.02196657579737!3d10.407989989718872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa8593d6e5229%3A0xe5a36ad2e245a498!2zVHLGsOG7nW5nIEzDoWkgWGUgQ2hp4bq_biBUaOG6r25n!5e0!3m2!1svi!2s!4v1718278000000!5m2!1svi!2s"
           width="100%"

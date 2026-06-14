@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
+import Script from "next/script";
+import { UTMTracker } from "@/components/public/UTMTracker";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -22,13 +24,14 @@ export const metadata: Metadata = {
     template: "%s | Trường Lái Xe Chiến Thắng",
   },
   description:
-    "Trường lái xe Chiến Thắng — đào tạo lái xe hạng B1, B2, C uy tín tại [Địa điểm]. Giáo viên kinh nghiệm, tỉ lệ đậu cao, hỗ trợ thi lại.",
+    "Trường lái xe Chiến Thắng — đào tạo lái xe hạng B1, B2, C uy tín tại Tiền Giang. Giáo viên kinh nghiệm, tỉ lệ đậu cao, hỗ trợ thi lại.",
   keywords: [
     "trường lái xe",
     "học lái xe",
     "bằng lái xe B2",
     "đào tạo lái xe",
     "Chiến Thắng",
+    "Tiền Giang",
   ],
   openGraph: {
     type: "website",
@@ -46,9 +49,47 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+
   return (
     <html lang="vi" className={`${beVietnamPro.variable} ${playfairDisplay.variable}`}>
-      <body>{children}</body>
+      <body>
+        <UTMTracker />
+        {children}
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        )}
+        {fbPixelId && (
+          <Script id="fb-pixel" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${fbPixelId}');
+              fbq('track', 'PageView');
+            `}
+          </Script>
+        )}
+      </body>
     </html>
   );
 }

@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/public/Header";
 import { Footer } from "@/components/public/Footer";
+import { FloatingContactButtons } from "@/components/public/FloatingContactButtons";
 import { usePathname } from "next/navigation";
 
 export default function PublicLayout({
@@ -18,6 +19,7 @@ export default function PublicLayout({
         {children}
       </main>
       <Footer />
+      <FloatingContactButtons />
     </div>
   );
 }

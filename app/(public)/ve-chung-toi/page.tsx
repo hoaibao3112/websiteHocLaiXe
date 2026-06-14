@@ -9,211 +9,275 @@ import {
   Car,
   Truck,
   Building,
+  ArrowRight,
+  Phone,
+  Shield,
+  Star,
+  Users,
+  Compass,
 } from "lucide-react";
+import { ScrollReveal } from "@/components/public/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Giới thiệu về chúng tôi",
+  title: "Giới thiệu về chúng tôi - Trường Lái Xe Chiến Thắng",
   description:
     "Tìm hiểu về Trung Tâm Đào Tạo và Sát Hạch Lái Xe Chiến Thắng tại Tiền Giang. Đơn vị hàng đầu với cơ sở vật chất đạt chuẩn Bộ GTVT.",
 };
 
 export default function VeChungToiPage() {
   return (
-    <div className="pt-20 bg-neutral-50/50">
-      {/* 1. Hero Section */}
-      <section className="relative bg-[#1e3a8a] text-white overflow-hidden py-16 px-4">
+    <div className="pt-20 bg-white overflow-x-hidden">
+      {/* 1. Hero Banner Section */}
+      <section className="relative bg-[#1e3a8a] text-white overflow-hidden py-20 px-4">
         {/* Background Image with opacity overlay */}
-        <div className="absolute inset-0 opacity-15 bg-[url('/driver_student.png')] bg-cover bg-center filter blur-xs" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111827] via-transparent to-[#111827]" />
+        <div className="absolute inset-0">
+          <Image
+            src="/hero_bg.png"
+            alt="Trường lái xe Chiến Thắng"
+            fill
+            className="object-cover object-center opacity-10 filter blur-[2px]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-[#1e3a8a]/90 to-neutral-950/80" />
+          {/* Decorative pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #f59e0b 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+            }}
+          />
+        </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 animate-fade-in">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-sm text-neutral-400 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">
-              Trang chủ
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-neutral-200">Về chúng tôi</span>
-          </div>
-          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mt-1 mb-2 uppercase leading-snug max-w-4xl">
-            GIỚI THIỆU TRUNG TÂM ĐÀO TẠO VÀ SÁT HẠCH LÁI XE CHIẾN THẮNG - TIỀN GIANG
-          </h1>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <ScrollReveal animation="fade-in">
+            {/* Breadcrumbs */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-6 uppercase tracking-wider font-semibold">
+              <Link href="/" className="hover:text-white transition-colors">
+                Trang chủ
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
+              <span className="text-amber-400">Về chúng tôi</span>
+            </div>
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-4 uppercase leading-tight max-w-4xl text-white">
+              GIỚI THIỆU TRUNG TÂM CHIẾN THẮNG
+            </h1>
+            <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+              Hành trình hơn 10 năm đồng hành và kiến tạo thế hệ người lái xe an toàn, vững tâm lý, vững tay lái tại Tiền Giang.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section className="py-20 bg-white animate-slide-up">
+      {/* 2. Overview Section */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
             {/* Left Content (span 7) */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-2">
-                <span className="w-8 h-0.5 bg-amber-500 rounded" />
-                <span className="text-amber-700 font-bold uppercase tracking-wider text-xs">
-                  Kế thừa và phát triển
-                </span>
-              </div>
-              <h2 className="font-display text-3xl font-extrabold text-[#1e3a8a] leading-tight">
-                Tổng quan về Trung tâm
-              </h2>
-              <p className="text-neutral-600 text-sm leading-relaxed">
-                Được thành lập từ năm 2022, <strong className="text-neutral-900 font-semibold">Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Chiến Thắng</strong> tự hào là đơn vị giáo dục nghề nghiệp hàng đầu tại tỉnh Tiền Giang. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư vào chất lượng giảng dạy và cơ sở vật chất.
-              </p>
-              <p className="text-neutral-600 text-sm leading-relaxed">
-                Chúng tôi chuyên đào tạo và tổ chức sát hạch cho các hạng giấy phép lái xe phổ biến:
-              </p>
+              <ScrollReveal animation="slide-right">
+                <div className="flex items-center gap-2">
+                  <span className="w-8 h-0.5 bg-gradient-to-r from-amber-500 to-orange-500 rounded" />
+                  <span className="text-amber-700 font-bold uppercase tracking-wider text-xs">
+                    Kế thừa và phát triển
+                  </span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a] mt-3 mb-5 leading-tight">
+                  Kiến Tạo Vững Vàng <br />
+                  Cho Mỗi Hành Trình
+                </h2>
+                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+                  Được thành lập từ nền tảng giáo dục nghề nghiệp hàng đầu,{" "}
+                  <strong className="text-neutral-900 font-semibold">
+                    Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Chiến Thắng
+                  </strong>{" "}
+                  tự hào là điểm sáng đào tạo lái xe tại Tiền Giang. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư nâng cấp chất lượng giảng dạy và cơ sở vật chất.
+                </p>
+                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mt-4">
+                  Tại Chiến Thắng, việc học lái xe không chỉ là để lấy tấm bằng, mà quan trọng hơn là trang bị kỹ năng lái xe an toàn suốt đời và đạo đức của người tài xế.
+                </p>
+              </ScrollReveal>
 
               {/* Hạng badges */}
-              <div className="flex flex-wrap gap-4 py-2">
+              <div className="grid grid-cols-3 gap-4 py-4">
                 {[
-                  { label: "Hạng B1", icon: Car },
-                  { label: "Hạng B2", icon: Car },
-                  { label: "Hạng C", icon: Truck },
+                  { label: "Hạng B1 (Tự động)", icon: Car, desc: "Xe ô tô số tự động" },
+                  { label: "Hạng B2 (Số sàn)", icon: Car, desc: "Xe ô tô số sàn" },
+                  { label: "Hạng C (Tải)", icon: Truck, desc: "Xe tải trên 3.5 tấn" },
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <div
-                      key={idx}
-                      className="bg-white border border-neutral-200/80 rounded-xl px-5 py-3.5 flex items-center gap-3 shadow-xs min-w-[140px]"
-                    >
-                      <div className="w-8 h-8 bg-amber-50 text-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-4 h-4" />
+                    <ScrollReveal key={idx} animation="scale-in" delay={idx * 100}>
+                      <div className="hover-lift bg-slate-50 border border-neutral-100 rounded-2xl p-4 flex flex-col items-center text-center shadow-xs group h-full">
+                        <div className="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-amber-500/20">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span className="text-xs font-bold text-neutral-800 mt-3 block">{item.label}</span>
+                        <span className="text-[10px] text-neutral-400 mt-1 block">{item.desc}</span>
                       </div>
-                      <span className="text-xs font-bold text-neutral-800">{item.label}</span>
-                    </div>
+                    </ScrollReveal>
                   );
                 })}
               </div>
 
               {/* Address Box */}
-              <div className="flex items-start gap-4 bg-amber-50/40 border-l-4 border-amber-500 p-5 rounded-r-xl">
-                <div className="w-8 h-8 bg-amber-100/60 text-amber-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4" />
+              <ScrollReveal animation="slide-up" delay={200}>
+                <div className="flex items-start gap-4 bg-gradient-to-r from-amber-500/5 to-orange-500/5 border-l-4 border-amber-500 p-5 rounded-r-2xl shadow-xs">
+                  <div className="w-8 h-8 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-neutral-800 mb-1 uppercase tracking-wider">
+                      Vị trí đắc địa:
+                    </h4>
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                      Ấp Phú Hòa, Xã Phú Nhuận, Huyện Cai Lậy, Tỉnh Tiền Giang (Mặt tiền Quốc lộ 1A).
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-neutral-800 mb-1">Địa chỉ trụ sở chính:</h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed">
-                    Quốc lộ 1A, TT. Phú Nhuận, Thị xã Cai Lậy, tỉnh Tiền Giang.
-                  </p>
-                </div>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Right Graphics (span 5) */}
             <div className="lg:col-span-5 relative">
               {/* Main yard photo */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg group">
-                <Image
-                  src="/facility_yard.png"
-                  alt="Sân sát hạch chính thức"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-102"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
-                />
-              </div>
+              <ScrollReveal animation="slide-left" className="h-full">
+                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl img-zoom group border border-neutral-100">
+                  <Image
+                    src="/facility_yard.png"
+                    alt="Sân sát hạch chính thức"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
+                </div>
+              </ScrollReveal>
 
               {/* Floating Badge Card */}
-              <div className="absolute left-4 bottom-[-24px] bg-white rounded-2xl shadow-xl border border-neutral-100 p-5 max-w-[260px] flex gap-3.5">
-                <div className="w-10 h-10 bg-amber-50 text-amber-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Award className="w-5 h-5" />
+              <ScrollReveal animation="scale-in" delay={300}>
+                <div className="absolute left-6 bottom-[-28px] bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-neutral-100 p-5 max-w-[280px] flex gap-4 animate-glow">
+                  <div className="w-12 h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/30">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wider">
+                      Đạt chuẩn Bộ GTVT
+                    </h4>
+                    <p className="text-[10px] text-neutral-500 leading-relaxed mt-1 font-medium">
+                      Hệ thống xe cảm biến hiện đại kết hợp sân sát hạch chính thức đạt tiêu chuẩn cao nhất.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-neutral-900 uppercase tracking-wide">
-                    Top đơn vị đào tạo
-                  </h4>
-                  <p className="text-[10px] text-neutral-500 leading-relaxed mt-1">
-                    Cam kết tỉ lệ đậu cao nhất khu vực với quy trình chuyên nghiệp.
-                  </p>
-                </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-neutral-50/30 border-t border-neutral-100 animate-slide-up">
+      {/* 3. Core Values Section */}
+      <section className="py-24 bg-gradient-to-b from-slate-50 to-white border-y border-neutral-100/60 relative overflow-hidden">
+        {/* Background blobs */}
+        <div className="absolute top-1/3 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/3 right-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 space-y-3">
-            <h2 className="font-display text-3xl font-extrabold text-[#1e3a8a]">
-              Tại sao chọn Chiến Thắng?
-            </h2>
-            <p className="text-neutral-500 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-              Chúng tôi mang đến những giá trị khác biệt, giúp học viên không chỉ lấy được bằng lái mà còn tự tin làm chủ tay lái trên mọi cung đường.
-            </p>
-          </div>
+          <ScrollReveal animation="fade-in">
+            <div className="text-center mb-16 space-y-3">
+              <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-2">
+                <Compass className="w-3.5 h-3.5 fill-amber-500" />
+                Giá trị cốt lõi
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a]">
+                Giá Trị Khác Biệt Tại Chiến Thắng
+              </h2>
+              <p className="text-neutral-500 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+                Chúng tôi không chỉ giúp bạn hoàn thành kỳ thi và nhận tấm bằng lái mà còn xây dựng sự tự tin tuyệt đối sau tay lái.
+              </p>
+              <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-4 rounded-full" />
+            </div>
+          </ScrollReveal>
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white rounded-2xl shadow-xs border border-neutral-200/60 p-8 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-5">
-                <div className="w-12 h-12 bg-amber-50 text-amber-700 rounded-xl flex items-center justify-center">
-                  <Building className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-[#1e3a8a]">Sân sát hạch tại chỗ</h3>
-                <p className="text-neutral-500 text-xs leading-relaxed">
-                  Là trung tâm DUY NHẤT tại Tiền Giang có sân thi sát hạch tại chỗ. Học viên được học và thi trên cùng một địa điểm, giúp tâm lý thoải mái và đạt kết quả cao.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white rounded-2xl shadow-xs border border-neutral-200/60 p-8 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-5">
-                <div className="w-12 h-12 bg-amber-50 text-amber-700 rounded-xl flex items-center justify-center">
-                  <Car className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-[#1e3a8a]">Xe tập lái hiện đại</h3>
-                <p className="text-neutral-500 text-xs leading-relaxed">
-                  Hệ thống xe đời mới, trang bị đầy đủ công nghệ hỗ trợ và cảm biến. Chúng tôi bảo trì xe định kỳ để đảm bảo sự an toàn và trải nghiệm tốt nhất cho học viên.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white rounded-2xl shadow-xs border border-neutral-200/60 p-8 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-5">
-                <div className="w-12 h-12 bg-amber-50 text-amber-700 rounded-xl flex items-center justify-center">
-                  <Calendar className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-[#1e3a8a]">Lịch học linh hoạt</h3>
-                <p className="text-neutral-500 text-xs leading-relaxed">
-                  Khai giảng lớp mới mỗi tháng. Học viên có thể chủ động sắp xếp thời gian học vào các ngày trong tuần hoặc cuối tuần phù hợp với công việc cá nhân.
-                </p>
-              </div>
-            </div>
+            {[
+              {
+                icon: Building,
+                title: "Sân Sát Hạch Tại Chỗ",
+                desc: "Chiến Thắng tự hào sở hữu sân sát hạch chính thức tại chỗ diện tích rộng lớn. Học viên được học thử nghiệm và thi thực tế trên cùng một sân tập, giúp loại bỏ hoàn toàn áp lực tâm lý lạ sân.",
+                color: "from-amber-500 to-orange-600",
+              },
+              {
+                icon: Car,
+                title: "Hệ Xe Tập Đời Mới",
+                desc: "Học trên dàn xe Toyota Vios mới mẻ, sạch sẽ, trang bị điều hòa mát lạnh và hệ thống phanh phụ an toàn tuyệt đối. Xe tập lái luôn được kiểm định định kỳ đảm bảo hoạt động hoàn hảo.",
+                color: "from-blue-500 to-indigo-600",
+              },
+              {
+                icon: Users,
+                title: "Đội Ngũ Giáo Viên Tận Tâm",
+                desc: "Mỗi thầy cô tại trung tâm đều sở hữu chứng chỉ sư phạm dạy lái xe chuyên nghiệp, giàu kinh nghiệm, giảng dạy ân cần, tuyệt đối không có tiêu cực hay quát mắng học viên.",
+                color: "from-emerald-500 to-teal-600",
+              },
+            ].map((card, idx) => {
+              const Icon = card.icon;
+              return (
+                <ScrollReveal key={idx} animation="slide-up" delay={idx * 150}>
+                  <div className="hover-lift card-underline bg-white rounded-2xl shadow-sm border border-neutral-100 p-8 flex flex-col justify-between h-full group">
+                    <div className="space-y-6">
+                      <div className={`w-14 h-14 bg-gradient-to-br ${card.color} text-white rounded-2xl flex items-center justify-center shadow-lg shadow-neutral-100 group-hover:scale-110 transition-transform duration-500`}>
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-[#1e3a8a] group-hover:text-amber-700 transition-colors">
+                        {card.title}
+                      </h3>
+                      <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white animate-fade-in">
+      {/* 4. Action Banner Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 p-8 sm:p-12 text-center text-white shadow-xl relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full pointer-events-none -translate-y-8 translate-x-8" />
-            
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold mb-4">
-              Sẵn sàng để bắt đầu hành trình lái xe an toàn?
-            </h2>
-            <p className="text-brand-100 max-w-2xl mx-auto text-xs sm:text-sm mb-8 font-medium">
-              Đội ngũ giảng viên tận tâm và trang thiết bị hiện đại đang chờ đón bạn. Hãy đăng ký ngay để nhận ưu đãi học phí tốt nhất tháng này.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/lien-he"
-                className="bg-white hover:bg-neutral-50 text-amber-900 font-bold px-8 py-3.5 rounded-md text-xs transition-all shadow-md hover:-translate-y-0.5"
-              >
-                Đăng ký tư vấn miễn phí
-              </Link>
-              <Link
-                href="/khoa-hoc"
-                className="border border-white hover:bg-white/10 text-white font-bold px-8 py-3.5 rounded-md text-xs transition-all shadow-md hover:-translate-y-0.5"
-              >
-                Xem lịch khai giảng
-              </Link>
+          <ScrollReveal animation="scale-in">
+            <div className="rounded-3xl bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 p-8 sm:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+              {/* Background pattern */}
+              <div
+                className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"
+              />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full pointer-events-none -translate-y-8 translate-x-8" />
+              
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">
+                Sẵn Sàng Làm Chủ Tay Lái An Toàn?
+              </h2>
+              <p className="text-amber-100 max-w-2xl mx-auto text-xs sm:text-sm mb-8 font-semibold">
+                Đội ngũ giảng viên tâm huyết và hệ thống xe hiện đại đã sẵn sàng phục vụ bạn. Đăng ký nhận lịch khai giảng và học phí ưu đãi tốt nhất ngay hôm nay.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link
+                  href="/lien-he"
+                  className="bg-white hover:bg-neutral-50 text-amber-900 font-extrabold px-8 py-4 rounded-xl text-xs transition-all shadow-lg hover:-translate-y-0.5 flex items-center gap-2"
+                >
+                  Đăng ký tư vấn ngay
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/khoa-hoc"
+                  className="border-2 border-white/60 hover:border-white hover:bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-xs transition-all shadow-md hover:-translate-y-0.5"
+                >
+                  Xem lịch khai giảng
+                </Link>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

@@ -22,15 +22,48 @@ export function ContactForm() {
 
   async function onSubmit(data: ContactInput) {
     const supabase = createClient();
+
+    let utmMessage = "";
+    try {
+      const storedUtm = sessionStorage.getItem("utm_data");
+      if (storedUtm) {
+        const utm = JSON.parse(storedUtm);
+        utmMessage = `\n\n[UTM Tracking]\nNguồn: ${utm.utm_source || "N/A"}\nKênh: ${utm.utm_medium || "N/A"}\nChiến dịch: ${utm.utm_campaign || "N/A"}\nNội dung: ${utm.utm_content || "N/A"}\nTừ khóa: ${utm.utm_term || "N/A"}`;
+      }
+    } catch (e) {
+      console.error("Lỗi đọc UTM từ sessionStorage:", e);
+    }
+
     const { error } = await (supabase.from("contacts") as any).insert({
       full_name: data.full_name,
       phone: data.phone,
       email: data.email || null,
       subject: "Liên hệ & Tuyển dụng",
-      message: data.message || null,
+      message: `${data.message || ""}${utmMessage}`.trim() || null,
     });
 
     if (!error) {
+      // Kích hoạt sự kiện conversion tracking
+      try {
+        if (typeof window !== "undefined") {
+          if ((window as any).fbq) {
+            (window as any).fbq("track", "Lead", {
+              content_name: "Liên hệ & Tuyển dụng",
+              value: 0.00,
+              currency: "VND"
+            });
+          }
+          if ((window as any).gtag) {
+            (window as any).gtag("event", "generate_lead", {
+              event_category: "Engagement",
+              event_label: "Form Liên Hệ"
+            });
+          }
+        }
+      } catch (trackErr) {
+        console.error("Lỗi tracking sự kiện quảng cáo:", trackErr);
+      }
+
       setIsSuccess(true);
       reset();
       setTimeout(() => setIsSuccess(false), 5000);
