@@ -31,13 +31,13 @@ export default function HoSoDangKyPage() {
         {/* Background Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/hero_bg.png"
+            src="/banner-page.jpg"
             alt="Học viên lái xe Chiến Thắng"
             fill
-            className="object-cover object-center opacity-10 filter blur-xs"
+            className="object-cover object-right opacity-85"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-[#1f2937]/90 to-neutral-950/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-950/50 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">

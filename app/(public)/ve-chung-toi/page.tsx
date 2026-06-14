@@ -32,13 +32,13 @@ export default function VeChungToiPage() {
         {/* Background Image with opacity overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/hero_bg.png"
+            src="/banner-page.jpg"
             alt="Trường lái xe Chiến Thắng"
             fill
-            className="object-cover object-center opacity-10 filter blur-[2px]"
+            className="object-cover object-right opacity-85"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-[#1e3a8a]/90 to-neutral-950/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-950/50 to-transparent" />
           {/* Decorative pattern */}
           <div
             className="absolute inset-0 opacity-[0.03]"

@@ -20,6 +20,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import type { Course } from "@/types/database.types";
+import { CourseImageCarousel } from "@/components/public/CourseImageCarousel";
 
 // Static mapping from slug to class_code
 const SLUG_TO_CLASS = {
@@ -297,22 +298,8 @@ export default async function CourseDetailPage({ params }: PageProps) {
               {/* Sticky Sidebar Info */}
               <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-md space-y-6 lg:sticky lg:top-28">
                 
-                {/* Course Image */}
-                <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-neutral-100 shadow-inner">
-                  {course.image_url ? (
-                    <Image
-                      src={course.image_url}
-                      alt={course.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 30vw"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-neutral-300">
-                      <VehicleIcon className="w-16 h-16" />
-                    </div>
-                  )}
-                </div>
+                {/* Course Image Carousel */}
+                <CourseImageCarousel defaultImage={course.image_url} />
 
                 {/* Price Display */}
                 <div className="border-y border-neutral-100 py-5">
