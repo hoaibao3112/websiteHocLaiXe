@@ -12,6 +12,11 @@
 
 # testing
 /coverage
+**/__tests__/
+*.test.ts
+*.test.tsx
+vitest.config.ts
+vitest.setup.ts
 
 # next.js
 /.next/
