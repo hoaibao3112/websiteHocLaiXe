@@ -21,7 +21,7 @@ import { ScrollReveal } from "@/components/public/ScrollReveal";
 export const metadata: Metadata = {
   title: "Giới thiệu về chúng tôi - Trường Lái Xe Chiến Thắng",
   description:
-    "Tìm hiểu về Trung Tâm Đào Tạo và Sát Hạch Lái Xe Chiến Thắng tại Tiền Giang. Đơn vị hàng đầu với cơ sở vật chất đạt chuẩn Bộ GTVT.",
+    "Tìm hiểu về Trung Tâm Đào Tạo và Sát Hạch Lái Xe Chiến Thắng tại Đồng Tháp. Đơn vị hàng đầu với cơ sở vật chất đạt chuẩn Bộ GTVT.",
 };
 
 export default function VeChungToiPage() {
@@ -63,7 +63,7 @@ export default function VeChungToiPage() {
               GIỚI THIỆU TRUNG TÂM CHIẾN THẮNG
             </h1>
             <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-              Hành trình hơn 10 năm đồng hành và kiến tạo thế hệ người lái xe an toàn, vững tâm lý, vững tay lái tại Tiền Giang.
+              Hành trình hơn 10 năm đồng hành và kiến tạo thế hệ người lái xe an toàn, vững tâm lý, vững tay lái tại Đồng Tháp.
             </p>
           </ScrollReveal>
         </div>
@@ -91,7 +91,7 @@ export default function VeChungToiPage() {
                   <strong className="text-neutral-900 font-semibold">
                     Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Chiến Thắng
                   </strong>{" "}
-                  tự hào là điểm sáng đào tạo lái xe tại Tiền Giang. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư nâng cấp chất lượng giảng dạy và cơ sở vật chất.
+                  tự hào là điểm sáng đào tạo lái xe tại Đồng Tháp. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư nâng cấp chất lượng giảng dạy và cơ sở vật chất.
                 </p>
                 <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mt-4">
                   Tại Chiến Thắng, việc học lái xe không chỉ là để lấy tấm bằng, mà quan trọng hơn là trang bị kỹ năng lái xe an toàn suốt đời và đạo đức của người tài xế.
@@ -131,7 +131,7 @@ export default function VeChungToiPage() {
                       Vị trí đắc địa:
                     </h4>
                     <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                      Ấp Phú Hòa, Xã Phú Nhuận, Huyện Cai Lậy, Tỉnh Tiền Giang (Mặt tiền Quốc lộ 1A).
+                      168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam.
                     </p>
                   </div>
                 </div>

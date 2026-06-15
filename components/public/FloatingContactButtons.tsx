@@ -71,7 +71,7 @@ export function FloatingContactButtons() {
 
       {/* Zalo Chat Button */}
       <a
-        href="https://zalo.me/0888861888"
+        href="https://zalo.me/0902868928"
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => handleTrackClick("Zalo")}
@@ -80,20 +80,20 @@ export function FloatingContactButtons() {
       >
         <ZaloIcon className="w-9 h-9" />
         <span className="absolute right-14 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
-          Chat Zalo: 088.88.618.88
+          Chat Zalo: 0902.868.928
         </span>
       </a>
 
       {/* Hotline Call Button */}
       <a
-        href="tel:0888861888"
+        href="tel:0902868928"
         onClick={() => handleTrackClick("Hotline")}
         className="group relative w-12 h-12 bg-amber-600 hover:bg-amber-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse"
         title="Gọi ngay cho chúng tôi"
       >
         <Phone className="w-5 h-5 animate-bounce" />
         <span className="absolute right-14 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
-          Gọi Hotline: 088.88.618.88
+          Gọi Hotline: 0902.868.928
         </span>
       </a>
 

@@ -19,7 +19,7 @@ export function Footer() {
               className="object-contain mb-5 h-14 w-auto filter brightness-110"
             />
             <p className="text-xs leading-relaxed text-neutral-400 mb-6">
-              Trung tâm đào tạo lái xe Chiến Thắng - Kiến tạo vững vàng cho mỗi hành trình. Uy tín, chất lượng và tỉ lệ đậu cao vượt trội tại Tiền Giang.
+              Trung tâm đào tạo lái xe Chiến Thắng - Kiến tạo vững vàng cho mỗi hành trình. Uy tín, chất lượng và tỉ lệ đậu cao vượt trội tại Đồng Tháp.
             </p>
             <div className="flex gap-3">
               <a
@@ -48,9 +48,9 @@ export function Footer() {
             <h3 className="font-bold text-white tracking-wider uppercase text-sm mb-5">Khóa học</h3>
             <ul className="space-y-3.5">
               {[
-                { label: "Lái xe hạng B1.01", href: "/khoa-hoc" },
-                { label: "Lái xe hạng B2", href: "/khoa-hoc" },
-                { label: "Lái xe hạng C", href: "/khoa-hoc" },
+                { label: "Lái xe hạng A1 / A", href: "/khoa-hoc" },
+                { label: "Lái xe hạng B1 / B2", href: "/khoa-hoc" },
+                { label: "Lái xe hạng C / Nâng hạng", href: "/khoa-hoc" },
               ].map((link, idx) => (
                 <li key={idx}>
                   <Link
@@ -71,17 +71,17 @@ export function Footer() {
               <li className="flex gap-3 items-start">
                 <MapPin className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                 <span className="text-neutral-400 leading-relaxed">
-                  Ấp Phú Hòa, Xã Phú Nhuận, Huyện Cai Lậy, Tỉnh Tiền Giang
+                  168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam
                 </span>
               </li>
               <li className="flex gap-3 items-center">
                 <Phone className="w-4 h-4 text-amber-500 flex-shrink-0" />
                 <span className="text-neutral-400">
                   <a
-                    href="tel:0888861888"
+                    href="tel:0902868928"
                     className="hover:text-amber-500 transition-colors font-semibold"
                   >
-                    088.88.618.88
+                    0902.868.928
                   </a>
                 </span>
               </li>
@@ -99,26 +99,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Newsletter */}
+          {/* Column 4: Zalo Support */}
           <div>
-            <h3 className="font-bold text-white tracking-wider uppercase text-sm mb-5">Đăng ký nhận tin</h3>
-            <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-              Nhận thông tin mới nhất về lịch thi và các ưu đãi khóa học học phí sớm nhất.
+            <h3 className="font-bold text-white tracking-wider uppercase text-sm mb-5">Hỗ trợ trực tuyến</h3>
+            <p className="text-xs text-neutral-400 leading-relaxed mb-6">
+              Quý học viên vui lòng liên hệ trực tiếp qua Zalo để được tư vấn nhanh nhất về lịch thi và các ưu đãi học phí.
             </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Email của bạn"
-                className="w-full bg-neutral-900 border border-neutral-800 text-neutral-200 text-xs px-3 py-2.5 rounded focus:border-amber-600 focus:outline-none"
-              />
-              <button
-                type="button"
-                className="bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white p-2.5 rounded transition-colors flex items-center justify-center flex-shrink-0"
-                aria-label="Send"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </div>
+            <a
+              href="https://zalo.me/0902868928"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-[#0068ff] hover:bg-[#0057d4] text-white font-bold py-3 rounded-lg text-xs tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-[#0068ff]/20"
+            >
+              <span>NHẮN ZALO NGAY</span>
+            </a>
           </div>
 
         </div>

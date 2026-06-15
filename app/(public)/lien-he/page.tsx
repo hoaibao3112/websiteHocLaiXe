@@ -15,13 +15,13 @@ const CONTACT_ITEMS = [
   {
     icon: MapPin,
     title: "ĐỊA CHỈ TRỤ SỞ",
-    value: "Ấp Phú Hòa, Xã Phú Nhuận, Huyện Cai Lậy, Tỉnh Tiền Giang",
+    value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam",
     sub: "Mặt tiền Quốc lộ 1A dễ tìm",
   },
   {
     icon: Phone,
     title: "ĐIỆN THOẠI HỖ TRỢ",
-    value: "088.88.618.88",
+    value: "0902.868.928",
     sub: "Phục vụ từ 7:30 – 17:30 hàng ngày",
   },
   {
@@ -142,10 +142,10 @@ export default function LienHePage() {
             <ScrollReveal animation="slide-left" className="lg:col-span-7">
               <div className="bg-white rounded-2xl border border-neutral-100 p-8 sm:p-10 shadow-2xl">
                 <h2 className="text-xl sm:text-2xl font-extrabold text-neutral-900 mb-2">
-                  Gửi Tin Nhắn Cho Chúng Tôi
+                  Liên hệ qua Zalo & Hotline
                 </h2>
                 <p className="text-neutral-400 text-xs sm:text-sm mb-8">
-                  Vui lòng cung cấp thông tin liên hệ và lời nhắn dưới đây, bộ phận tuyển sinh sẽ kết nối lại tư vấn bạn nhanh chóng nhất.
+                  Để hỗ trợ nhanh chóng nhất, quý học viên vui lòng nhắn tin trực tiếp qua Zalo hoặc liên hệ Hotline hỗ trợ 24/7 của chúng tôi.
                 </p>
                 <ContactForm />
               </div>
@@ -164,7 +164,7 @@ export default function LienHePage() {
           </div>
           <div>
             <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
-            <p className="text-[10px] text-neutral-400 font-medium">QL1A, Cai Lậy, Tiền Giang</p>
+            <p className="text-[10px] text-neutral-400 font-medium">168 QL1A, Mỹ Thành, Đồng Tháp</p>
           </div>
         </div>
 

@@ -27,9 +27,9 @@ import { ScrollReveal } from "@/components/public/ScrollReveal";
 import { AnimatedCounter } from "@/components/public/AnimatedCounter";
 
 export const metadata: Metadata = {
-  title: "Trường Lái Xe Chiến Thắng — Đào tạo lái xe uy tín tại Tiền Giang",
+  title: "Trường Lái Xe Chiến Thắng — Đào tạo lái xe uy tín tại Đồng Tháp",
   description:
-    "Trường lái xe Chiến Thắng — hơn 10 năm kinh nghiệm đào tạo lái xe hạng B1, B2, C. Tỉ lệ đậu thi cao, giáo viên tận tâm, sân sát hạch đạt chuẩn.",
+    "Trường lái xe Chiến Thắng — hơn 10 năm kinh nghiệm đào tạo lái xe hạng A1, A, B1, B2, C. Tỉ lệ đậu thi cao, giáo viên tận tâm, sân sát hạch đạt chuẩn.",
 };
 
 export const revalidate = 3600;
@@ -155,7 +155,7 @@ export default async function HomePage() {
             >
               Trung tâm duy nhất{" "}
               <br className="hidden sm:block" />
-              tại Tiền Giang{" "}
+              tại Đồng Tháp{" "}
               <span className="text-shimmer">có sân sát hạch</span>
             </h1>
 
@@ -351,8 +351,8 @@ export default async function HomePage() {
                       <div className="space-y-2.5 border-t border-neutral-100 pt-4 mb-5">
                         <div className="flex items-center justify-between text-xs">
                           <span className="text-neutral-400">Học phí</span>
-                          <span className="font-bold text-amber-700 text-sm">
-                            {formatPrice(course.sale_price)}
+                          <span className="font-bold text-amber-700 text-xs px-2.5 py-1 bg-amber-50 rounded-full border border-amber-100">
+                            Liên hệ
                           </span>
                         </div>
                         <div className="flex items-center justify-between text-xs">
@@ -368,7 +368,14 @@ export default async function HomePage() {
                       </div>
 
                       <Link
-                        href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" : course.class_code.toLowerCase() === "b" ? "b2" : "c"}`}
+                        href={`/khoa-hoc/${
+                          course.class_code.toLowerCase() === "b01" ? "b1" :
+                          course.class_code.toLowerCase() === "b" ? "b2" :
+                          course.class_code.toLowerCase() === "c1" ? "c" :
+                          course.class_code.toLowerCase() === "a1" ? "a1" :
+                          course.class_code.toLowerCase() === "a" ? "a" :
+                          "nang-hang"
+                        }`}
                         className="group/btn flex items-center justify-center gap-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 rounded-xl text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
                       >
                         Xem chi tiết
@@ -695,11 +702,10 @@ export default async function HomePage() {
                     Liên hệ ngay
                   </div>
                   <h2 className="font-display text-3xl font-extrabold text-[#1e3a8a] mb-3">
-                    Đăng ký tư vấn miễn phí
+                    Liên hệ tư vấn nhanh
                   </h2>
                   <p className="text-neutral-500 text-sm leading-relaxed">
-                    Để lại thông tin, đội ngũ tư vấn sẽ liên hệ lại ngay để hỗ trợ thông tin
-                    khóa học và thủ tục đăng ký.
+                    Kết nối trực tiếp với chúng tôi qua Zalo hoặc Hotline để nhận thông tin khóa học và hỗ trợ thủ tục đăng ký nhanh nhất.
                   </p>
                   <div className="w-16 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mt-4 rounded-full" />
                 </div>
@@ -708,9 +714,9 @@ export default async function HomePage() {
               <ScrollReveal animation="slide-right" delay={100}>
                 <div className="space-y-4">
                   {[
-                    { icon: Phone, label: "HOTLINE TƯ VẤN", value: "088 88 618 88", href: "tel:0888861888" },
+                    { icon: Phone, label: "HOTLINE TƯ VẤN", value: "0902.868.928", href: "tel:0902868928" },
                     { icon: Mail, label: "EMAIL HỖ TRỢ", value: "hr.truonglaixechienthangtg@gmail.com", href: "mailto:hr.truonglaixechienthangtg@gmail.com" },
-                    { icon: MapPin, label: "ĐỊA CHỈ", value: "Ấp Phú Hòa, Xã Phú Nhuận, H. Cai Lậy, Tiền Giang", href: undefined },
+                    { icon: MapPin, label: "ĐỊA CHỈ", value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam", href: undefined },
                   ].map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex gap-4 items-start group">
                       <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-amber-200 group-hover:scale-110 transition-all duration-300">
@@ -746,7 +752,7 @@ export default async function HomePage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
-                    <p className="text-[10px] text-neutral-400">Huyện Cai Lậy, Tiền Giang</p>
+                    <p className="text-[10px] text-neutral-400">Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp</p>
                   </div>
                   <a
                     href="https://maps.google.com/?q=Trường+Lái+Xe+Chiến+Thắng"
@@ -803,11 +809,11 @@ export default async function HomePage() {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <a
-                href="tel:0888861888"
+                href="tel:0902868928"
                 className="inline-flex items-center gap-2 border-2 border-white/60 hover:border-white text-white font-bold px-8 py-4 rounded-xl text-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/10"
               >
                 <Phone className="w-4 h-4" />
-                Gọi: 088 88 618 88
+                Gọi: 0902.868.928
               </a>
             </div>
           </ScrollReveal>

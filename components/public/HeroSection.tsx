@@ -69,7 +69,7 @@ export function HeroSection() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href="tel:0888861888"
+                href="tel:0902868928"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-7 py-3.5 rounded-full text-base transition-all duration-200 hover:-translate-y-0.5"
               >
                 <Phone className="w-5 h-5" />

@@ -77,7 +77,7 @@ export default async function KhoaHocPage() {
               CHƯƠNG TRÌNH ĐÀO TẠO LÁI XE
             </h1>
             <p className="text-neutral-350 text-sm sm:text-base max-w-2xl leading-relaxed">
-              Lộ trình đào tạo chuẩn quy định, cam kết tay lái vững vàng cùng tỉ lệ đỗ thi sát hạch vượt trội tại Tiền Giang.
+              Lộ trình đào tạo chuẩn quy định, cam kết tay lái vững vàng cùng tỉ lệ đỗ thi sát hạch vượt trội tại Đồng Tháp.
             </p>
           </ScrollReveal>
         </div>
@@ -116,11 +116,11 @@ export default async function KhoaHocPage() {
                   Trung tâm hiện đang cập nhật lịch chi tiết các khóa học mới. Vui lòng kết nối Hotline để được tư vấn nhanh nhất.
                 </p>
                 <a
-                  href="tel:0888861888"
+                  href="tel:0902868928"
                   className="inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-extrabold px-8 py-4 rounded-xl text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-amber-500/20 hover:-translate-y-0.5"
                 >
                   <Phone className="w-4 h-4" />
-                  GỌI TƯ VẤN: 088.88.618.88
+                  GỌI TƯ VẤN: 0902.868.928
                 </a>
               </div>
             </ScrollReveal>

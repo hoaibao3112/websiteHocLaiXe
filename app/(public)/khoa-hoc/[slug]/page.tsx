@@ -18,6 +18,8 @@ import {
   Tag,
   DollarSign,
   UserCheck,
+  Bike,
+  TrendingUp,
 } from "lucide-react";
 import type { Course } from "@/types/database.types";
 import { CourseImageCarousel } from "@/components/public/CourseImageCarousel";
@@ -27,6 +29,9 @@ const SLUG_TO_CLASS = {
   b1: "B01",
   b2: "B",
   c: "C1",
+  a1: "A1",
+  a: "A",
+  "nang-hang": "NH",
 } as const;
 
 interface PageProps {
@@ -59,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${course.name} — Trường Lái Xe Chiến Thắng`,
-    description: course.description ?? `Chi tiết khóa học lái xe ${course.name} tại Tiền Giang.`,
+    description: course.description ?? `Chi tiết khóa học lái xe ${course.name} tại Đồng Tháp.`,
   };
 }
 
@@ -78,10 +83,24 @@ export default async function CourseDetailPage({ params }: PageProps) {
   }
 
   // Get icons based on class_code
-  const VehicleIcon = classCode === "C1" ? Truck : Car;
+  const VehicleIcon = classCode === "C1" ? Truck : (classCode === "A1" || classCode === "A") ? Bike : classCode === "NH" ? TrendingUp : Car;
 
   // Additional structured data based on the class code
   const detailsExtra = {
+    A1: {
+      titleText: "Bằng Lái Xe Máy (Hạng A1)",
+      vehicleType: "Xe mô tô 2 bánh có dung tích xi-lanh từ 50cm³ đến dưới 175cm³",
+      duration: "Lịch thi hàng tuần",
+      target: "Dành cho người có nhu cầu điều khiển xe mô tô, xe gắn máy thông thường hàng ngày.",
+      requirements: "Công dân Việt Nam hoặc người nước ngoài đang cư trú hợp pháp đủ 18 tuổi trở lên, đủ sức khỏe theo quy định.",
+    },
+    A: {
+      titleText: "Bằng Lái Xe Mô Tô Phân Khối Lớn (Hạng A)",
+      vehicleType: "Xe mô tô 2 bánh có dung tích xi-lanh từ 175cm³ trở lên và các loại xe hạng A1",
+      duration: "Thi sau 1-2 tuần học",
+      target: "Dành cho người đam mê và vận hành các loại xe mô tô phân khối lớn (PKL).",
+      requirements: "Công dân Việt Nam hoặc người nước ngoài đang cư trú hợp pháp đủ 18 tuổi trở lên, đủ sức khỏe theo quy định.",
+    },
     B01: {
       titleText: "Bằng Lái Số Tự Động (Hạng B1)",
       vehicleType: "Xe số tự động du lịch (4-9 chỗ), xe tải số tự động < 3.5 tấn",
@@ -103,7 +122,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
       target: "Dành cho tài xế chuyên nghiệp chạy xe tải nặng, xe đầu kéo, xe vận tải lớn hoặc kinh doanh kho bãi lớn.",
       requirements: "Mọi công dân Việt Nam đủ 21 tuổi trở lên, đảm bảo tiêu chuẩn sức khỏe lái xe.",
     },
-  }[classCode];
+    NH: {
+      titleText: "Khóa Học Nâng Hạng Bằng Lái Xe",
+      vehicleType: "Nâng hạng lên các hạng bằng B2, C, D, E, FC...",
+      duration: "1.5 - 2 tháng",
+      target: "Dành cho lái xe chuyên nghiệp muốn nâng cao hạng bằng để điều khiển các loại xe có tải trọng hoặc sức chứa lớn hơn.",
+      requirements: "Là công dân Việt Nam có giấy phép lái xe hiện tại và đủ thời gian, số km lái xe an toàn theo luật định.",
+    },
+  }[classCode as "B01" | "B" | "C1" | "A1" | "A" | "NH"];
 
   return (
     <div className="pt-20 bg-neutral-50/50 min-h-screen">
@@ -224,7 +250,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                         Địa điểm học & thi
                       </h4>
                       <p className="text-neutral-800 font-bold text-sm mt-0.5 leading-snug">
-                        Trung tâm Sát hạch Chiến Thắng Cai Lậy
+                        Trung tâm Sát hạch Chiến Thắng Mỹ Thành, Đồng Tháp
                       </p>
                     </div>
                   </div>
@@ -258,7 +284,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 </h2>
                 <div className="space-y-4">
                   <p className="text-neutral-600 text-xs leading-relaxed">
-                    Học viên cần chuẩn bị đầy đủ các giấy tờ sau để trung tâm hoàn tất hồ sơ đăng ký thi sát hạch lên Sở GTVT Tiền Giang:
+                    Học viên cần chuẩn bị đầy đủ các giấy tờ sau để trung tâm hoàn tất hồ sơ đăng ký thi sát hạch lên Sở GTVT Đồng Tháp:
                   </p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-neutral-600 font-medium">
                     <li className="flex items-center gap-2">
@@ -303,24 +329,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
                 {/* Price Display */}
                 <div className="border-y border-neutral-100 py-5">
-                  <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
-                    Học phí trọn gói
+                  <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">
+                    Học phí khóa học
                   </div>
-                  <div className="flex items-baseline gap-3 mt-1.5">
-                    <span className="text-3xl font-extrabold text-brand-700">
-                      {Number(course.sale_price).toLocaleString()}đ
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-800 text-xs font-black px-4 py-2 rounded-xl border border-amber-200/60 uppercase tracking-wider">
+                      Liên hệ để nhận báo giá tốt nhất
                     </span>
-                    {course.original_price && (
-                      <span className="text-sm text-neutral-400 line-through">
-                        {Number(course.original_price).toLocaleString()}đ
-                      </span>
-                    )}
                   </div>
-                  {course.original_price && (
-                    <div className="inline-block bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-md mt-2">
-                      Tiết kiệm {(Number(course.original_price) - Number(course.sale_price)).toLocaleString()}đ
-                    </div>
-                  )}
                 </div>
 
                 {/* Features points check */}
@@ -335,20 +351,22 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   </li>
                   <li className="flex gap-2.5 items-start">
                     <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                    Đào tạo và thi sát hạch trên cùng 1 sân tại Cai Lậy.
+                    Đào tạo và thi sát hạch trên cùng 1 sân tại Mỹ Thành, Đồng Tháp.
                   </li>
                 </ul>
 
                 {/* Register Link */}
                 <div className="space-y-3 pt-2">
-                  <Link
-                    href="/lien-he"
+                  <a
+                    href="https://zalo.me/0902868928"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-center bg-amber-600 hover:bg-amber-700 text-white font-bold py-3.5 rounded-xl text-xs transition-colors shadow-md hover:shadow-lg uppercase tracking-wider"
                   >
                     Đăng ký khóa học ngay
-                  </Link>
+                  </a>
                   <a
-                    href="tel:0888861888"
+                    href="tel:0902868928"
                     className="flex items-center justify-center gap-2 text-center border border-neutral-200 text-neutral-700 font-bold py-3.5 rounded-xl text-xs hover:bg-neutral-50 transition-colors uppercase tracking-wider"
                   >
                     <Phone className="w-4 h-4 text-amber-600" />

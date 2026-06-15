@@ -148,11 +148,11 @@ export function Header() {
           {/* Phone call CTA & Login */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:0888861888"
+              href="tel:0902868928"
               className="bg-brand-800 hover:bg-brand-900 text-white font-bold px-6 py-3 rounded-md text-sm transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2"
             >
               <span className="text-xs font-normal text-brand-200">Đăng ký ngay:</span>
-              <span>088.88.618.88</span>
+              <span>0902.868.928</span>
             </a>
             <Link
               href="/dang-nhap"
@@ -227,10 +227,10 @@ export function Header() {
             ))}
             <div className="pt-4 border-t border-neutral-100 flex flex-col gap-2">
               <a
-                href="tel:0888861888"
+                href="tel:0902868928"
                 className="block text-center bg-brand-800 hover:bg-brand-900 text-white font-bold px-5 py-3 rounded-md text-sm transition-colors"
               >
-                Gọi ngay: 088.88.618.88
+                Gọi ngay: 0902.868.928
               </a>
               <Link
                 href="/dang-nhap"

@@ -202,7 +202,7 @@ export default function StudentLoginPage() {
 
         {/* Corporate copyright */}
         <div className="bg-[#1f2937] text-neutral-400 py-4 px-4 text-center text-xs border-t border-neutral-800">
-          © 2024 Trung Tâm Đào Tạo Lái Xe Chiến Thắng. Uy Tín - Tận Tâm. | Hotline: <span className="text-white font-semibold">088.88.618.88</span>
+          © 2024 Trung Tâm Đào Tạo Lái Xe Chiến Thắng. Uy Tín - Tận Tâm. | Hotline: <span className="text-white font-semibold">0902.868.928</span>
         </div>
       </footer>
     </div>

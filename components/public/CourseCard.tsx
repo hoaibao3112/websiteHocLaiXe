@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CheckCircle, Tag, ArrowRight } from "lucide-react";
-import { formatCurrency, calcDiscount } from "@/lib/utils";
 import type { Course } from "@/types/database.types";
 
 interface CourseCardProps {
@@ -8,13 +7,23 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ course }: CourseCardProps) {
-  const discount = course.original_price
-    ? calcDiscount(course.original_price, course.sale_price)
-    : 0;
-
   // Custom colors for different classes
   const getClassStyles = (code: string) => {
     const cleanCode = code.toUpperCase();
+    if (cleanCode === "A1") {
+      return {
+        badge: "from-teal-500 to-emerald-600 shadow-teal-500/20",
+        header: "from-teal-50/50 to-emerald-50/50 border-teal-100/80",
+        text: "text-teal-700",
+      };
+    }
+    if (cleanCode === "A") {
+      return {
+        badge: "from-cyan-500 to-blue-600 shadow-cyan-500/20",
+        header: "from-cyan-50/50 to-blue-50/50 border-cyan-100/80",
+        text: "text-cyan-700",
+      };
+    }
     if (cleanCode.includes("B1")) {
       return {
         badge: "from-blue-500 to-indigo-600 shadow-blue-500/20",
@@ -29,14 +38,31 @@ export function CourseCard({ course }: CourseCardProps) {
         text: "text-amber-700",
       };
     }
+    if (cleanCode === "C1" || cleanCode === "C") {
+      return {
+        badge: "from-rose-500 to-pink-600 shadow-rose-500/20",
+        header: "from-rose-50/50 to-pink-50/50 border-rose-100/80",
+        text: "text-rose-705",
+      };
+    }
     return {
-      badge: "from-emerald-500 to-teal-600 shadow-emerald-500/20",
-      header: "from-emerald-50/40 to-teal-50/30 border-emerald-100/80",
-      text: "text-emerald-700",
+      badge: "from-purple-500 to-indigo-600 shadow-purple-500/20",
+      header: "from-purple-50/50 to-indigo-50/50 border-purple-100/80",
+      text: "text-purple-700",
     };
   };
 
   const style = getClassStyles(course.class_code);
+
+  const getSlug = (code: string) => {
+    const cleanCode = code.toLowerCase();
+    if (cleanCode === "b01") return "b1";
+    if (cleanCode === "b") return "b2";
+    if (cleanCode === "c1") return "c";
+    if (cleanCode === "a1") return "a1";
+    if (cleanCode === "a") return "a";
+    return "nang-hang";
+  };
 
   return (
     <div className="hover-lift card-underline bg-white rounded-3xl border border-neutral-100 overflow-hidden group flex flex-col h-full shadow-sm hover:shadow-2xl transition-all duration-500">
@@ -56,11 +82,6 @@ export function CourseCard({ course }: CourseCardProps) {
             <Tag className="w-3.5 h-3.5" />
             Hạng {course.class_code}
           </span>
-          {discount > 0 && (
-            <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-100 px-2.5 py-1 rounded-full uppercase tracking-wider">
-              Giảm {discount}%
-            </span>
-          )}
         </div>
         <h3 className="text-xl font-black text-neutral-900 mt-4 group-hover:text-amber-700 transition-colors leading-snug">
           {course.name}
@@ -68,23 +89,11 @@ export function CourseCard({ course }: CourseCardProps) {
       </div>
 
       {/* Pricing */}
-      <div className="px-7 py-5 border-b border-neutral-100/60 bg-neutral-50/30">
-        <div className="flex items-baseline gap-3">
-          <span className={`text-2xl font-black ${style.text}`}>
-            {formatCurrency(course.sale_price)}
-          </span>
-          {course.original_price && course.original_price > course.sale_price && (
-            <span className="text-sm text-neutral-400 line-through font-medium">
-              {formatCurrency(course.original_price)}
-            </span>
-          )}
-        </div>
-        {course.original_price && course.original_price > course.sale_price && (
-          <p className="text-xs text-emerald-600 font-bold mt-1.5 flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Tiết kiệm {formatCurrency(course.original_price - course.sale_price)}
-          </p>
-        )}
+      <div className="px-7 py-4 border-b border-neutral-100/60 bg-neutral-50/30 flex items-center justify-between">
+        <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider">Học phí:</span>
+        <span className={`text-xs font-black ${style.text} px-3.5 py-1.5 bg-white rounded-full border border-neutral-150 shadow-sm uppercase tracking-wider`}>
+          Liên hệ báo giá
+        </span>
       </div>
 
       {/* Features */}
@@ -102,7 +111,7 @@ export function CourseCard({ course }: CourseCardProps) {
 
         {/* CTA Button */}
         <Link
-          href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" : course.class_code.toLowerCase() === "b" ? "b2" : "c"}`}
+          href={`/khoa-hoc/${getSlug(course.class_code)}`}
           className="group/btn flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-neutral-950/10 hover:shadow-neutral-900/20 hover:-translate-y-0.5 mt-auto"
         >
           <span>CHI TIẾT KHÓA HỌC</span>

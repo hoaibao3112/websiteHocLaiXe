@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     template: "%s | Trường Lái Xe Chiến Thắng",
   },
   description:
-    "Trường lái xe Chiến Thắng — đào tạo lái xe hạng B1, B2, C uy tín tại Tiền Giang. Giáo viên kinh nghiệm, tỉ lệ đậu cao, hỗ trợ thi lại.",
+    "Trường lái xe Chiến Thắng — đào tạo lái xe hạng A1, A, B1, B2, C uy tín tại Đồng Tháp. Giáo viên kinh nghiệm, tỉ lệ đậu cao, hỗ trợ thi lại.",
   keywords: [
     "trường lái xe",
     "học lái xe",
     "bằng lái xe B2",
     "đào tạo lái xe",
     "Chiến Thắng",
-    "Tiền Giang",
+    "Đồng Tháp",
   ],
   openGraph: {
     type: "website",
