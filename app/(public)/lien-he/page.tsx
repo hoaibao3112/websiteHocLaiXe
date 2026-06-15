@@ -155,30 +155,6 @@ export default function LienHePage() {
         </div>
       </section>
 
-      {/* Embedded Map Section */}
-      <section className="w-full h-[480px] relative border-t border-neutral-100">
-        {/* Floating map marker preview badge */}
-        <div className="absolute top-5 left-5 z-10 bg-white/90 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-2xl border border-neutral-100 flex items-center gap-3 hidden sm:flex">
-          <div className="w-9 h-9 bg-amber-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/20">
-            <MapPin className="w-5 h-5" />
-          </div>
-          <div>
-            <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
-            <p className="text-[10px] text-neutral-400 font-medium">168 QL1A, Mỹ Thành, Đồng Tháp (Tiền Giang Cũ)</p>
-          </div>
-        </div>
-
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.63942007817!2d106.02196657579737!3d10.407989989718872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa8593d6e5229%3A0xe5a36ad2e245a498!2zVHLGsOG7nW5nIEzDoWkgWGUgQ2hp4bq_biBUaOG6r25n!5e0!3m2!1svi!2s!4v1718278000000!5m2!1svi!2s"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen={true}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Bản đồ Trường lái xe Chiến Thắng"
-        />
-      </section>
     </div>
   );
 }

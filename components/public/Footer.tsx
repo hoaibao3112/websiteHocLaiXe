@@ -97,22 +97,40 @@ export function Footer() {
                 </span>
               </li>
             </ul>
+            <div className="mt-4">
+              <a
+                href="https://zalo.me/0902868928"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#0068ff] hover:bg-[#0057d4] text-white font-bold px-3 py-2.5 rounded-lg text-[10px] tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-[#0068ff]/20"
+              >
+                <span>Nhắn Zalo ngay</span>
+              </a>
+            </div>
           </div>
 
-          {/* Column 4: Zalo Support */}
+          {/* Column 4: Google Map */}
           <div>
-            <h3 className="font-bold text-white tracking-wider uppercase text-sm mb-5">Hỗ trợ trực tuyến</h3>
-            <p className="text-xs text-neutral-400 leading-relaxed mb-6">
-              Quý học viên vui lòng liên hệ trực tiếp qua Zalo để được tư vấn nhanh nhất về lịch thi và các ưu đãi học phí.
-            </p>
-            <a
-              href="https://zalo.me/0902868928"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-[#0068ff] hover:bg-[#0057d4] text-white font-bold py-3 rounded-lg text-xs tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-[#0068ff]/20"
-            >
-              <span>NHẮN ZALO NGAY</span>
-            </a>
+            <h3 className="font-bold text-white tracking-wider uppercase text-sm mb-5">Bản đồ vị trí</h3>
+            <div className="rounded-xl overflow-hidden border border-neutral-700/60 h-36 w-full shadow-md relative group">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.63942007817!2d106.02196657579737!3d10.407989989718872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa8593d6e5229%3A0xe5a36ad2e245a498!2zVHLGsOG7nW5nIEzDoWkgWGUgQ2hp4bq_biBUaOG6r25n!5e0!3m2!1svi!2s!4v1718278000000!5m2!1svi!2s"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Bản đồ Trường lái xe Chiến Thắng"
+              />
+              <a
+                href="https://maps.google.com/?q=168+QL1A,+Ấp+Phú+Hòa,+Xã+Mỹ+Thành,+Đồng+Tháp+(Tiền+Giang+Cũ),+Việt+Nam"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors cursor-pointer"
+                title="Mở rộng Google Maps"
+              />
+            </div>
           </div>
 
         </div>

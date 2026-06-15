@@ -693,7 +693,7 @@ export default async function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
 
-            {/* Left: Form & contact details */}
+            {/* Left: contact details */}
             <div className="lg:col-span-5 space-y-8">
               <ScrollReveal animation="slide-right">
                 <div>
@@ -736,46 +736,18 @@ export default async function HomePage() {
                   ))}
                 </div>
               </ScrollReveal>
-
-              <ScrollReveal animation="slide-right" delay={200}>
-                <HomepageContactForm />
-              </ScrollReveal>
             </div>
 
-            {/* Right: Map */}
-            <ScrollReveal animation="slide-left" className="lg:col-span-7">
-              <div className="rounded-3xl overflow-hidden shadow-2xl border border-neutral-100 h-[460px] relative">
-                {/* Map header bar */}
-                <div className="absolute top-0 left-0 right-0 z-10 bg-white/90 backdrop-blur-sm px-5 py-3 flex items-center gap-3 border-b border-neutral-100">
-                  <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
-                    <p className="text-[10px] text-neutral-400">Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ)</p>
-                  </div>
-                  <a
-                    href="https://maps.google.com/?q=Trường+Lái+Xe+Chiến+Thắng"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="ml-auto text-[10px] font-bold text-amber-700 hover:text-amber-900 flex items-center gap-1 transition-colors"
-                  >
-                    Mở Maps <ExternalLink className="w-3 h-3" />
-                  </a>
+            {/* Right: Contact Form */}
+            <div className="lg:col-span-7">
+              <ScrollReveal animation="slide-left" delay={200}>
+                <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-neutral-100">
+                  <h3 className="text-lg font-bold text-neutral-900 mb-1">Gửi yêu cầu tư vấn</h3>
+                  <p className="text-neutral-400 text-xs mb-6">Chúng tôi sẽ liên hệ hỗ trợ bạn trong thời gian sớm nhất.</p>
+                  <HomepageContactForm />
                 </div>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.63942007817!2d106.02196657579737!3d10.407989989718872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa8593d6e5229%3A0xe5a36ad2e245a498!2zVHLGsOG7nW5nIEzDoWkgWGUgQ2hp4bq_biBUaOG6r25n!5e0!3m2!1svi!2s!4v1718278000000!5m2!1svi!2s"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Bản đồ Trường lái xe Chiến Thắng"
-                  className="pt-14"
-                />
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
