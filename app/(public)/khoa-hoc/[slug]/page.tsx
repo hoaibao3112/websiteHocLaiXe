@@ -250,7 +250,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                         Địa điểm học & thi
                       </h4>
                       <p className="text-neutral-800 font-bold text-sm mt-0.5 leading-snug">
-                        Trung tâm Sát hạch Chiến Thắng Mỹ Thành, Đồng Tháp
+                        Trung tâm Sát hạch Chiến Thắng Mỹ Thành, Đồng Tháp (Tiền Giang Cũ)
                       </p>
                     </div>
                   </div>
@@ -351,7 +351,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   </li>
                   <li className="flex gap-2.5 items-start">
                     <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                    Đào tạo và thi sát hạch trên cùng 1 sân tại Mỹ Thành, Đồng Tháp.
+                    Đào tạo và thi sát hạch trên cùng 1 sân tại Mỹ Thành, Đồng Tháp (Tiền Giang Cũ).
                   </li>
                 </ul>
 

@@ -34,8 +34,19 @@ const GALLERY_IMAGES = [
 
 export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) {
   // Combine default image if exists with the gallery images
-  const images = defaultImage
-    ? [defaultImage, ...GALLERY_IMAGES.map((img) => `/course-gallery/${img}`)]
+  // For A1 and A (A2) license courses, we display both the front and back of the license
+  const defaultImages: string[] = [];
+  if (defaultImage) {
+    defaultImages.push(defaultImage);
+    if (defaultImage === "/course_a.jpg") {
+      defaultImages.push("/course_a_back.jpg");
+    } else if (defaultImage === "/course_a1.jpg") {
+      defaultImages.push("/course_a1_back.jpg");
+    }
+  }
+
+  const images = defaultImages.length > 0
+    ? [...defaultImages, ...GALLERY_IMAGES.map((img) => `/course-gallery/${img}`)]
     : GALLERY_IMAGES.map((img) => `/course-gallery/${img}`);
 
   const [currentIndex, setCurrentIndex] = useState(0);

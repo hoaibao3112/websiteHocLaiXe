@@ -716,7 +716,7 @@ export default async function HomePage() {
                   {[
                     { icon: Phone, label: "HOTLINE TƯ VẤN", value: "0902.868.928", href: "tel:0902868928" },
                     { icon: Mail, label: "EMAIL HỖ TRỢ", value: "hr.truonglaixechienthangtg@gmail.com", href: "mailto:hr.truonglaixechienthangtg@gmail.com" },
-                    { icon: MapPin, label: "ĐỊA CHỈ", value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam", href: undefined },
+                    { icon: MapPin, label: "ĐỊA CHỈ", value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ), Việt Nam", href: undefined },
                   ].map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex gap-4 items-start group">
                       <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-amber-200 group-hover:scale-110 transition-all duration-300">
@@ -752,7 +752,7 @@ export default async function HomePage() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
-                    <p className="text-[10px] text-neutral-400">Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp</p>
+                    <p className="text-[10px] text-neutral-400">Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ)</p>
                   </div>
                   <a
                     href="https://maps.google.com/?q=Trường+Lái+Xe+Chiến+Thắng"

@@ -131,7 +131,7 @@ export default function VeChungToiPage() {
                       Vị trí đắc địa:
                     </h4>
                     <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                      168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam.
+                      168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ), Việt Nam.
                     </p>
                   </div>
                 </div>

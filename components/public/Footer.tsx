@@ -71,7 +71,7 @@ export function Footer() {
               <li className="flex gap-3 items-start">
                 <MapPin className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                 <span className="text-neutral-400 leading-relaxed">
-                  168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam
+                  168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ), Việt Nam
                 </span>
               </li>
               <li className="flex gap-3 items-center">

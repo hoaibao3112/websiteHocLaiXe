@@ -15,7 +15,7 @@ const CONTACT_ITEMS = [
   {
     icon: MapPin,
     title: "ĐỊA CHỈ TRỤ SỞ",
-    value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp, Việt Nam",
+    value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ), Việt Nam",
     sub: "Mặt tiền Quốc lộ 1A dễ tìm",
   },
   {
@@ -164,7 +164,7 @@ export default function LienHePage() {
           </div>
           <div>
             <p className="text-xs font-bold text-neutral-800">Trường Lái Xe Chiến Thắng</p>
-            <p className="text-[10px] text-neutral-400 font-medium">168 QL1A, Mỹ Thành, Đồng Tháp</p>
+            <p className="text-[10px] text-neutral-400 font-medium">168 QL1A, Mỹ Thành, Đồng Tháp (Tiền Giang Cũ)</p>
           </div>
         </div>
 
