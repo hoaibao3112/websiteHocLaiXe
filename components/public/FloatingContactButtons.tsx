@@ -52,19 +52,19 @@ export function FloatingContactButtons() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed right-6 bottom-6 z-50 flex flex-col gap-3.5 animate-slide-up">
+    <div className="fixed right-6 bottom-6 z-50 flex flex-col gap-4 animate-slide-up">
       
       {/* Facebook Messenger Button */}
       <a
-        href="https://facebook.com"
+        href="https://www.facebook.com/chienthangtiengiang2023/photos"
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => handleTrackClick("Facebook")}
-        className="group relative w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
+        className="group relative w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
         title="Nhắn tin qua Facebook"
       >
-        <FacebookIcon className="w-5.5 h-5.5" />
-        <span className="absolute right-14 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+        <FacebookIcon className="w-6.5 h-6.5" />
+        <span className="absolute right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
           Facebook Messenger
         </span>
       </a>
@@ -75,11 +75,11 @@ export function FloatingContactButtons() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => handleTrackClick("Zalo")}
-        className="group relative w-12 h-12 bg-[#0068ff] hover:bg-[#0057d4] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
+        className="group relative w-14 h-14 bg-[#0068ff] hover:bg-[#0057d4] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
         title="Chat qua Zalo"
       >
-        <ZaloIcon className="w-9 h-9" />
-        <span className="absolute right-14 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+        <ZaloIcon className="w-10.5 h-10.5" />
+        <span className="absolute right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
           Chat Zalo: 0902.868.928
         </span>
       </a>
@@ -88,11 +88,11 @@ export function FloatingContactButtons() {
       <a
         href="tel:0902868928"
         onClick={() => handleTrackClick("Hotline")}
-        className="group relative w-12 h-12 bg-amber-600 hover:bg-amber-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse"
+        className="group relative w-14 h-14 bg-amber-600 hover:bg-amber-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse"
         title="Gọi ngay cho chúng tôi"
       >
-        <Phone className="w-5 h-5 animate-bounce" />
-        <span className="absolute right-14 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+        <Phone className="w-6.5 h-6.5 animate-bounce" />
+        <span className="absolute right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
           Gọi Hotline: 0902.868.928
         </span>
       </a>
