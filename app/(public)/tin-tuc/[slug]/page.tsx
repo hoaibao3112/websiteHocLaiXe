@@ -6,6 +6,7 @@ import { Calendar, Tag, ChevronRight, ArrowLeft } from "lucide-react";
 import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/utils";
 import type { NewsWithCategory } from "@/types/database.types";
+import { NewsGallery } from "@/components/public/NewsGallery";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -172,6 +173,9 @@ export default async function NewsDetailPage({ params }: PageProps) {
               className="prose-content"
               dangerouslySetInnerHTML={{ __html: news.content }}
             />
+
+            {/* Gallery Images */}
+            <NewsGallery images={news.images} />
           </article>
 
           {/* Sidebar */}

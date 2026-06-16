@@ -13,6 +13,7 @@ export const createNewsSchema = z.object({
   excerpt: z.string().max(500, "Tóm tắt không quá 500 ký tự").optional(),
   content: z.string().min(10, "Nội dung bài viết quá ngắn"),
   cover_image: z.string().url("URL ảnh không hợp lệ").optional().nullable(),
+  images: z.array(z.string()).optional().nullable(),
   category_id: z.string().uuid().optional().nullable(),
   is_published: z.boolean().default(false),
   meta_title: z.string().max(60, "Meta title không quá 60 ký tự").optional().nullable(),

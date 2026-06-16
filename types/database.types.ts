@@ -182,6 +182,7 @@ export interface Database {
           excerpt: string | null;
           content: string;
           cover_image: string | null;
+          images: string[] | null;
           category_id: string | null;
           author_id: string | null;
           is_published: boolean;
@@ -199,6 +200,7 @@ export interface Database {
           excerpt?: string | null;
           content: string;
           cover_image?: string | null;
+          images?: string[] | null;
           category_id?: string | null;
           author_id?: string | null;
           is_published?: boolean;
@@ -216,6 +218,7 @@ export interface Database {
           excerpt?: string | null;
           content?: string;
           cover_image?: string | null;
+          images?: string[] | null;
           category_id?: string | null;
           author_id?: string | null;
           is_published?: boolean;

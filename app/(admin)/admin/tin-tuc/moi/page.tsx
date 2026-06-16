@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
 import { TiptapEditor } from "@/components/admin/TiptapEditor";
 import { ImageUpload } from "@/components/admin/ImageUpload";
+import { MultipleImageUpload } from "@/components/admin/MultipleImageUpload";
 import { ArrowLeft, Loader2, Save } from "lucide-react";
 import Link from "next/link";
 import type { NewsCategory } from "@/types/database.types";
@@ -39,6 +40,7 @@ export default function CreateNewsPage() {
       excerpt: "",
       content: "",
       cover_image: null as string | null,
+      images: [] as string[],
       category_id: null as string | null,
       is_published: false,
       meta_title: "" as string | null,
@@ -107,6 +109,7 @@ export default function CreateNewsPage() {
         excerpt: data.excerpt || null,
         content: data.content,
         cover_image: data.cover_image || null,
+        images: data.images || [],
         category_id: data.category_id || null,
         author_id: user.id,
         is_published: data.is_published,
@@ -319,6 +322,23 @@ export default function CreateNewsPage() {
             {errors.cover_image && (
               <p className="text-xs text-red-500">{errors.cover_image.message}</p>
             )}
+          </div>
+
+          {/* Multiple images upload container */}
+          <div className="bg-white p-6 rounded-2xl border border-neutral-100 shadow-sm space-y-4">
+            <h2 className="font-bold text-neutral-900 text-lg border-b border-neutral-50 pb-3">
+              Album ảnh bài viết
+            </h2>
+            <Controller
+              name="images"
+              control={control}
+              render={({ field }) => (
+                <MultipleImageUpload
+                  value={field.value || []}
+                  onChange={(urls) => field.onChange(urls)}
+                />
+              )}
+            />
           </div>
         </div>
       </form>
