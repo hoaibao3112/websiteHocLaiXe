@@ -47,7 +47,7 @@ async function getRecentNews(excludeId: string): Promise<NewsWithCategory[]> {
     .eq("is_published", true)
     .neq("id", excludeId)
     .order("published_at", { ascending: false })
-    .limit(4);
+    .limit(10);
 
   return (data as NewsWithCategory[]) || [];
 }
@@ -179,13 +179,13 @@ export default async function NewsDetailPage({ params }: PageProps) {
           </article>
 
           {/* Sidebar */}
-          <aside className="space-y-8">
-            <div className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm">
-              <h2 className="font-bold text-neutral-900 text-lg mb-6 border-b border-neutral-100 pb-3">
-                Bài viết mới nhất
+          <aside className="lg:col-span-1">
+            <div className="bg-white rounded-3xl p-6 border border-neutral-100 shadow-sm lg:sticky lg:top-28">
+              <h2 className="font-bold text-neutral-900 text-lg mb-6 border-b border-neutral-100 pb-3 flex items-center gap-2">
+                <span>📰</span> Bài viết mới nhất
               </h2>
               {recentNews.length > 0 ? (
-                <div className="space-y-6">
+                <div className="space-y-6 max-h-[550px] overflow-y-auto pr-2">
                   {recentNews.map((item) => (
                     <div key={item.id} className="group flex items-start gap-4">
                       {item.cover_image ? (
@@ -204,9 +204,11 @@ export default async function NewsDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <span className="text-[10px] uppercase font-bold tracking-wider text-brand-600 mb-1 block">
-                          {item.news_categories?.name}
-                        </span>
+                        {item.news_categories && (
+                          <span className="text-[10px] uppercase font-bold tracking-wider text-brand-600 mb-1 block">
+                            {item.news_categories.name}
+                          </span>
+                        )}
                         <h3 className="font-semibold text-neutral-900 text-sm group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug mb-1">
                           <Link href={`/tin-tuc/${item.slug}`}>{item.title}</Link>
                         </h3>
