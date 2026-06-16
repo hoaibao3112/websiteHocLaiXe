@@ -18,7 +18,24 @@ export const createCourseSchema = z.object({
   sale_price: z
     .number()
     .min(0, "Học phí thực tế không được âm"),
-  image_url: z.string().url("URL ảnh không hợp lệ").optional().nullable(),
+  image_url: z
+    .string()
+    .optional()
+    .nullable()
+    .refine(
+      (val) => {
+        if (!val) return true;
+        return (
+          val.startsWith("/") ||
+          val.startsWith("http://") ||
+          val.startsWith("https://") ||
+          val.startsWith("data:image/")
+        );
+      },
+      {
+        message: "URL ảnh không hợp lệ",
+      }
+    ),
   badge: z.string().max(50, "Nhãn không quá 50 ký tự").optional().nullable(),
   is_active: z.boolean().default(true),
   display_order: z

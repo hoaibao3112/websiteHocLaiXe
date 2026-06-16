@@ -101,8 +101,10 @@ const WHY_US = [
 ];
 
 export default async function HomePage() {
-  const courses = await getCourses();
-  const latestNews = await getLatestNews();
+  const [courses, latestNews] = await Promise.all([
+    getCourses(),
+    getLatestNews(),
+  ]);
 
   return (
     <div className="bg-white overflow-x-hidden">
@@ -155,7 +157,10 @@ export default async function HomePage() {
             >
               Trung tâm duy nhất{" "}
               <br className="hidden sm:block" />
-              tại Đồng Tháp{" "}
+              tại tỉnh Đồng Tháp{" "}
+              <span className="text-[0.85em] font-bold text-neutral-200 inline-block ml-1.5">
+                (Tiền Giang Cũ)
+              </span>{" "}
               <span className="text-shimmer">có sân sát hạch</span>
             </h1>
 

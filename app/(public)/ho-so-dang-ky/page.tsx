@@ -14,8 +14,13 @@ import {
   Maximize2,
   Sparkles,
   ArrowRight,
+  Users,
+  TrendingUp,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
+import { createClient } from "@/lib/supabase/server";
+import type { Course } from "@/types/database.types";
+import { AnimatedCounter } from "@/components/public/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Hồ sơ đăng ký học lái xe - Trường Lái Xe Chiến Thắng",
@@ -23,7 +28,22 @@ export const metadata: Metadata = {
     "Hướng dẫn chuẩn bị hồ sơ đăng ký học GPLX ô tô tại Trường lái xe Chiến Thắng theo đúng quy định của Bộ GTVT.",
 };
 
-export default function HoSoDangKyPage() {
+function getStudentsCount(classCode: string) {
+  if (classCode === "B01") return 560;
+  if (classCode === "B") return 720;
+  if (classCode === "C1") return 1180;
+  return 350;
+}
+
+export default async function HoSoDangKyPage() {
+  const supabase = await createClient();
+  const { data: coursesData } = await supabase
+    .from("courses")
+    .select("*")
+    .eq("is_active", true)
+    .order("display_order");
+  const courses: Course[] = (coursesData as Course[]) ?? [];
+
   return (
     <div className="pt-20 bg-white overflow-x-hidden">
       {/* Banner Header */}
@@ -57,6 +77,119 @@ export default function HoSoDangKyPage() {
               Các tài liệu cần thiết và thủ tục đăng ký học lái xe ô tô đúng theo chuẩn quy định của Bộ Giao thông Vận tải.
             </p>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Courses Section */}
+      <section className="py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden border-b border-neutral-100">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-40 pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal animation="fade-in" duration={800}>
+            <div className="text-center mb-16 flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
+                <TrendingUp className="w-3.5 h-3.5" />
+                Các khóa học đào tạo
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a] mb-4">
+                Chọn Khóa Học Lái Xe Phù Hợp Với Bạn
+              </h2>
+              <p className="text-neutral-500 text-sm max-w-xl mx-auto">
+                Trước khi chuẩn bị hồ sơ đăng ký, hãy lựa chọn khóa học phù hợp dưới đây để bắt đầu hành trình.
+              </p>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mt-5 rounded-full" />
+            </div>
+          </ScrollReveal>
+
+          {courses.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {courses.map((course, index) => (
+                <ScrollReveal
+                  key={course.id}
+                  animation="slide-up"
+                  delay={index * 150}
+                  className="flex flex-col"
+                >
+                  <div className="hover-lift bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full group">
+                    {/* Course image */}
+                    <div className="relative aspect-video w-full bg-neutral-100 overflow-hidden img-zoom">
+                      {course.image_url ? (
+                        <Image
+                          src={course.image_url}
+                          alt={course.name}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+                          <Users className="w-14 h-14 text-slate-300" />
+                        </div>
+                      )}
+                      {/* Badge */}
+                      {course.badge && (
+                        <div className="absolute top-3 left-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                          {course.badge}
+                        </div>
+                      )}
+                      {/* Gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+
+                    <div className="p-6 flex flex-col flex-1">
+                      <h3 className="text-lg font-bold text-neutral-900 mb-3 group-hover:text-amber-700 transition-colors">
+                        {course.name}
+                      </h3>
+                      <p className="text-neutral-400 text-xs leading-relaxed mb-5 line-clamp-3 flex-1">
+                        {course.description}
+                      </p>
+
+                      {/* Stats */}
+                      <div className="flex flex-col gap-2.5 border-t border-neutral-100 pt-4 mb-5">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-neutral-400 font-medium">Học phí</span>
+                          <span className="font-bold text-amber-700 text-xs px-2.5 py-1 bg-amber-50 rounded-full border border-amber-100">
+                            Liên hệ
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-neutral-400 font-medium">Học viên đăng ký</span>
+                          <span className="font-semibold text-neutral-700">
+                            <AnimatedCounter
+                              end={getStudentsCount(course.class_code)}
+                              suffix="+"
+                              duration={1800}
+                            />
+                          </span>
+                        </div>
+                      </div>
+
+                      <Link
+                        href={`/khoa-hoc/${
+                          course.class_code.toLowerCase() === "b01" ? "b1" :
+                          course.class_code.toLowerCase() === "b" ? "b2" :
+                          course.class_code.toLowerCase() === "c1" ? "c" :
+                          course.class_code.toLowerCase() === "a1" ? "a1" :
+                          course.class_code.toLowerCase() === "a" ? "a" :
+                          "nang-hang"
+                        }`}
+                        className="group/btn flex items-center justify-center gap-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 rounded-xl text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                      >
+                        Xem chi tiết
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-neutral-400">
+              Hiện tại trung tâm đang cập nhật danh sách khóa học. Vui lòng liên hệ hotline.
+            </p>
+          )}
         </div>
       </section>
 

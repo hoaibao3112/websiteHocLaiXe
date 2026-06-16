@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Image from "next/image";
 import Link from "next/link";
+import { cache } from "react";
 import {
   Phone,
   Calendar,
@@ -38,7 +39,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-async function getCourse(classCode: string): Promise<Course | null> {
+const getCourse = cache(async (classCode: string): Promise<Course | null> => {
   try {
     const supabase = await createClient();
     const { data } = await supabase
@@ -52,7 +53,7 @@ async function getCourse(classCode: string): Promise<Course | null> {
     console.error("Error fetching course detail:", error);
     return null;
   }
-}
+});
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -171,7 +172,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
           <div className="grid lg:grid-cols-12 gap-10">
             
             {/* Left Column: Details (span 7) */}
-            <div className="lg:col-span-7 space-y-10 animate-slide-up">
+            <div className="lg:col-span-7 flex flex-col gap-10 animate-slide-up">
               
               {/* Introduction Card */}
               <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-xs space-y-4">
@@ -319,7 +320,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
             </div>
 
             {/* Right Column: Pricing & Sidebar Form (span 5) */}
-            <div className="lg:col-span-5 space-y-8">
+            <div className="lg:col-span-5 flex flex-col gap-8">
               
               {/* Sticky Sidebar Info */}
               <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-md space-y-6 lg:sticky lg:top-28">

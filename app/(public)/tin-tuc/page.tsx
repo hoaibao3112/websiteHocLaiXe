@@ -21,17 +21,20 @@ const ITEMS_PER_PAGE = 4;
 async function getCategories() {
   const supabase = await createClient();
   
-  // Fetch all categories
-  const { data: categories } = await supabase
-    .from("news_categories")
-    .select("*")
-    .order("display_order") as unknown as { data: NewsCategory[] | null };
+  // Fetch all categories and published news category_ids in parallel
+  const [categoriesRes, newsItemsRes] = await Promise.all([
+    supabase
+      .from("news_categories")
+      .select("*")
+      .order("display_order"),
+    supabase
+      .from("news")
+      .select("category_id")
+      .eq("is_published", true)
+  ]);
 
-  // Fetch all published news category_ids to count them in JS safely
-  const { data: newsItems } = await supabase
-    .from("news")
-    .select("category_id")
-    .eq("is_published", true) as unknown as { data: { category_id: string | null }[] | null };
+  const categories = categoriesRes.data as unknown as NewsCategory[] | null;
+  const newsItems = newsItemsRes.data as unknown as { category_id: string | null }[] | null;
 
   const counts: Record<string, number> = {};
   newsItems?.forEach((item) => {

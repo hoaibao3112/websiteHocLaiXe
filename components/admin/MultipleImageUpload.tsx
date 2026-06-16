@@ -5,17 +5,22 @@ import { Upload, X, Image as ImageIcon, Loader2, Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { compressImage } from "@/lib/image";
 
 interface MultipleImageUploadProps {
   value: string[];
   onChange: (urls: string[]) => void;
   bucketName?: string;
+  coverImage?: string | null;
+  onSetCover?: (url: string) => void;
 }
 
 export function MultipleImageUpload({
   value = [],
   onChange,
   bucketName = "news",
+  coverImage = null,
+  onSetCover,
 }: MultipleImageUploadProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,9 +38,14 @@ export function MultipleImageUpload({
 
     try {
       for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+        let file = files[i];
         
-        // Limit to 5MB
+        // Compress heavy images client-side
+        if (file.type.startsWith("image/")) {
+          file = await compressImage(file);
+        }
+
+        // Limit to 5MB after compression
         if (file.size > 5 * 1024 * 1024) {
           setError(`File '${file.name}' vượt quá dung lượng 5MB và đã bị bỏ qua.`);
           continue;
@@ -91,23 +101,52 @@ export function MultipleImageUpload({
       )}
 
       {/* Grid of uploaded images */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {value.map((url, index) => (
           <div 
             key={`${url}-${index}`} 
-            className="relative aspect-video rounded-xl overflow-hidden border border-neutral-100 bg-neutral-50 group shadow-sm"
+            className="relative aspect-video rounded-xl overflow-hidden border border-neutral-150 bg-neutral-50 group shadow-sm cursor-grab active:cursor-grabbing hover:scale-102 hover:shadow-md transition-all duration-200"
+            draggable="true"
+            onDragStart={(e) => {
+              e.dataTransfer.setData(
+                "text/html",
+                `<img src="${url}" alt="Hình ảnh album" class="rounded-xl max-w-full my-4 shadow-sm mx-auto object-cover" />`
+              );
+              e.dataTransfer.setData("text/plain", url);
+            }}
+            title="Kéo thả hình ảnh này vào khung soạn thảo nội dung bên trái"
           >
             <Image
               src={url}
               alt={`Uploaded gallery item ${index + 1}`}
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 50vw, 200px"
+              className="object-cover pointer-events-none select-none"
+              sizes="(max-width: 768px) 100vw, 300px"
             />
+            {onSetCover && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSetCover(url);
+                }}
+                className={`absolute bottom-2 left-2 px-2.5 py-1.5 text-[10px] font-bold rounded-lg shadow-md transition-all cursor-pointer ${
+                  coverImage === url
+                    ? "bg-amber-500 text-white border border-amber-400 opacity-100"
+                    : "bg-black/70 hover:bg-black/90 text-white opacity-0 group-hover:opacity-100"
+                }`}
+                title={coverImage === url ? "Đang là ảnh bìa" : "Chọn làm ảnh bìa"}
+              >
+                {coverImage === url ? "★ Ảnh bìa" : "Đặt ảnh bìa"}
+              </button>
+            )}
             <button
               type="button"
-              onClick={() => removeImage(index)}
-              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-full shadow-md opacity-90 hover:opacity-100 active:scale-95 transition-all"
+              onClick={(e) => {
+                e.stopPropagation();
+                removeImage(index);
+              }}
+              className="absolute top-2 right-2 bg-red-500/90 hover:bg-red-650 text-white p-1.5 rounded-full shadow-md opacity-90 hover:opacity-100 active:scale-90 transition-all cursor-pointer"
               title="Xóa ảnh"
             >
               <X className="w-3.5 h-3.5" />

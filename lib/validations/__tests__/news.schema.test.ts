@@ -100,6 +100,20 @@ describe("News Schema Validation", () => {
       }
     });
 
+    it("[HAPPY PATH] nên validate thành công khi cover_image là relative URL, data URL, hoặc chuỗi rỗng", () => {
+      const payloads = [
+        { ...validPayload, cover_image: "/course-gallery/image.jpg" },
+        { ...validPayload, cover_image: "data:image/png;base64,iVBORw0KGgoAAAANS..." },
+        { ...validPayload, cover_image: "" },
+        { ...validPayload, cover_image: null },
+      ];
+
+      payloads.forEach((payload) => {
+        const result = createNewsSchema.safeParse(payload);
+        expect(result.success).toBe(true);
+      });
+    });
+
     it("[EDGE CASE] nên validate thất bại khi category_id không phải định dạng UUID", () => {
       const payload = { ...validPayload, category_id: "not-a-uuid" };
       const result = createNewsSchema.safeParse(payload);

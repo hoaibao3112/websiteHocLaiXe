@@ -336,6 +336,8 @@ export default function CreateNewsPage() {
                 <MultipleImageUpload
                   value={field.value || []}
                   onChange={(urls) => field.onChange(urls)}
+                  coverImage={watch("cover_image")}
+                  onSetCover={(url) => setValue("cover_image", url, { shouldValidate: true })}
                 />
               )}
             />

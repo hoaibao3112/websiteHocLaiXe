@@ -7,6 +7,7 @@ import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/utils";
 import type { NewsWithCategory } from "@/types/database.types";
 import { NewsGallery } from "@/components/public/NewsGallery";
+import { cache } from "react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -27,7 +28,7 @@ export async function generateStaticParams() {
   return data?.map((item) => ({ slug: item.slug })) || [];
 }
 
-async function getNewsDetail(slug: string): Promise<NewsWithCategory | null> {
+const getNewsDetail = cache(async (slug: string): Promise<NewsWithCategory | null> => {
   const supabase = await createClient();
   const { data } = await supabase
     .from("news")
@@ -37,7 +38,7 @@ async function getNewsDetail(slug: string): Promise<NewsWithCategory | null> {
     .single();
 
   return (data as unknown as NewsWithCategory) || null;
-}
+});
 
 async function getRecentNews(excludeId: string): Promise<NewsWithCategory[]> {
   const supabase = await createClient();
@@ -185,7 +186,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
                 <span>📰</span> Bài viết mới nhất
               </h2>
               {recentNews.length > 0 ? (
-                <div className="space-y-6 max-h-[550px] overflow-y-auto pr-2">
+                <div className="flex flex-col gap-6 max-h-[550px] overflow-y-auto pr-2">
                   {recentNews.map((item) => (
                     <div key={item.id} className="group flex items-start gap-4">
                       {item.cover_image ? (

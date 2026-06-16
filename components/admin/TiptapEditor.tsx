@@ -6,6 +6,8 @@ import LinkExtension from "@tiptap/extension-link";
 import ImageExtension from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
 import { useEffect } from "react";
+import { compressImage } from "@/lib/image";
+import { createClient } from "@/lib/supabase/client";
 import {
   Bold,
   Italic,
@@ -81,10 +83,44 @@ export function TiptapEditor({
   };
 
   const addImage = () => {
-    const url = window.prompt("Nhập URL ảnh:");
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run();
-    }
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = async (e: any) => {
+      const files = e.target.files;
+      if (!files || files.length === 0) return;
+
+      let file = files[0];
+      try {
+        if (file.type.startsWith("image/")) {
+          file = await compressImage(file);
+        }
+
+        const supabase = createClient();
+        const fileExt = file.name.split(".").pop();
+        const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
+        const filePath = `uploads/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from("news")
+          .upload(filePath, file, {
+            cacheControl: "3600",
+            upsert: false,
+          });
+
+        if (uploadError) throw uploadError;
+
+        const { data: { publicUrl } } = supabase.storage
+          .from("news")
+          .getPublicUrl(filePath);
+
+        editor.chain().focus().setImage({ src: publicUrl }).run();
+      } catch (error: any) {
+        console.error("Failed to upload image inside editor:", error);
+        alert("Không thể tải ảnh lên. Lỗi: " + (error.message || error));
+      }
+    };
+    input.click();
   };
 
   const buttons = [

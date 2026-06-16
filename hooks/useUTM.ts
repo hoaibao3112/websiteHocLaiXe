@@ -22,7 +22,11 @@ export function useUTM() {
     });
 
     if (hasUtm) {
-      sessionStorage.setItem("utm_data", JSON.stringify(utmData));
+      try {
+        sessionStorage.setItem("utm_data", JSON.stringify(utmData));
+      } catch (error) {
+        console.error("Failed to save UTM data to sessionStorage:", error);
+      }
     }
   }, [searchParams]);
 }

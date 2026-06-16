@@ -146,7 +146,7 @@ export default async function KhoaHocPage() {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-5">
+          <div className="flex flex-col gap-5">
             {FAQ.map((item, i) => (
               <ScrollReveal key={i} animation="slide-up" delay={i * 100}>
                 <div className="hover-lift bg-white rounded-2xl p-6 sm:p-8 border border-neutral-100 shadow-sm hover:shadow-md transition-shadow">

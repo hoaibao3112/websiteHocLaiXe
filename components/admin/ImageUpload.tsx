@@ -5,6 +5,7 @@ import { Upload, X, ImageIcon, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { compressImage } from "@/lib/image";
 
 interface ImageUploadProps {
   value: string;
@@ -20,22 +21,27 @@ export function ImageUpload({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
-
-    const file = files[0];
-    // Check file size (limit to 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setError("Dung lượng ảnh không được vượt quá 5MB");
-      return;
-    }
 
     setLoading(true);
     setError(null);
 
     try {
+      let file = files[0];
+
+      // Compress heavy images client-side
+      if (file.type.startsWith("image/")) {
+        file = await compressImage(file);
+      }
+
+      // Check file size after compression (limit to 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setError("Dung lượng ảnh sau khi nén vẫn vượt quá 5MB");
+        setLoading(false);
+        return;
+      }
       const supabase = createClient();
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;

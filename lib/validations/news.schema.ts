@@ -12,7 +12,24 @@ export const createNewsSchema = z.object({
     .regex(/^[a-z0-9-]+$/, "Slug chỉ chứa chữ thường, số và dấu gạch ngang"),
   excerpt: z.string().max(500, "Tóm tắt không quá 500 ký tự").optional(),
   content: z.string().min(10, "Nội dung bài viết quá ngắn"),
-  cover_image: z.string().url("URL ảnh không hợp lệ").optional().nullable(),
+  cover_image: z
+    .string()
+    .optional()
+    .nullable()
+    .refine(
+      (val) => {
+        if (!val) return true;
+        return (
+          val.startsWith("/") ||
+          val.startsWith("http://") ||
+          val.startsWith("https://") ||
+          val.startsWith("data:image/")
+        );
+      },
+      {
+        message: "URL ảnh không hợp lệ",
+      }
+    ),
   images: z.array(z.string()).optional().nullable(),
   category_id: z.string().uuid().optional().nullable(),
   is_published: z.boolean().default(false),
