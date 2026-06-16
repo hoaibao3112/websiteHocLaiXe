@@ -4,7 +4,7 @@ import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import {
   Phone,
-  Mail,
+  MessageCircle,
   MapPin,
   Calendar,
   Users,
@@ -720,7 +720,7 @@ export default async function HomePage() {
                 <div className="space-y-4">
                   {[
                     { icon: Phone, label: "HOTLINE TƯ VẤN", value: "0902.868.928", href: "tel:0902868928" },
-                    { icon: Mail, label: "EMAIL HỖ TRỢ", value: "hr.truonglaixechienthangtg@gmail.com", href: "mailto:hr.truonglaixechienthangtg@gmail.com" },
+                    { icon: MessageCircle, label: "ZALO HỖ TRỢ", value: "0902.868.928", href: "https://zalo.me/0902868928" },
                     { icon: MapPin, label: "ĐỊA CHỈ", value: "168 QL1A, Ấp Phú Hòa, Xã Mỹ Thành, Đồng Tháp (Tiền Giang Cũ), Việt Nam", href: undefined },
                   ].map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex gap-4 items-start group">

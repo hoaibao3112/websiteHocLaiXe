@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { label: "Trang chủ", href: "/" },
   { label: "Về chúng tôi", href: "/ve-chung-toi" },
-  { label: "Hồ sơ đăng ký", href: "/ho-so-dang-ky" },
+  { label: "Các khóa học", href: "/khoa-hoc" },
   { label: "Tin tức", href: "/tin-tuc" },
   {
     label: "Góc học tập",

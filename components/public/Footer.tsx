@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, MapPin, Mail, Send } from "lucide-react";
+import { Phone, MapPin, Send } from "lucide-react";
 
 export function Footer() {
   return (
@@ -14,9 +14,9 @@ export function Footer() {
             <Image
               src="/logo-win.png"
               alt="Logo Chiến Thắng"
-              width={160}
-              height={50}
-              className="object-contain mb-5 h-14 w-auto filter brightness-110"
+              width={220}
+              height={70}
+              className="object-contain mb-5 h-20 w-auto filter brightness-110"
             />
             <p className="text-xs leading-relaxed text-neutral-400 mb-6">
               Trung tâm đào tạo lái xe Chiến Thắng - Kiến tạo vững vàng cho mỗi hành trình. Uy tín, chất lượng và tỉ lệ đậu cao vượt trội tại Đồng Tháp.
@@ -32,13 +32,6 @@ export function Footer() {
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.85z"/>
                 </svg>
-              </a>
-              <a
-                href="mailto:hr.truonglaixechienthangtg@gmail.com"
-                className="w-8 h-8 bg-neutral-800 hover:bg-amber-600 rounded-full flex items-center justify-center transition-colors text-white"
-                aria-label="Email"
-              >
-                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -85,17 +78,7 @@ export function Footer() {
                   </a>
                 </span>
               </li>
-              <li className="flex gap-3 items-center">
-                <Mail className="w-4 h-4 text-amber-500 flex-shrink-0" />
-                <span className="text-neutral-400">
-                  <a
-                    href="mailto:hr.truonglaixechienthangtg@gmail.com"
-                    className="hover:text-amber-500 transition-colors"
-                  >
-                    hr.truonglaixechienthangtg@gmail.com
-                  </a>
-                </span>
-              </li>
+
             </ul>
             <div className="mt-4">
               <a

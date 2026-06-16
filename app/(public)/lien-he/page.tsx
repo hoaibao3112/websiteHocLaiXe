@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/public/ContactForm";
-import { Phone, MapPin, Mail, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import { Phone, MapPin, MessageCircle, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
@@ -25,10 +25,10 @@ const CONTACT_ITEMS = [
     sub: "Phục vụ từ 7:30 – 17:30 hàng ngày",
   },
   {
-    icon: Mail,
-    title: "EMAIL TUYỂN DỤNG",
-    value: "hr.truonglaixechienthangtg@gmail.com",
-    sub: "Hỗ trợ 24/7 qua hòm thư điện tử",
+    icon: MessageCircle,
+    title: "ZALO HỖ TRỢ",
+    value: "0902.868.928",
+    sub: "Nhắn tin Zalo 24/7 – phản hồi ngay",
   },
 ];
 
@@ -118,7 +118,7 @@ export default function LienHePage() {
               <ScrollReveal animation="slide-right" delay={150}>
                 <div className="bg-[#1e3a8a] text-white rounded-2xl shadow-xl p-8 relative overflow-hidden group">
                   <div className="absolute right-[-15px] bottom-[-15px] text-white/5 pointer-events-none transition-transform duration-700 group-hover:scale-110">
-                    <Mail className="w-36 h-36" />
+                    <MessageCircle className="w-36 h-36" />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-4">
                     Cơ Hội Nghề Nghiệp
