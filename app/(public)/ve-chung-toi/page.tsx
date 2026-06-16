@@ -144,7 +144,7 @@ export default function VeChungToiPage() {
               <ScrollReveal animation="slide-left" className="h-full">
                 <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl img-zoom group border border-neutral-100">
                   <Image
-                    src="/facility_yard.png"
+                    src="/facility_yard.jpg"
                     alt="Sân sát hạch chính thức"
                     fill
                     className="object-cover"

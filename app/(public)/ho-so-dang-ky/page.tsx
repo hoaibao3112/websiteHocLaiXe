@@ -207,7 +207,7 @@ export default function HoSoDangKyPage() {
             <ScrollReveal animation="slide-right">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-neutral-100 group img-zoom">
                 <Image
-                  src="/driver_student.png"
+                  src="/driver_student.jpg"
                   alt="Học viên lái xe Chiến Thắng"
                   fill
                   className="object-cover"

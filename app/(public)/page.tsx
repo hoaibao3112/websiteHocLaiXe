@@ -112,7 +112,7 @@ export default async function HomePage() {
         {/* Background */}
         <div className="absolute inset-0">
           <Image
-            src="/hero_bg.png"
+            src="/hero_bg.jpg"
             alt="Sân sát hạch Chiến Thắng"
             fill
             className="object-cover object-center"
@@ -629,7 +629,7 @@ export default async function HomePage() {
             <ScrollReveal animation="slide-right" className="h-full">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-auto min-h-[380px] shadow-xl img-zoom group h-full">
                 <Image
-                  src="/facility_yard.png"
+                  src="/facility_yard.jpg"
                   alt="Sân sát hạch chính thức"
                   fill
                   className="object-cover"
@@ -651,7 +651,7 @@ export default async function HomePage() {
             <div className="grid gap-5">
               <ScrollReveal animation="slide-left" delay={100}>
                 <div className="relative rounded-3xl overflow-hidden aspect-[16/7] shadow-md img-zoom group">
-                  <Image src="/facility_classroom.png" alt="Phòng học lý thuyết" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                  <Image src="/facility_classroom.jpg" alt="Phòng học lý thuyết" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                     <h3 className="text-sm font-bold">Phòng học lý thuyết</h3>
@@ -663,7 +663,7 @@ export default async function HomePage() {
               <div className="grid grid-cols-2 gap-5">
                 <ScrollReveal animation="slide-left" delay={200}>
                   <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md img-zoom group">
-                    <Image src="/facility_cars.png" alt="Đoàn xe tập lái" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                    <Image src="/facility_cars.jpg" alt="Đoàn xe tập lái" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute inset-x-0 bottom-0 p-3 text-white">
                       <h3 className="text-xs font-bold">Đoàn xe tập lái</h3>
@@ -673,7 +673,7 @@ export default async function HomePage() {
 
                 <ScrollReveal animation="slide-left" delay={320}>
                   <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md img-zoom group">
-                    <Image src="/facility_simulator.png" alt="Phòng mô phỏng" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                    <Image src="/facility_simulator.jpg" alt="Phòng mô phỏng" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute inset-x-0 bottom-0 p-3 text-white">
                       <h3 className="text-xs font-bold">Phòng mô phỏng</h3>
