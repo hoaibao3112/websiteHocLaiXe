@@ -28,17 +28,17 @@ export default function VeChungToiPage() {
   return (
     <div className="pt-20 bg-white overflow-x-hidden">
       {/* 1. Hero Banner Section */}
-      <section className="relative bg-[#1e3a8a] text-white overflow-hidden py-20 px-4">
+      <section className="relative bg-[#1e3a8a] text-white overflow-hidden py-16 px-4 min-h-[450px]">
         {/* Background Image with opacity overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/banner-page.jpg"
+            src="/banner-ve-chung-toi.jpg"
             alt="Trường lái xe Chiến Thắng"
             fill
-            className="object-cover object-right opacity-85"
+            className="object-cover object-center opacity-100"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-950/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/40 via-neutral-950/20 to-transparent" />
           {/* Decorative pattern */}
           <div
             className="absolute inset-0 opacity-[0.03]"
