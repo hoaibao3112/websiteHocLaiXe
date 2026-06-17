@@ -63,7 +63,7 @@ export default function VeChungToiPage() {
               GIỚI THIỆU TRUNG TÂM CHIẾN THẮNG
             </h1>
             <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-              Hành trình hơn 10 năm đồng hành và kiến tạo thế hệ người lái xe an toàn, vững tâm lý, vững tay lái tại Đồng Tháp.
+              Hành trình hơn 4 năm đồng hành và kiến tạo thế hệ người lái xe an toàn, vững tâm lý, vững tay lái tại Đồng Tháp.
             </p>
           </ScrollReveal>
         </div>
@@ -89,7 +89,7 @@ export default function VeChungToiPage() {
                 <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
                   Được thành lập từ nền tảng giáo dục nghề nghiệp hàng đầu,{" "}
                   <strong className="text-neutral-900 font-semibold">
-                    Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Chiến Thắng
+                    Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Chiến Thắng Tiền Giang
                   </strong>{" "}
                   tự hào là điểm sáng đào tạo lái xe tại Đồng Tháp. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư nâng cấp chất lượng giảng dạy và cơ sở vật chất.
                 </p>
