@@ -155,7 +155,7 @@ export default async function HomePage() {
               className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] mb-6 animate-hero-text"
               style={{ animationDelay: "0.2s" }}
             >
-              Trung tâm duy nhất{" "}
+              Trung tâm hiện đại{" "}
               <br className="hidden sm:block" />
               tại tỉnh Đồng Tháp{" "}
               <span className="text-[0.85em] font-bold text-neutral-200 inline-block ml-1.5">
