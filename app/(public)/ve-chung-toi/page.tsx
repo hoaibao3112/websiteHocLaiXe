@@ -17,6 +17,7 @@ import {
   Compass,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/public/ScrollReveal";
+import { AboutUsImageCarousel } from "@/components/public/AboutUsImageCarousel";
 
 export const metadata: Metadata = {
   title: "Giới thiệu về chúng tôi - Trường Lái Xe Chiến Thắng",
@@ -140,19 +141,9 @@ export default function VeChungToiPage() {
 
             {/* Right Graphics (span 5) */}
             <div className="lg:col-span-5 relative">
-              {/* Main yard photo */}
+              {/* Image Carousel */}
               <ScrollReveal animation="slide-left" className="h-full">
-                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl img-zoom group border border-neutral-100">
-                  <Image
-                    src="/facility_yard.jpg"
-                    alt="Sân sát hạch chính thức"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
-                </div>
+                <AboutUsImageCarousel />
               </ScrollReveal>
 
               {/* Floating Badge Card */}
