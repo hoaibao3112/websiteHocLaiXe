@@ -71,11 +71,11 @@ export function AdminSidebar() {
       <div className="h-16 px-6 border-b border-neutral-100 flex items-center justify-between bg-white">
         <Link href="/admin/dashboard" className="flex items-center gap-3">
           <Image
-            src="/logo-win.png"
+            src="/logo1.jpg"
             alt="Logo Chiến Thắng"
-            width={130}
+            width={40}
             height={40}
-            className="object-contain h-10 w-auto"
+            className="object-contain h-10 w-10 rounded-full"
             priority
           />
         </Link>

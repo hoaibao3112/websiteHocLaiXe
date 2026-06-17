@@ -12,11 +12,11 @@ export function Footer() {
           {/* Column 1: Brand & Logo */}
           <div className="lg:col-span-1">
             <Image
-              src="/logo-win.png"
+              src="/logo1.jpg"
               alt="Logo Chiến Thắng"
-              width={220}
-              height={70}
-              className="object-contain mb-5 h-20 w-auto filter brightness-110"
+              width={80}
+              height={80}
+              className="object-contain mb-5 h-20 w-20"
             />
             <p className="text-xs leading-relaxed text-neutral-400 mb-6">
               Trung tâm đào tạo lái xe Chiến Thắng - Kiến tạo vững vàng cho mỗi hành trình. Uy tín, chất lượng và tỉ lệ đậu cao vượt trội tại Đồng Tháp.

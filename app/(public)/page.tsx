@@ -83,7 +83,7 @@ const WHY_US = [
   {
     icon: Clock,
     title: "Xe tập lái đời mới",
-    desc: "Được học trên xe đời mới 2022–2023, máy lạnh đầy đủ, vận hành êm ái và hiện đại.",
+    desc: "Được học trên xe đời mới, hiện đại, máy lạnh đầy đủ, vận hành êm ái và hiện đại.",
     gradient: "from-blue-400 to-indigo-500",
   },
   {
@@ -95,7 +95,7 @@ const WHY_US = [
   {
     icon: Award,
     title: "Giáo viên tận tâm",
-    desc: "Đội ngũ giáo viên 10+ năm kinh nghiệm, kiên nhẫn, hỗ trợ học viên từng bước một.",
+    desc: "Đội ngũ giáo viên 4+ năm kinh nghiệm, kiên nhẫn, hỗ trợ học viên từng bước một.",
     gradient: "from-purple-400 to-violet-500",
   },
 ];
@@ -179,7 +179,7 @@ export default async function HomePage() {
               className="flex flex-wrap gap-x-6 gap-y-2 mb-10 animate-fade-in"
               style={{ animationDelay: "0.5s" }}
             >
-              {["Giáo viên 10+ năm", "Xe mới 2022-2023", "Hỗ trợ thi lại miễn phí", "Tỉ lệ đậu 92%"].map(
+              {["Giáo viên 4 năm kinh nghiệm", "Xe đời mới, hiện đại", "Hỗ trợ thi lại miễn phí", "Tỉ lệ đậu 92%"].map(
                 (item) => (
                   <div key={item} className="flex items-center gap-2 text-sm text-neutral-200">
                     <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0" />
@@ -254,7 +254,7 @@ export default async function HomePage() {
                 Tại sao chọn chúng tôi
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a] mb-4">
-                Ưu điểm nổi bật của Chiến Thắng
+                Ưu điểm nổi bật của Chiến Thắng TG
               </h2>
               <p className="text-neutral-500 text-sm max-w-xl mx-auto">
                 Cam kết đào tạo chuyên nghiệp, an toàn và hiệu quả nhất cho mọi học viên.
@@ -434,11 +434,11 @@ export default async function HomePage() {
               <div className="relative animate-glow">
                 <div className="px-8 py-5 rounded-2xl border border-amber-500/30 bg-white/10 backdrop-blur-md flex items-center justify-center shadow-2xl">
                   <Image
-                    src="/logo-win.png"
+                    src="/logo1.jpg"
                     alt="Emblem Chiến Thắng"
-                    width={180}
-                    height={55}
-                    className="object-contain h-14 w-auto filter brightness-150"
+                    width={56}
+                    height={56}
+                    className="object-contain h-14 w-14"
                   />
                 </div>
                 {/* Pulse rings */}
@@ -473,11 +473,11 @@ export default async function HomePage() {
                   )}
                   <div className="mb-3">
                     <Image
-                      src="/logo-win.png"
+                      src="/logo1.jpg"
                       alt="Logo"
-                      width={50}
-                      height={50}
-                      className={`object-contain h-10 w-auto ${month.active ? "brightness-0 invert" : "filter brightness-150"}`}
+                      width={40}
+                      height={40}
+                      className={`object-contain h-10 w-10 rounded-full ${month.active ? "brightness-0 invert" : ""}`}
                     />
                   </div>
                   <div className={`text-sm font-bold ${month.active ? "text-white" : "text-white/90"}`}>

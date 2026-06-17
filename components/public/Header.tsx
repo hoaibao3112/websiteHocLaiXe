@@ -59,7 +59,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="/logo-win.png"
+              src="/logo1.jpg"
               alt="Logo Chiến Thắng"
               width={160}
               height={50}
