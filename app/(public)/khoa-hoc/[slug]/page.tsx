@@ -42,13 +42,16 @@ interface PageProps {
 const getCourse = cache(async (classCode: string): Promise<Course | null> => {
   try {
     const supabase = await createClient();
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("courses")
       .select("*")
       .eq("class_code", classCode)
       .eq("is_active", true)
-      .single();
-    return data;
+      .order("display_order", { ascending: true })
+      .limit(1);
+
+    if (error) throw error;
+    return data && data.length > 0 ? data[0] : null;
   } catch (error) {
     console.error("Error fetching course detail:", error);
     return null;

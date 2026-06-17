@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ImageUpload } from "@/components/admin/ImageUpload";
+import { Select } from "@/components/ui/select";
 import { ArrowLeft, Loader2, Save, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 
@@ -129,11 +130,18 @@ export default function CreateCoursePage() {
 
               <div className="space-y-2">
                 <Label htmlFor="class_code">Mã hạng bằng (Hạng bằng) <span className="text-red-500">*</span></Label>
-                <Input
+                <Select
                   id="class_code"
-                  placeholder="Ví dụ: B2 (hoặc B1, C...)"
                   {...register("class_code")}
-                />
+                >
+                  <option value="">-- Chọn hạng bằng --</option>
+                  <option value="B01">B1 (Số tự động)</option>
+                  <option value="B">B2 (Số sàn & Số tự động)</option>
+                  <option value="C1">C (Xe tải)</option>
+                  <option value="A1">A1 (Xe máy)</option>
+                  <option value="A">A (Mô tô phân khối lớn)</option>
+                  <option value="NH">NH (Nâng hạng bằng)</option>
+                </Select>
                 {errors.class_code && (
                   <p className="text-xs text-red-500">{errors.class_code.message as string}</p>
                 )}
