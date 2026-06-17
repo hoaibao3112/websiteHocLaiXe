@@ -11,7 +11,6 @@ import {
   Clock,
   Award,
   Shield,
-  Check,
   ExternalLink,
   ArrowRight,
   Star,
@@ -398,105 +397,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ══ 5. EXAM SCHEDULE SECTION ══ */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/exam_schedule_bg.jpg"
-            alt="Lịch thi sát hạch Chiến Thắng"
-            fill
-            className="object-cover object-center"
-          />
-          {/* Overlay to ensure readability and premium look */}
-          <div className="absolute inset-0 bg-gradient-to-br from-neutral-950/90 via-neutral-900/80 to-[#1e3a8a]/90" />
-        </div>
-        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-300/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="fade-in">
-            <div className="text-center mb-14">
-              <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
-                <Calendar className="w-3.5 h-3.5" />
-                Lịch thi sắp tới
-              </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white mb-3">
-                Lịch thi tốt nghiệp & sát hạch
-              </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-4 rounded-full" />
-            </div>
-          </ScrollReveal>
-
-          {/* Logo emblem */}
-          <ScrollReveal animation="scale-in">
-            <div className="flex justify-center mb-12">
-              <div className="relative animate-glow">
-                <div className="px-8 py-5 rounded-2xl border border-amber-500/30 bg-white/10 backdrop-blur-md flex items-center justify-center shadow-2xl">
-                  <Image
-                    src="/logo1.jpg"
-                    alt="Emblem Chiến Thắng"
-                    width={56}
-                    height={56}
-                    className="object-contain h-14 w-14"
-                  />
-                </div>
-                {/* Pulse rings */}
-                <div className="absolute inset-0 rounded-2xl border border-amber-500/20 animate-ping" />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Timeline months */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {[
-              { m: "Tháng 07", y: "Năm 2024", active: false, done: true },
-              { m: "Tháng 08", y: "Năm 2024", active: false, done: true },
-              { m: "Tháng 09", y: "Năm 2024", active: true, done: false },
-              { m: "Tháng 10", y: "Năm 2024", active: false, done: false },
-              { m: "Tháng 11", y: "Năm 2024", active: false, done: false },
-            ].map((month, idx) => (
-              <ScrollReveal key={idx} animation="slide-up" delay={idx * 100}>
-                <div
-                  className={`relative p-5 rounded-2xl text-center transition-all flex flex-col items-center hover:-translate-y-1 cursor-default
-                    ${month.active
-                      ? "bg-amber-500 shadow-2xl shadow-amber-500/30 border border-amber-400"
-                      : month.done
-                        ? "bg-white/5 border border-white/10 opacity-60"
-                        : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15"
-                    }`}
-                >
-                  {month.active && (
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
-                      Hiện tại
-                    </div>
-                  )}
-                  <div className="mb-3">
-                    <Image
-                      src="/logo1.jpg"
-                      alt="Logo"
-                      width={40}
-                      height={40}
-                      className={`object-contain h-10 w-10 rounded-full ${month.active ? "brightness-0 invert" : ""}`}
-                    />
-                  </div>
-                  <div className={`text-sm font-bold ${month.active ? "text-white" : "text-white/90"}`}>
-                    {month.m}
-                  </div>
-                  <div className={`text-[10px] mt-1 font-medium ${month.active ? "text-amber-100" : "text-white/50"}`}>
-                    {month.y}
-                  </div>
-                  {month.done && (
-                    <div className="mt-2">
-                      <Check className="w-4 h-4 text-emerald-400" />
-                    </div>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══ 5.5. LATEST NEWS SECTION ══ */}
       <section className="py-24 bg-slate-50 relative overflow-hidden">
