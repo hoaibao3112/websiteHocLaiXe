@@ -61,7 +61,7 @@ export default function VeChungToiPage() {
               <span className="text-amber-400">Về chúng tôi</span>
             </div>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-4 uppercase leading-tight max-w-4xl text-white">
-              GIỚI THIỆU TRUNG TÂM CHIẾN THẮNG
+              GIỚI THIỆU TRUNG TÂM CHIẾN THẮNG TG
             </h1>
             <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
               Hành trình hơn 4 năm đồng hành và kiến tạo thế hệ người lái xe an toàn, vững tâm lý, vững tay lái tại Đồng Tháp.
@@ -92,7 +92,7 @@ export default function VeChungToiPage() {
                   <strong className="text-neutral-900 font-semibold">
                     Trung Tâm Đào Tạo Và Sát Hạch Lái Xe Chiến Thắng Tiền Giang
                   </strong>{" "}
-                  tự hào là điểm sáng đào tạo lái xe tại Đồng Tháp. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư nâng cấp chất lượng giảng dạy và cơ sở vật chất.
+                  tự hào là trung tâm hàng đầu đào tạo lấy xe tại Đồng Tháp. Với sứ mệnh mang lại sự an toàn và kiến thức vững chắc cho người tham gia giao thông, chúng tôi không ngừng đầu tư nâng cấp chất lượng giảng dạy và cơ sở vật chất.
                 </p>
                 <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mt-4">
                   Tại Chiến Thắng, việc học lái xe không chỉ là để lấy tấm bằng, mà quan trọng hơn là trang bị kỹ năng lái xe an toàn suốt đời và đạo đức của người tài xế.
@@ -245,7 +245,7 @@ export default function VeChungToiPage() {
                 className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"
               />
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full pointer-events-none -translate-y-8 translate-x-8" />
-              
+
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">
                 Sẵn Sàng Làm Chủ Tay Lái An Toàn?
               </h2>

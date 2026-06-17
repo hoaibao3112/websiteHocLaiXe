@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Newspaper, LogOut, ShieldAlert, GraduationCap } from "lucide-react";
+import { LayoutDashboard, Newspaper, LogOut, ShieldAlert, GraduationCap, Users } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -52,6 +52,11 @@ export function AdminSidebar() {
       label: "Quản lý khóa học",
       href: "/admin/khoa-hoc",
       icon: GraduationCap,
+    },
+    {
+      label: "Khách hàng đăng ký",
+      href: "/admin/khach-hang",
+      icon: Users,
     },
     {
       label: "Quản lý bài viết",

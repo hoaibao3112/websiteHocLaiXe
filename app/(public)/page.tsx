@@ -67,8 +67,8 @@ function getStudentsCount(classCode: string) {
 }
 
 const STATS = [
-  { value: 10, suffix: "+", label: "Năm kinh nghiệm", icon: "🏆", color: "from-amber-500 to-orange-600" },
-  { value: 5000, suffix: "+", label: "Học viên tốt nghiệp", icon: "🎓", color: "from-blue-500 to-indigo-600" },
+  { value: 4, suffix: "", label: "Năm kinh nghiệm", icon: "🏆", color: "from-amber-500 to-orange-600" },
+  { value: 5000, suffix: "+", label: "Học viên đã nhận GPLX", icon: "🎓", color: "from-blue-500 to-indigo-600" },
   { value: 92, suffix: "%", label: "Tỉ lệ đậu lần đầu", icon: "✅", color: "from-emerald-500 to-teal-600" },
   { value: 20000, suffix: "m²", label: "Tổng diện tích sân", icon: "📍", color: "from-rose-500 to-pink-600" },
 ];
@@ -374,11 +374,11 @@ export default async function HomePage() {
 
                       <Link
                         href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" :
-                            course.class_code.toLowerCase() === "b" ? "b2" :
-                              course.class_code.toLowerCase() === "c1" ? "c" :
-                                course.class_code.toLowerCase() === "a1" ? "a1" :
-                                  course.class_code.toLowerCase() === "a" ? "a" :
-                                    "nang-hang"
+                          course.class_code.toLowerCase() === "b" ? "b2" :
+                            course.class_code.toLowerCase() === "c1" ? "c" :
+                              course.class_code.toLowerCase() === "a1" ? "a1" :
+                                course.class_code.toLowerCase() === "a" ? "a" :
+                                  "nang-hang"
                           }`}
                         className="group/btn flex items-center justify-center gap-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 rounded-xl text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
                       >

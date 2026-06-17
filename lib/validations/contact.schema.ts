@@ -16,4 +16,11 @@ export const contactSchema = z.object({
   message: z.string().max(2000, "Nội dung không quá 2000 ký tự").optional(),
 });
 
+export const updateContactStatusSchema = z.object({
+  status: z.enum(["new", "contacted", "closed"], {
+    error: "Trạng thái không hợp lệ",
+  }),
+});
+
 export type ContactInput = z.infer<typeof contactSchema>;
+export type UpdateContactStatusInput = z.infer<typeof updateContactStatusSchema>;
