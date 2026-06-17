@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createAdminClient } from "@/lib/supabase/server";
 import {
   contactSchema,
   updateContactStatusSchema,
@@ -61,10 +61,11 @@ export async function POST(req: NextRequest) {
 // PATCH /api/contacts — Admin: cập nhật status
 export async function PATCH(req: NextRequest) {
   try {
-    const supabase = await createClient();
+    // 1. Verify user is authenticated via session
+    const sessionClient = await createClient();
     const {
       data: { user },
-    } = await supabase.auth.getUser();
+    } = await sessionClient.auth.getUser();
 
     if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -79,14 +80,15 @@ export async function PATCH(req: NextRequest) {
     const body = await req.json();
     const { status } = updateContactStatusSchema.parse(body);
 
-    const updatePayload: ContactUpdate = { status };
-
+    // 2. Dùng admin client (service_role) để bypass RLS — chỉ sau khi đã verify auth
+    const adminClient = createAdminClient();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { error } = await (supabase.from("contacts") as any)
-      .update(updatePayload)
+    const { error } = await (adminClient.from("contacts") as any)
+      .update({ status } as ContactUpdate)
       .eq("id", id);
 
     if (error) {
+      console.error("[PATCH /api/contacts] update error:", error);
       return NextResponse.json(
         { error: "Không thể cập nhật trạng thái." },
         { status: 500 }

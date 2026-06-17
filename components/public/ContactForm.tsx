@@ -1,6 +1,7 @@
 "use client";
 
 import { Phone, CheckCircle } from "lucide-react";
+import { RegistrationForm } from "@/components/public/RegistrationForm";
 
 // Custom Zalo SVG Icon
 const ZaloIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -63,8 +64,8 @@ export function ContactForm() {
         </div>
       </div>
 
+      {/* Zalo + Hotline Buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Zalo Button */}
         <a
           href="https://zalo.me/0902868928"
           target="_blank"
@@ -76,7 +77,6 @@ export function ContactForm() {
           <span>NHẮN ZALO LIÊN HỆ</span>
         </a>
 
-        {/* Hotline Button */}
         <a
           href="tel:0902868928"
           onClick={() => handleTrackClick("Hotline")}
@@ -85,6 +85,31 @@ export function ContactForm() {
           <Phone className="w-5 h-5 flex-shrink-0 animate-bounce" />
           <span>GỌI HOTLINE HỖ TRỢ</span>
         </a>
+      </div>
+
+      {/* Divider */}
+      <div className="relative flex items-center gap-4 my-1">
+        <div className="flex-1 h-px bg-neutral-200" />
+        <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest px-2 shrink-0">
+          hoặc để lại thông tin
+        </span>
+        <div className="flex-1 h-px bg-neutral-200" />
+      </div>
+
+      {/* Registration Form */}
+      <div className="bg-slate-50/60 rounded-2xl border border-neutral-100 p-6">
+        <div className="mb-5">
+          <h3 className="text-base font-extrabold text-neutral-900">
+            Đăng ký tư vấn miễn phí
+          </h3>
+          <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
+            Điền thông tin bên dưới — đội ngũ sẽ liên hệ lại trong vòng 24 giờ.
+          </p>
+        </div>
+        <RegistrationForm
+          defaultSubject="Tư vấn khóa học lái xe"
+          variant="amber"
+        />
       </div>
     </div>
   );
