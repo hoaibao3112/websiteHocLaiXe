@@ -42,8 +42,8 @@ export function Footer() {
             <ul className="space-y-3.5">
               {[
                 { label: "Lái xe hạng A1 / A", href: "/khoa-hoc" },
-                { label: "Lái xe hạng B (4 Bánh tự động)", href: "/khoa-hoc/b1" },
-                { label: "Lái xe hạng B (4 Bánh số sàn)", href: "/khoa-hoc/b2" },
+                { label: "Lái xe hạng B (Tự động)", href: "/khoa-hoc/b1" },
+                { label: "Lái xe hạng B (Số sàn)", href: "/khoa-hoc/b2" },
                 { label: "Lái xe hạng C1 / Nâng hạng", href: "/khoa-hoc" },
               ].map((link, idx) => (
                 <li key={idx}>

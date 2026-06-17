@@ -147,7 +147,7 @@ export default async function HomePage() {
               style={{ animationDelay: "0.1s" }}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              Trung tâm đào tạo lái xe Chiến Thắng Tiền Giang
+              Trung tâm đào tạo lái xe Chiến Thắng TG
             </div>
 
             {/* Headline */}
@@ -373,14 +373,13 @@ export default async function HomePage() {
                       </div>
 
                       <Link
-                        href={`/khoa-hoc/${
-                          course.class_code.toLowerCase() === "b01" ? "b1" :
-                          course.class_code.toLowerCase() === "b" ? "b2" :
-                          course.class_code.toLowerCase() === "c1" ? "c" :
-                          course.class_code.toLowerCase() === "a1" ? "a1" :
-                          course.class_code.toLowerCase() === "a" ? "a" :
-                          "nang-hang"
-                        }`}
+                        href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" :
+                            course.class_code.toLowerCase() === "b" ? "b2" :
+                              course.class_code.toLowerCase() === "c1" ? "c" :
+                                course.class_code.toLowerCase() === "a1" ? "a1" :
+                                  course.class_code.toLowerCase() === "a" ? "a" :
+                                    "nang-hang"
+                          }`}
                         className="group/btn flex items-center justify-center gap-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 rounded-xl text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
                       >
                         Xem chi tiết
@@ -504,7 +503,7 @@ export default async function HomePage() {
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade-in">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-14 gap-4">
