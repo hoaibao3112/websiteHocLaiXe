@@ -128,7 +128,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
     },
     NH: {
       titleText: "Khóa Học Nâng Hạng Bằng Lái Xe",
-      vehicleType: "Nâng hạng lên các hạng bằng B2, C, D, E, FC...",
+      vehicleType: "Nâng hạng lên các hạng bằng C, D1, D2,",
       duration: "1.5 - 2 tháng",
       target: "Dành cho lái xe chuyên nghiệp muốn nâng cao hạng bằng để điều khiển các loại xe có tải trọng hoặc sức chứa lớn hơn.",
       requirements: "Là công dân Việt Nam có giấy phép lái xe hiện tại và đủ thời gian, số km lái xe an toàn theo luật định.",
