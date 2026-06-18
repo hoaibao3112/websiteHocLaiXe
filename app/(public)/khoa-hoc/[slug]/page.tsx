@@ -93,14 +93,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
   const detailsExtra = {
     A1: {
       titleText: "Bằng Lái Xe Máy (Hạng A1)",
-      vehicleType: "Xe mô tô 2 bánh có dung tích xi-lanh từ 50cm³ đến dưới 175cm³",
+      vehicleType: "Xe mô tô 2 bánh có dung tích xi-lanh từ 50cm³ đến dưới 125cm³",
       duration: "Lịch thi hàng tuần",
       target: "Dành cho người có nhu cầu điều khiển xe mô tô, xe gắn máy thông thường hàng ngày.",
       requirements: "Công dân Việt Nam hoặc người nước ngoài đang cư trú hợp pháp đủ 18 tuổi trở lên, đủ sức khỏe theo quy định.",
     },
     A: {
       titleText: "Bằng Lái Xe Mô Tô Phân Khối Lớn (Hạng A)",
-      vehicleType: "Xe mô tô 2 bánh có dung tích xi-lanh từ 175cm³ trở lên và các loại xe hạng A1",
+      vehicleType: "Xe mô tô 2 bánh có dung tích xi-lanh từ 125cm³ trở lên và các loại xe hạng A1",
       duration: "Thi sau 1-2 tuần học",
       target: "Dành cho người đam mê và vận hành các loại xe mô tô phân khối lớn (PKL).",
       requirements: "Công dân Việt Nam hoặc người nước ngoài đang cư trú hợp pháp đủ 18 tuổi trở lên, đủ sức khỏe theo quy định.",
