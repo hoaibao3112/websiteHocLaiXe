@@ -108,7 +108,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
     B01: {
       titleText: "Bằng Lái Số Tự Động (Hạng B1)",
       vehicleType: "Xe số tự động du lịch (4-9 chỗ), xe tải số tự động < 3.5 tấn",
-      duration: "2.5 tháng",
+      duration: "3,5 tháng",
       target: "Phù hợp cho cá nhân, hộ gia đình đi lại thông thường, không hành nghề kinh doanh vận tải.",
       requirements: "Mọi công dân Việt Nam đủ 18 tuổi trở lên, đảm bảo tiêu chuẩn sức khỏe lái xe.",
     },
@@ -151,7 +151,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-neutral-200">Hạng {course.class_code}</span>
           </div>
-          
+
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <span className="inline-flex items-center gap-1 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
               Khóa học sát hạch
@@ -162,7 +162,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
               </span>
             )}
           </div>
-          
+
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             {course.name}
           </h1>
@@ -173,10 +173,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-10">
-            
+
             {/* Left Column: Details (span 7) */}
             <div className="lg:col-span-7 flex flex-col gap-10 animate-slide-up">
-              
+
               {/* Introduction Card */}
               <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-xs space-y-4">
                 <h2 className="text-xl font-bold text-[#1e3a8a] flex items-center gap-2">
@@ -197,7 +197,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <FileText className="w-5 h-5 text-amber-500" />
                   Thông tin đào tạo chi tiết
                 </h2>
-                
+
                 <div className="grid sm:grid-cols-2 gap-6">
                   {/* Item 1: Duration */}
                   <div className="flex gap-3">
@@ -266,7 +266,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 <h2 className="text-xl font-bold text-[#1e3a8a]">
                   Điểm vượt trội của khóa học tại Chiến Thắng
                 </h2>
-                
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   {course.features && course.features.map((feature, idx) => (
                     <div key={idx} className="flex gap-3 items-start p-3.5 bg-neutral-50 rounded-xl border border-neutral-100">
@@ -293,11 +293,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-neutral-600 font-medium">
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
-                      01 Bản sao CCCD (Không cần công chứng)
+                      02 Bản sao CCCD (Không cần công chứng)
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
-                      01 Đơn đề nghị học và thi sát hạch
+                      03 Đơn đề nghị học và thi sát hạch
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
@@ -324,10 +324,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
             {/* Right Column: Pricing & Sidebar Form (span 5) */}
             <div className="lg:col-span-5 flex flex-col gap-8">
-              
+
               {/* Sticky Sidebar Info */}
               <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-md space-y-6 lg:sticky lg:top-28">
-                
+
                 {/* Course Image Carousel */}
                 <CourseImageCarousel defaultImage={course.image_url} />
 
