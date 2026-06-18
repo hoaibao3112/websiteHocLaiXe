@@ -102,8 +102,8 @@ export default function VeChungToiPage() {
               {/* Hạng badges */}
               <div className="grid grid-cols-3 gap-4 py-4">
                 {[
-                  { label: "Hạng B1 (Tự động)", icon: Car, desc: "Xe ô tô số tự động" },
-                  { label: "Hạng B2 (Số sàn)", icon: Car, desc: "Xe ô tô số sàn" },
+                  { label: "Hạng B (Tự động)", icon: Car, desc: "Xe ô tô số tự động" },
+                  { label: "Hạng B (Số sàn)", icon: Car, desc: "Xe ô tô số sàn" },
                   { label: "Hạng C (Tải)", icon: Truck, desc: "Xe tải trên 3.5 tấn" },
                 ].map((item, idx) => {
                   const Icon = item.icon;

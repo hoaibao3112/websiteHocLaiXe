@@ -167,14 +167,13 @@ export default async function HoSoDangKyPage() {
                       </div>
 
                       <Link
-                        href={`/khoa-hoc/${
-                          course.class_code.toLowerCase() === "b01" ? "b1" :
+                        href={`/khoa-hoc/${course.class_code.toLowerCase() === "b01" ? "b1" :
                           course.class_code.toLowerCase() === "b" ? "b2" :
-                          course.class_code.toLowerCase() === "c1" ? "c" :
-                          course.class_code.toLowerCase() === "a1" ? "a1" :
-                          course.class_code.toLowerCase() === "a" ? "a" :
-                          "nang-hang"
-                        }`}
+                            course.class_code.toLowerCase() === "c1" ? "c" :
+                              course.class_code.toLowerCase() === "a1" ? "a1" :
+                                course.class_code.toLowerCase() === "a" ? "a" :
+                                  "nang-hang"
+                          }`}
                         className="group/btn flex items-center justify-center gap-2 bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 rounded-xl text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
                       >
                         Xem chi tiết
@@ -300,7 +299,7 @@ export default async function HoSoDangKyPage() {
                     04. CMND/CCCD photo
                   </h3>
                   <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed mb-6">
-                    01 bản photo Căn cước công dân hoặc Chứng minh nhân dân (còn hạn sử dụng, không cần công chứng). Đối với người nước ngoài cần cung cấp bản sao Hộ chiếu còn hạn.
+                    02 bản photo Căn cước công dân hoặc Chứng minh nhân dân (còn hạn sử dụng, không cần công chứng). Đối với người nước ngoài cần cung cấp bản sao Hộ chiếu còn hạn.
                   </p>
                 </div>
                 <div className="text-neutral-400 text-xs font-medium uppercase tracking-wider mt-4">
@@ -367,7 +366,7 @@ export default async function HoSoDangKyPage() {
                   {
                     icon: Calendar,
                     title: "Yêu cầu về độ tuổi",
-                    desc: "Đủ 18 tuổi trở lên tính đến ngày thi sát hạch chính thức (Áp dụng đối với hạng B1, B2). Hạng C yêu cầu đủ 21 tuổi trở lên.",
+                    desc: "18 tuổi đối với B số tự động, B số sàn, C1",
                   },
                   {
                     icon: Globe,
