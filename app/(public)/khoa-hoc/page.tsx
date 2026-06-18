@@ -28,7 +28,7 @@ async function getCourses(): Promise<Course[]> {
 const FAQ = [
   {
     q: "Thời gian đào tạo mỗi khóa học lái xe ô tô là bao lâu?",
-    a: "Thời gian học chuẩn theo quy định của Tổng cục Đường bộ: Hạng B1 (số tự động) khoảng 2.5 - 3 tháng, Hạng B2 (số sàn) khoảng 3 - 4 tháng, Hạng C (xe tải) từ 5 - 6 tháng. Lịch học thực hành phân bổ linh hoạt theo lịch cá nhân của học viên.",
+    a: "Thời gian học chuẩn theo quy định của Tổng cục Đường bộ: Hạng B (số tự động) khoảng 3 - 3,5 tháng, Hạng B (số sàn) khoảng 4 - 4,5 tháng, Hạng C1 (xe tải) từ 4,5 - 5 tháng. Lịch học thực hành phân bổ linh hoạt theo lịch cá nhân của học viên.",
   },
   {
     q: "Học phí đã bao gồm trọn gói hay có phát sinh chi phí gì khác không?",
@@ -86,7 +86,7 @@ export default async function KhoaHocPage() {
       {/* Courses Grid Section */}
       <section className="py-24 bg-white relative">
         <div className="absolute top-1/4 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none animate-float" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade-in">
             <div className="text-center mb-16">
