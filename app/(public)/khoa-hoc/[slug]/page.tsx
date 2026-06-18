@@ -124,7 +124,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
       vehicleType: "Xe ô tô tải, xe chuyên dùng có tải trọng thiết kế ≥ 3.5 tấn, xe du lịch đến 9 chỗ",
       duration: "4.5 tháng",
       target: "Dành cho tài xế chuyên nghiệp chạy xe tải nặng, xe đầu kéo, xe vận tải lớn hoặc kinh doanh kho bãi lớn.",
-      requirements: "Mọi công dân Việt Nam đủ 21 tuổi trở lên, đảm bảo tiêu chuẩn sức khỏe lái xe.",
+      requirements: "Mọi công dân Việt Nam đủ 18 tuổi trở lên, đảm bảo tiêu chuẩn sức khỏe lái xe.",
     },
     NH: {
       titleText: "Khóa Học Nâng Hạng Bằng Lái Xe",
