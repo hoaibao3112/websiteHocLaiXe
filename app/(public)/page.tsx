@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
@@ -59,10 +59,12 @@ function formatPrice(price: number) {
 }
 
 function getStudentsCount(classCode: string) {
-  if (classCode === "B01") return 560;
-  if (classCode === "B") return 720;
+  if (classCode === "B01") return 1560;
+  if (classCode === "B") return 1720;
   if (classCode === "C1") return 1180;
-  return 350;
+  if (classCode === "A1") return 20000;
+  if (classCode === "A") return 1500;
+  return 900;
 }
 
 const STATS = [
