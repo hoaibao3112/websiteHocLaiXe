@@ -149,7 +149,13 @@ export default async function CourseDetailPage({ params }: PageProps) {
               Khóa học
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-neutral-200">Hạng {course.class_code}</span>
+            <span className="text-neutral-200">
+              {course.class_code.toUpperCase() === "NH"
+                ? "Nâng Hạng"
+                : course.class_code.toUpperCase() === "B01"
+                  ? "Hạng B"
+                  : `Hạng ${course.class_code}`}
+            </span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 mb-2">

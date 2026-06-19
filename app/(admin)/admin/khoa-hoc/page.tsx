@@ -136,7 +136,11 @@ export default function AdminCoursesPage() {
                       </div>
                       <div className="flex items-center gap-2 mt-1 text-xs text-neutral-400">
                         <span className="font-bold text-neutral-500 bg-neutral-100 px-1.5 py-0.5 rounded">
-                          Hạng {item.class_code}
+                          {item.class_code.toUpperCase() === "NH"
+                            ? "Nâng Hạng"
+                            : item.class_code.toUpperCase() === "B01"
+                              ? "Hạng B"
+                              : `Hạng ${item.class_code}`}
                         </span>
                         {item.badge && (
                           <span className="text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded font-medium border border-amber-100">

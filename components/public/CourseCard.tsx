@@ -80,7 +80,11 @@ export function CourseCard({ course }: CourseCardProps) {
         <div className="flex items-center justify-between mb-3">
           <span className={`inline-flex items-center gap-1.5 bg-gradient-to-r ${style.badge} text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-md`}>
             <Tag className="w-3.5 h-3.5" />
-            Hạng {course.class_code}
+            {course.class_code.toUpperCase() === "NH"
+              ? "Nâng Hạng"
+              : course.class_code.toUpperCase() === "B01"
+                ? "Hạng B"
+                : `Hạng ${course.class_code}`}
           </span>
         </div>
         <h3 className="text-xl font-black text-neutral-900 mt-4 group-hover:text-amber-700 transition-colors leading-snug">
