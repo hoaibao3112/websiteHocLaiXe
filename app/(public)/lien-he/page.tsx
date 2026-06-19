@@ -22,7 +22,7 @@ const CONTACT_ITEMS = [
     icon: Phone,
     title: "ĐIỆN THOẠI HỖ TRỢ",
     value: "0902.868.928",
-    sub: "Phục vụ từ 7:30 – 17:30 hàng ngày",
+    sub: "Phục vụ từ 7:30 – 17:00 hàng ngày",
   },
   {
     icon: MessageCircle,
@@ -48,7 +48,7 @@ export default function LienHePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-950/50 to-transparent" />
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal animation="fade-in">
             {/* Breadcrumbs */}
@@ -76,10 +76,10 @@ export default function LienHePage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-start">
-            
+
             {/* Left Column: Contact info & Careers (span 5) */}
             <div className="lg:col-span-5 space-y-8">
-              
+
               {/* Contact info list */}
               <ScrollReveal animation="slide-right">
                 <div className="bg-slate-50 rounded-2xl border border-neutral-100 p-8 space-y-6">
@@ -87,7 +87,7 @@ export default function LienHePage() {
                     <Sparkles className="w-5 h-5 text-amber-500 fill-amber-500" />
                     Thông Tin Liên Hệ
                   </h2>
-                  
+
                   <div className="space-y-6">
                     {CONTACT_ITEMS.map((item, index) => {
                       const Icon = item.icon;
