@@ -51,7 +51,7 @@ export function ContactForm() {
             <CheckCircle className="w-3.5 h-3.5 stroke-[3]" />
           </div>
           <span className="text-sm text-neutral-600 font-medium leading-relaxed">
-            Nhận báo giá trọn gói học phí các hạng A1, A, B1, B2, C tốt nhất.
+            Nhận báo giá trọn gói học phí các hạng A1, A, B số tự động, B số sàn, C1, nâng B lên C, B lên C1, B lên D2.
           </span>
         </div>
         <div className="flex gap-3 items-start">

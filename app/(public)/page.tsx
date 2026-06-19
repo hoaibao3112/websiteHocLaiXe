@@ -62,9 +62,9 @@ function getStudentsCount(classCode: string) {
   if (classCode === "B01") return 1560;
   if (classCode === "B") return 1720;
   if (classCode === "C1") return 1180;
-  if (classCode === "A1") return 20000;
-  if (classCode === "A") return 1500;
-  return 900;
+  if (classCode === "A1") return 21198;
+  if (classCode === "A") return 9568;
+  return 956;
 }
 
 const STATS = [

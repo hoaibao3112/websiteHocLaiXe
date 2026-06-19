@@ -104,7 +104,7 @@ export default function VeChungToiPage() {
                 {[
                   { label: "Hạng B (Tự động)", icon: Car, desc: "Xe ô tô số tự động" },
                   { label: "Hạng B (Số sàn)", icon: Car, desc: "Xe ô tô số sàn" },
-                  { label: "Hạng C (Tải)", icon: Truck, desc: "Xe tải trên 3.5 tấn" },
+                  { label: "Hạng C1 (Tải)", icon: Truck, desc: "Xe tải trên 3.5 tấn" },
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
