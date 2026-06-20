@@ -6,6 +6,8 @@ import {
 } from "@/lib/validations/contact.schema";
 import type { Database } from "@/types/database.types";
 import { ZodError } from "zod";
+import { sendContactNotificationEmail } from "@/lib/mail";
+
 
 type ContactInsert = Database["public"]["Tables"]["contacts"]["Insert"];
 type ContactUpdate = Database["public"]["Tables"]["contacts"]["Update"];
@@ -37,6 +39,19 @@ export async function POST(req: NextRequest) {
         { error: "Không thể lưu thông tin. Vui lòng thử lại." },
         { status: 500 }
       );
+    }
+
+    // Gửi email thông báo về Gmail (bọc trong try-catch riêng để tránh làm ảnh hưởng tới kết quả lưu DB)
+    try {
+      await sendContactNotificationEmail({
+        fullName: data.full_name,
+        phone: data.phone,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+      });
+    } catch (mailError) {
+      console.error("[POST /api/contacts] Lỗi gửi email thông báo:", mailError);
     }
 
     return NextResponse.json(
