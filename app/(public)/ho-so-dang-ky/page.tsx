@@ -29,10 +29,12 @@ export const metadata: Metadata = {
 };
 
 function getStudentsCount(classCode: string) {
-  if (classCode === "B01") return 560;
-  if (classCode === "B") return 720;
+  if (classCode === "B01") return 1560;
+  if (classCode === "B") return 1720;
   if (classCode === "C1") return 1180;
-  return 350;
+  if (classCode === "A1") return 21198;
+  if (classCode === "A") return 9568;
+  return 956;
 }
 
 export default async function HoSoDangKyPage() {
