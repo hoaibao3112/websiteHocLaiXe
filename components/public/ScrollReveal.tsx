@@ -21,6 +21,12 @@ interface ScrollRevealProps {
   once?: boolean;
 }
 
+// Check reduced motion preference once
+const prefersReducedMotion =
+  typeof window !== "undefined"
+    ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    : false;
+
 export function ScrollReveal({
   children,
   className,
@@ -30,16 +36,21 @@ export function ScrollReveal({
   threshold = 0.08,
   once = true,
 }: ScrollRevealProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(prefersReducedMotion);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          if (once && ref.current) {
-            observer.unobserve(ref.current);
+          if (once) {
+            observer.unobserve(currentRef);
           }
         } else if (!once) {
           setIsVisible(false);
@@ -48,24 +59,23 @@ export function ScrollReveal({
       { threshold }
     );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    observer.observe(currentRef);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      observer.unobserve(currentRef);
     };
   }, [threshold, once]);
 
   const getAnimationStyles = (): React.CSSProperties => {
+    if (prefersReducedMotion) {
+      return { opacity: 1 };
+    }
+
     const baseStyle: React.CSSProperties = {
+      transitionProperty: "transform, opacity, filter",
       transitionDuration: `${duration}ms`,
       transitionDelay: isVisible ? `${delay}ms` : "0ms",
       transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-      willChange: "transform, opacity, filter",
     };
 
     if (isVisible) {
@@ -102,7 +112,7 @@ export function ScrollReveal({
     <div
       ref={ref}
       style={getAnimationStyles()}
-      className={cn("transition-all", className)}
+      className={cn(className)}
     >
       {children}
     </div>

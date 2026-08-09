@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, MapPin, Send } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
+import { LazyGoogleMap } from "@/components/public/LazyGoogleMap";
 
 export function Footer() {
   return (
@@ -97,23 +98,7 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-white tracking-wider uppercase text-sm mb-5">Bản đồ vị trí</h3>
             <div className="rounded-xl overflow-hidden border border-neutral-700/60 h-36 w-full shadow-md relative group">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.63942007817!2d106.02196657579737!3d10.407989989718872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aa8593d6e5229%3A0xe5a36ad2e245a498!2zVHLGsOG7nW5nIEzDoWkgWGUgQ2hp4bq_biBUaOG6r25n!5e0!3m2!1svi!2s!4v1718278000000!5m2!1svi!2s"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Bản đồ Trường lái xe Chiến Thắng"
-              />
-              <a
-                href="https://maps.google.com/?q=168+QL1A,+Ấp+Phú+Hòa,+Xã+Mỹ+Thành,+Đồng+Tháp+(Tiền+Giang+Cũ),+Việt+Nam"
-                target="_blank"
-                rel="noreferrer"
-                className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors cursor-pointer"
-                title="Mở rộng Google Maps"
-              />
+              <LazyGoogleMap className="h-full w-full" />
             </div>
           </div>
 

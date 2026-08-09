@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -33,17 +33,37 @@ export function Header() {
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const pathname = usePathname();
 
+  // Scroll handler with passive listener
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menus on route change
   useEffect(() => {
     setIsMenuOpen(false);
     setIsDropdownOpen(false);
     setIsMobileDropdownOpen(false);
   }, [pathname]);
+
+  // Body scroll lock for mobile menu
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
+    return () => document.body.classList.remove("menu-open");
+  }, [isMenuOpen]);
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
 
   return (
     <header
@@ -165,83 +185,93 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-neutral-700 hover:bg-neutral-100"
+            onClick={toggleMenu}
+            className="lg:hidden p-2.5 rounded-lg text-neutral-700 hover:bg-neutral-100 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu with backdrop */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-neutral-100 shadow-xl animate-slide-down">
-          <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <div key={link.href} className="space-y-1">
-                {link.dropdownItems ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        setIsMobileDropdownOpen(!isMobileDropdownOpen)
-                      }
-                      className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-neutral-700 hover:text-brand-600 hover:bg-brand-50"
+        <>
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-black/30 z-40 lg:hidden"
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
+
+          <div className="lg:hidden bg-white border-t border-neutral-100 shadow-xl animate-slide-down relative z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
+              {navLinks.map((link) => (
+                <div key={link.href} className="space-y-1">
+                  {link.dropdownItems ? (
+                    <>
+                      <button
+                        onClick={() =>
+                          setIsMobileDropdownOpen(!isMobileDropdownOpen)
+                        }
+                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-lg text-sm font-semibold text-neutral-700 hover:text-brand-600 hover:bg-brand-50 min-h-[48px]"
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown
+                          className={cn(
+                            "w-4 h-4 transition-transform duration-200",
+                            isMobileDropdownOpen && "rotate-180"
+                          )}
+                        />
+                      </button>
+                      {isMobileDropdownOpen && (
+                        <div className="pl-6 space-y-1">
+                          {link.dropdownItems.map((subItem, subIdx) => (
+                            <Link
+                              key={subIdx}
+                              href={subItem.href}
+                              className="block px-4 py-3 rounded-lg text-xs font-semibold text-neutral-600 hover:text-brand-700 hover:bg-brand-50/50 min-h-[44px] flex items-center"
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "block px-4 py-3.5 rounded-lg text-sm font-semibold transition-colors min-h-[48px] flex items-center",
+                        pathname === link.href
+                          ? "text-brand-700 bg-brand-50"
+                          : "text-neutral-700 hover:text-brand-600 hover:bg-brand-50"
+                      )}
                     >
-                      <span>{link.label}</span>
-                      <ChevronDown
-                        className={cn(
-                          "w-4 h-4 transition-transform duration-200",
-                          isMobileDropdownOpen && "rotate-180"
-                        )}
-                      />
-                    </button>
-                    {isMobileDropdownOpen && (
-                      <div className="pl-6 space-y-1">
-                        {link.dropdownItems.map((subItem, subIdx) => (
-                          <Link
-                            key={subIdx}
-                            href={subItem.href}
-                            className="block px-4 py-2.5 rounded-lg text-xs font-semibold text-neutral-600 hover:text-brand-700 hover:bg-brand-50/50"
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "block px-4 py-3 rounded-lg text-sm font-semibold transition-colors",
-                      pathname === link.href
-                        ? "text-brand-700 bg-brand-50"
-                        : "text-neutral-700 hover:text-brand-600 hover:bg-brand-50"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                )}
+                      {link.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              <div className="pt-4 border-t border-neutral-100 flex flex-col gap-2">
+                <a
+                  href="tel:0902868928"
+                  className="block text-center bg-brand-800 hover:bg-brand-900 text-white font-bold px-5 py-3.5 rounded-md text-sm transition-colors min-h-[48px] flex items-center justify-center"
+                >
+                  Gọi ngay: 0902.868.928
+                </a>
+                <Link
+                  href="/dang-nhap"
+                  className="flex items-center justify-center gap-2 text-center border border-neutral-200 text-neutral-700 font-semibold px-5 py-3.5 rounded-md text-sm hover:bg-neutral-50 transition-colors min-h-[48px]"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Cổng học viên
+                </Link>
               </div>
-            ))}
-            <div className="pt-4 border-t border-neutral-100 flex flex-col gap-2">
-              <a
-                href="tel:0902868928"
-                className="block text-center bg-brand-800 hover:bg-brand-900 text-white font-bold px-5 py-3 rounded-md text-sm transition-colors"
-              >
-                Gọi ngay: 0902.868.928
-              </a>
-              <Link
-                href="/dang-nhap"
-                className="flex items-center justify-center gap-2 text-center border border-neutral-200 text-neutral-700 font-semibold px-5 py-3 rounded-md text-sm hover:bg-neutral-50 transition-colors"
-              >
-                <LogIn className="w-4 h-4" />
-                Cổng học viên
-              </Link>
             </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
