@@ -1,6 +1,8 @@
 "use client";
 
-import { Phone } from "lucide-react";
+import { useState, useCallback } from "react";
+import { Phone, MessageCircle, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // Official Zalo Vector Icon
 const ZaloIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -56,70 +58,111 @@ function handleTrackClick(channel: string) {
 }
 
 export function FloatingContactButtons() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
   return (
     <div
-      className="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 z-50 flex flex-col gap-3 sm:gap-4 floating-buttons-enter"
+      className="fixed right-3 sm:right-6 bottom-[calc(1rem+env(safe-area-inset-bottom))] sm:bottom-6 z-50 flex flex-col items-end gap-2.5 sm:gap-4 floating-buttons-enter"
       style={{
-        animation: "floatingEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1s both",
+        animation: "floatingEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both",
       }}
     >
-      {/* Facebook Messenger Button */}
-      <a
-        href="https://www.facebook.com/chienthangtiengiang2023/photos"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => handleTrackClick("Facebook")}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
-        title="Nhắn tin qua Facebook"
+      {/* Contact buttons container */}
+      <div
+        className={cn(
+          "flex flex-col gap-2.5 sm:gap-4 transition-all duration-300 origin-bottom-right",
+          // Mobile state: toggle visible/hidden based on isOpen
+          isOpen
+            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 scale-90 translate-y-4 pointer-events-none sm:opacity-100 sm:scale-100 sm:translate-y-0 sm:pointer-events-auto flex"
+        )}
       >
-        <FacebookIcon className="w-5 h-5 sm:w-6 sm:h-6" />
-        <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
-          Facebook Messenger
-        </span>
-      </a>
+        {/* Facebook Messenger Button */}
+        <a
+          href="https://www.facebook.com/chienthangtiengiang2023/photos"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => handleTrackClick("Facebook")}
+          className="group relative size-11 sm:size-14 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-200"
+          title="Nhắn tin qua Facebook"
+          aria-label="Facebook Messenger"
+        >
+          <FacebookIcon className="size-5 sm:size-6" />
+          <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
+            Facebook Messenger
+          </span>
+        </a>
 
-      {/* Zalo Chat Button */}
-      <a
-        href="https://zalo.me/0902868928"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => handleTrackClick("Zalo")}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-[#0068ff] hover:bg-[#0057d4] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
-        title="Chat qua Zalo"
-      >
-        <ZaloIcon className="w-9 h-9 sm:w-[44px] sm:h-[44px]" />
-        <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
-          Chat Zalo: 0902.868.928
-        </span>
-      </a>
+        {/* Zalo Chat Button */}
+        <a
+          href="https://zalo.me/0902868928"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => handleTrackClick("Zalo")}
+          className="group relative size-11 sm:size-14 bg-[#0068ff] hover:bg-[#0057d4] active:scale-95 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-200"
+          title="Chat qua Zalo"
+          aria-label="Zalo Chat"
+        >
+          <ZaloIcon className="size-8 sm:size-[44px]" />
+          <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
+            Chat Zalo: 0902.868.928
+          </span>
+        </a>
 
-      {/* Google Maps Directions Button */}
-      <a
-        href="https://maps.google.com/?q=168+QL1A,+Ấp+Phú+Hòa,+Xã+Mỹ+Thành,+Đồng+Tháp+(Tiền+Giang+Cũ),+Việt+Nam"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => handleTrackClick("GoogleMaps")}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-white hover:bg-neutral-50 text-neutral-800 rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-neutral-100"
-        title="Xem bản đồ đường đi"
-      >
-        <GoogleMapsIcon className="w-7 h-7 sm:w-8 sm:h-8" />
-        <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
-          Chỉ đường Google Maps
-        </span>
-      </a>
+        {/* Google Maps Directions Button */}
+        <a
+          href="https://maps.google.com/?q=168+QL1A,+Ấp+Phú+Hòa,+Xã+Mỹ+Thành,+Đồng+Tháp+(Tiền+Giang+Cũ),+Việt+Nam"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => handleTrackClick("GoogleMaps")}
+          className="group relative size-11 sm:size-14 bg-white hover:bg-neutral-50 active:scale-95 text-neutral-800 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-200 border border-neutral-100"
+          title="Xem bản đồ đường đi"
+          aria-label="Google Maps"
+        >
+          <GoogleMapsIcon className="size-6 sm:size-8" />
+          <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
+            Chỉ đường Google Maps
+          </span>
+        </a>
 
-      {/* Hotline Call Button */}
-      <a
-        href="tel:0902868928"
-        onClick={() => handleTrackClick("Hotline")}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-amber-600 hover:bg-amber-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
-        title="Gọi ngay cho chúng tôi"
+        {/* Hotline Call Button */}
+        <a
+          href="tel:0902868928"
+          onClick={() => handleTrackClick("Hotline")}
+          className="group relative size-11 sm:size-14 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-200"
+          title="Gọi ngay cho chúng tôi"
+          aria-label="Gọi Hotline"
+        >
+          <Phone className="size-5 sm:size-6" />
+          <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
+            Gọi Hotline: 0902.868.928
+          </span>
+        </a>
+      </div>
+
+      {/* Mobile-only Main FAB Toggle Button */}
+      <button
+        onClick={toggleOpen}
+        className={cn(
+          "sm:hidden size-12 rounded-full text-white shadow-xl flex items-center justify-center transition-all duration-300 active:scale-95 border border-white/20",
+          isOpen
+            ? "bg-neutral-800 hover:bg-neutral-900 rotate-90"
+            : "bg-amber-600 hover:bg-amber-700 animate-pulse-ring"
+        )}
+        aria-label={isOpen ? "Đóng menu liên hệ" : "Mở menu liên hệ"}
+        aria-expanded={isOpen}
       >
-        <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-        <span className="absolute right-14 sm:right-16 bg-neutral-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none hidden sm:block">
-          Gọi Hotline: 0902.868.928
-        </span>
-      </a>
+        {isOpen ? (
+          <X className="size-6" />
+        ) : (
+          <MessageCircle className="size-6" />
+        )}
+      </button>
     </div>
   );
 }
+

@@ -53,13 +53,13 @@ export function HeroHomepage() {
 
           {/* Headline */}
           <h1
-            className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] mb-6 animate-hero-text"
+            className="font-display text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.15] mb-6 animate-hero-text text-balance"
             style={{ animationDelay: "0.2s" }}
           >
-            Trung tâm hiện đại  {" "}
+            Trung tâm hiện đại{" "}
             <br className="hidden sm:block" />
             tại tỉnh Đồng Tháp{" "}
-            <span className="text-[0.85em] font-bold text-neutral-200 inline-block ml-1.5">
+            <span className="text-[0.85em] font-bold text-neutral-200 inline-block">
               (Tiền Giang Cũ)
             </span>{" "}
             <span className="text-shimmer">có sân sát hạch</span>
@@ -67,7 +67,7 @@ export function HeroHomepage() {
 
           {/* Subtext */}
           <p
-            className="text-sm sm:text-base lg:text-lg text-neutral-300 leading-relaxed mb-10 max-w-xl animate-fade-in"
+            className="text-sm sm:text-base lg:text-lg text-neutral-300 leading-relaxed mb-8 max-w-xl animate-fade-in text-balance"
             style={{ animationDelay: "0.4s" }}
           >
             Với tổng diện tích hơn{" "}
@@ -77,13 +77,13 @@ export function HeroHomepage() {
 
           {/* Quick highlights */}
           <div
-            className="flex flex-wrap gap-x-6 gap-y-2 mb-10 animate-fade-in"
+            className="flex flex-wrap gap-x-6 gap-y-2.5 mb-8 animate-fade-in text-xs sm:text-sm"
             style={{ animationDelay: "0.5s" }}
           >
-            {["Giáo viên 4 năm kinh nghiệm", "Xe đời mới, hiện đại", "Hỗ trợ thi lại miễn phí", "Tỉ lệ đậu 92%"].map(
+            {["Giáo viên nhiều năm kinh nghiệm", "Xe đời mới, hiện đại", "Hỗ trợ thi lại miễn phí", "Tỉ lệ đậu 92%"].map(
               (item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-neutral-200">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <div key={item} className="flex items-center gap-2 text-neutral-200">
+                  <CheckCircle2 className="size-4 text-amber-400 flex-shrink-0" />
                   {item}
                 </div>
               )
@@ -92,21 +92,21 @@ export function HeroHomepage() {
 
           {/* CTAs */}
           <div
-            className="flex flex-wrap gap-4 animate-slide-up"
+            className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 animate-slide-up w-full sm:w-auto"
             style={{ animationDelay: "0.6s" }}
           >
             <Link
               href="/khoa-hoc"
-              className="group inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold px-7 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/40 hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 active:scale-98 text-white font-bold px-7 py-4 rounded-xl text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/40 hover:-translate-y-0.5 w-full sm:w-auto text-center"
             >
               Xem lộ trình đào tạo
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/lien-he"
-              className="inline-flex items-center gap-2 border border-white/30 hover:border-white/60 hover:bg-white/10 text-white font-bold px-7 py-4 rounded-xl text-sm transition-all duration-300 backdrop-blur-sm hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 hover:bg-white/10 active:scale-98 text-white font-bold px-7 py-4 rounded-xl text-sm sm:text-base transition-all duration-300 backdrop-blur-sm hover:-translate-y-0.5 w-full sm:w-auto text-center"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="size-4" />
               Liên hệ tư vấn
             </Link>
           </div>

@@ -96,7 +96,7 @@ export function RegistrationForm({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
       {/* Họ và Tên */}
       <div>
         <label htmlFor="reg-full_name" className="block text-sm font-semibold text-neutral-700 mb-1.5">
@@ -110,7 +110,8 @@ export function RegistrationForm({
           type="text"
           placeholder="Nguyễn Văn An"
           autoComplete="name"
-          className={`w-full px-4 py-3 rounded-xl border bg-white text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 ${styles.focus} ${
+          aria-invalid={!!errors.full_name}
+          className={`w-full px-4 py-3 rounded-xl border bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 ${styles.focus} ${
             errors.full_name ? "border-red-400 focus:ring-red-300" : "border-neutral-200"
           }`}
           {...register("full_name")}
@@ -136,7 +137,8 @@ export function RegistrationForm({
           type="tel"
           placeholder="0901 234 567"
           autoComplete="tel"
-          className={`w-full px-4 py-3 rounded-xl border bg-white text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 ${styles.focus} ${
+          aria-invalid={!!errors.phone}
+          className={`w-full px-4 py-3 rounded-xl border bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 ${styles.focus} ${
             errors.phone ? "border-red-400 focus:ring-red-300" : "border-neutral-200"
           }`}
           {...register("phone")}
@@ -163,7 +165,8 @@ export function RegistrationForm({
           type="email"
           placeholder="example@gmail.com"
           autoComplete="email"
-          className={`w-full px-4 py-3 rounded-xl border bg-white text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 ${styles.focus} ${
+          aria-invalid={!!errors.email}
+          className={`w-full px-4 py-3 rounded-xl border bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 ${styles.focus} ${
             errors.email ? "border-red-400 focus:ring-red-300" : "border-neutral-200"
           }`}
           {...register("email")}
@@ -189,7 +192,8 @@ export function RegistrationForm({
           id="reg-message"
           rows={4}
           placeholder="Bạn muốn hỏi gì? Ví dụ: lịch học, học phí, thời gian thi bằng..."
-          className={`w-full px-4 py-3 rounded-xl border bg-white text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 resize-none ${styles.focus} ${
+          aria-invalid={!!errors.message}
+          className={`w-full px-4 py-3 rounded-xl border bg-white text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-all duration-200 focus:ring-2 resize-none ${styles.focus} ${
             errors.message ? "border-red-400 focus:ring-red-300" : "border-neutral-200"
           }`}
           {...register("message")}
@@ -215,7 +219,7 @@ export function RegistrationForm({
         id="reg-submit-btn"
         type="submit"
         disabled={submitState === "loading"}
-        className={`w-full flex items-center justify-center gap-2.5 ${styles.btn} text-white font-bold px-6 py-3.5 rounded-xl text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none`}
+        className={`w-full flex items-center justify-center gap-2.5 ${styles.btn} text-white font-bold px-6 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none cursor-pointer`}
       >
         {submitState === "loading" ? (
           <>

@@ -103,7 +103,7 @@ export function CourseCard({ course }: CourseCardProps) {
       {/* Features */}
       <div className="px-7 py-6 flex-1 flex flex-col justify-between">
         {course.features && course.features.length > 0 && (
-          <ul className="space-y-3 mb-6">
+          <ul className="flex flex-col gap-3 mb-6">
             {course.features.map((feature, i) => (
               <li key={i} className="flex items-start gap-3">
                 <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />

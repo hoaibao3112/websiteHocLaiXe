@@ -69,7 +69,7 @@ export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) 
   }, [isPlaying, isLightboxOpen, nextSlide]);
 
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       {/* Main Slide Card */}
       <div
         className="relative aspect-video w-full rounded-2xl overflow-hidden bg-neutral-900 shadow-md group border border-neutral-100/60"
@@ -82,7 +82,7 @@ export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) 
           fill
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-103"
           sizes="(max-width: 1024px) 100vw, 30vw"
-          priority
+          priority={currentIndex === 0}
         />
 
         {/* Top Gradient Overlay */}

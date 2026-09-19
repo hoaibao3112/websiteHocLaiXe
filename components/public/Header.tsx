@@ -206,16 +206,17 @@ export function Header() {
           />
 
           <div className="lg:hidden bg-white border-t border-neutral-100 shadow-xl animate-slide-down relative z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
+            <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
-                <div key={link.href} className="space-y-1">
+                <div key={link.href} className="flex flex-col gap-1">
                   {link.dropdownItems ? (
                     <>
                       <button
                         onClick={() =>
                           setIsMobileDropdownOpen(!isMobileDropdownOpen)
                         }
-                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-lg text-sm font-semibold text-neutral-700 hover:text-brand-600 hover:bg-brand-50 min-h-[48px]"
+                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-lg text-sm font-semibold text-neutral-700 hover:text-brand-600 hover:bg-brand-50 min-h-[48px] cursor-pointer"
+                        aria-expanded={isMobileDropdownOpen}
                       >
                         <span>{link.label}</span>
                         <ChevronDown
@@ -226,7 +227,7 @@ export function Header() {
                         />
                       </button>
                       {isMobileDropdownOpen && (
-                        <div className="pl-6 space-y-1">
+                        <div className="pl-6 flex flex-col gap-1">
                           {link.dropdownItems.map((subItem, subIdx) => (
                             <Link
                               key={subIdx}

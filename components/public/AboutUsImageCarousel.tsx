@@ -31,9 +31,9 @@ export function AboutUsImageCarousel() {
         src={ABOUT_US_IMAGES[currentIndex]}
         alt={`Hình ảnh giới thiệu ${currentIndex + 1}`}
         fill
-        className="object-cover transition-opacity duration-1000 ease-in-out"
+        className="object-cover transition-opacity duration-700 ease-in-out"
         sizes="(max-width: 1024px) 100vw, 40vw"
-        priority
+        priority={currentIndex === 0}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
       
