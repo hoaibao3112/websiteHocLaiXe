@@ -39,21 +39,21 @@ export function HeroHomepage() {
       <div className="absolute top-1/4 right-[10%] w-72 h-72 bg-amber-500/10 rounded-full blur-3xl animate-float pointer-events-none" />
       <div className="absolute bottom-1/3 right-[25%] w-48 h-48 bg-orange-600/10 rounded-full blur-2xl animate-float-slow pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 z-10 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-14 sm:pt-32 sm:pb-24 z-10 w-full">
         <div className="max-w-2xl xl:max-w-3xl">
 
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-8 animate-fade-in backdrop-blur-sm"
+            className="inline-flex items-center gap-1.5 sm:gap-2 bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[11px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full uppercase tracking-wider sm:tracking-widest mb-6 sm:mb-8 animate-fade-in backdrop-blur-sm"
             style={{ animationDelay: "0.1s" }}
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="size-3.5" />
             Trung tâm đào tạo lái xe Chiến Thắng TG
           </div>
 
           {/* Headline */}
           <h1
-            className="font-display text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.15] mb-6 animate-hero-text text-balance"
+            className="font-display text-2xl sm:text-4xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.2] sm:leading-[1.15] mb-4 sm:mb-6 animate-hero-text text-balance"
             style={{ animationDelay: "0.2s" }}
           >
             Trung tâm hiện đại{" "}
@@ -67,7 +67,7 @@ export function HeroHomepage() {
 
           {/* Subtext */}
           <p
-            className="text-sm sm:text-base lg:text-lg text-neutral-300 leading-relaxed mb-8 max-w-xl animate-fade-in text-balance"
+            className="text-xs sm:text-base lg:text-lg text-neutral-300 leading-relaxed mb-6 sm:mb-8 max-w-xl animate-fade-in text-balance"
             style={{ animationDelay: "0.4s" }}
           >
             Với tổng diện tích hơn{" "}
@@ -77,14 +77,14 @@ export function HeroHomepage() {
 
           {/* Quick highlights */}
           <div
-            className="flex flex-wrap gap-x-6 gap-y-2.5 mb-8 animate-fade-in text-xs sm:text-sm"
+            className="grid grid-cols-2 gap-x-3 gap-y-2 mb-6 sm:mb-8 animate-fade-in text-xs sm:text-sm"
             style={{ animationDelay: "0.5s" }}
           >
             {["Giáo viên nhiều năm kinh nghiệm", "Xe đời mới, hiện đại", "Hỗ trợ thi lại miễn phí", "Tỉ lệ đậu 92%"].map(
               (item) => (
-                <div key={item} className="flex items-center gap-2 text-neutral-200">
-                  <CheckCircle2 className="size-4 text-amber-400 flex-shrink-0" />
-                  {item}
+                <div key={item} className="flex items-center gap-1.5 sm:gap-2 text-neutral-200">
+                  <CheckCircle2 className="size-3.5 sm:size-4 text-amber-400 flex-shrink-0" />
+                  <span className="leading-snug">{item}</span>
                 </div>
               )
             )}
@@ -92,19 +92,19 @@ export function HeroHomepage() {
 
           {/* CTAs */}
           <div
-            className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 animate-slide-up w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-slide-up w-full sm:w-auto"
             style={{ animationDelay: "0.6s" }}
           >
             <Link
               href="/khoa-hoc"
-              className="group inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 active:scale-98 text-white font-bold px-7 py-4 rounded-xl text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/40 hover:-translate-y-0.5 w-full sm:w-auto text-center"
+              className="group inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 active:scale-98 text-white font-bold px-7 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base transition-all duration-300 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/40 hover:-translate-y-0.5 w-full sm:w-auto text-center"
             >
               Xem lộ trình đào tạo
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/lien-he"
-              className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 hover:bg-white/10 active:scale-98 text-white font-bold px-7 py-4 rounded-xl text-sm sm:text-base transition-all duration-300 backdrop-blur-sm hover:-translate-y-0.5 w-full sm:w-auto text-center"
+              className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 hover:bg-white/10 active:scale-98 text-white font-bold px-7 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base transition-all duration-300 backdrop-blur-sm hover:-translate-y-0.5 w-full sm:w-auto text-center"
             >
               <Phone className="size-4" />
               Liên hệ tư vấn
@@ -113,8 +113,8 @@ export function HeroHomepage() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-neutral-400 animate-bounce-gentle">
+      {/* Scroll indicator (desktop only to prevent mobile overlap) */}
+      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-neutral-400 animate-bounce-gentle">
         <span className="text-[10px] uppercase tracking-widest">Cuộn xuống</span>
         <ChevronRight className="w-4 h-4 rotate-90" />
       </div>

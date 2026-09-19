@@ -65,7 +65,7 @@ export function CourseCard({ course }: CourseCardProps) {
   };
 
   return (
-    <div className="hover-lift card-underline bg-white rounded-3xl border border-neutral-100 overflow-hidden group flex flex-col h-full shadow-sm hover:shadow-2xl transition-all duration-500">
+    <div className="hover-lift card-underline bg-white rounded-2xl sm:rounded-3xl border border-neutral-100 overflow-hidden group flex flex-col h-full shadow-sm hover:shadow-2xl transition-all duration-500">
       {/* Badge */}
       {course.badge && (
         <div className="absolute top-4 right-4 z-10">
@@ -76,8 +76,8 @@ export function CourseCard({ course }: CourseCardProps) {
       )}
 
       {/* Card header */}
-      <div className={`bg-gradient-to-br ${style.header} p-7 border-b`}>
-        <div className="flex items-center justify-between mb-3">
+      <div className={`bg-gradient-to-br ${style.header} p-5 sm:p-7 border-b`}>
+        <div className="flex items-center justify-between mb-2 sm:mb-3">
           <span className={`inline-flex items-center gap-1.5 bg-gradient-to-r ${style.badge} text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-md`}>
             <Tag className="w-3.5 h-3.5" />
             {course.class_code.toUpperCase() === "NH"
@@ -87,13 +87,13 @@ export function CourseCard({ course }: CourseCardProps) {
                 : `Hạng ${course.class_code}`}
           </span>
         </div>
-        <h3 className="text-xl font-black text-neutral-900 mt-4 group-hover:text-amber-700 transition-colors leading-snug">
+        <h3 className="text-lg sm:text-xl font-black text-neutral-900 mt-2 sm:mt-4 group-hover:text-amber-700 transition-colors leading-snug">
           {course.name}
         </h3>
       </div>
 
       {/* Pricing */}
-      <div className="px-7 py-4 border-b border-neutral-100/60 bg-neutral-50/30 flex items-center justify-between">
+      <div className="px-5 py-3.5 sm:px-7 sm:py-4 border-b border-neutral-100/60 bg-neutral-50/30 flex items-center justify-between">
         <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider">Học phí:</span>
         <span className={`text-xs font-black ${style.text} px-3.5 py-1.5 bg-white rounded-full border border-neutral-150 shadow-sm uppercase tracking-wider`}>
           Liên hệ báo giá
@@ -101,11 +101,11 @@ export function CourseCard({ course }: CourseCardProps) {
       </div>
 
       {/* Features */}
-      <div className="px-7 py-6 flex-1 flex flex-col justify-between">
+      <div className="px-5 py-5 sm:px-7 sm:py-6 flex-1 flex flex-col justify-between">
         {course.features && course.features.length > 0 && (
-          <ul className="flex flex-col gap-3 mb-6">
+          <ul className="flex flex-col gap-2.5 sm:gap-3 mb-5 sm:mb-6">
             {course.features.map((feature, i) => (
-              <li key={i} className="flex items-start gap-3">
+              <li key={i} className="flex items-start gap-2.5 sm:gap-3">
                 <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <span className="text-xs sm:text-sm text-neutral-600 font-medium leading-relaxed">{feature}</span>
               </li>
@@ -116,7 +116,7 @@ export function CourseCard({ course }: CourseCardProps) {
         {/* CTA Button */}
         <Link
           href={`/khoa-hoc/${getSlug(course.class_code)}`}
-          className="group/btn flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-neutral-950/10 hover:shadow-neutral-900/20 hover:-translate-y-0.5 mt-auto"
+          className="group/btn flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white font-extrabold px-6 py-3.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-neutral-950/10 hover:shadow-neutral-900/20 hover:-translate-y-0.5 mt-auto min-h-[44px]"
         >
           <span>CHI TIẾT KHÓA HỌC</span>
           <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />

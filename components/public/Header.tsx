@@ -75,15 +75,15 @@ export function Header() {
       )}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
             <Image
               src="/logo1.jpg"
               alt="Logo Chiến Thắng"
               width={160}
               height={50}
-              className="object-contain transition-transform group-hover:scale-102 duration-300 h-14 w-auto"
+              className="object-contain transition-transform group-hover:scale-102 duration-300 h-10 sm:h-14 w-auto rounded-md"
               priority
             />
           </Link>
@@ -165,7 +165,7 @@ export function Header() {
             })}
           </div>
 
-          {/* Phone call CTA & Login */}
+          {/* Phone call CTA & Login (Desktop) */}
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:0902868928"
@@ -183,15 +183,28 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMenu}
-            className="lg:hidden p-2.5 rounded-lg text-neutral-700 hover:bg-neutral-100 min-w-[44px] min-h-[44px] flex items-center justify-center"
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Right Actions: Quick Call Button + Menu Toggle */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href="tel:0902868928"
+              className="flex items-center gap-1.5 bg-amber-600 active:bg-amber-700 text-white text-xs font-bold px-3 py-2 rounded-lg shadow-sm"
+              aria-label="Gọi hotline 0902.868.928"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              <span>Gọi ngay</span>
+            </a>
+            <button
+              onClick={toggleMenu}
+              className="p-2 rounded-lg text-neutral-700 hover:bg-neutral-100 min-w-[40px] min-h-[40px] flex items-center justify-center cursor-pointer"
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </nav>
 

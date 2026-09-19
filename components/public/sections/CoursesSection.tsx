@@ -31,30 +31,30 @@ interface CoursesSectionProps {
 
 export function CoursesSection({ courses }: CoursesSectionProps) {
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+    <section className="py-12 sm:py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-40 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="fade-in" duration={800}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
               <TrendingUp className="w-3.5 h-3.5" />
               Chương trình đào tạo
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a] mb-4">
+            <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#1e3a8a] mb-3 sm:mb-4">
               Các khóa học tại Chiến Thắng
             </h2>
-            <p className="text-neutral-500 text-sm max-w-xl mx-auto">
+            <p className="text-neutral-500 text-xs sm:text-sm max-w-xl mx-auto">
               Đầy đủ các hạng bằng lái theo chuẩn Bộ Giao thông Vận tải, phù hợp cho mọi nhu cầu.
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-5 rounded-full" />
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-4 sm:mt-5 rounded-full" />
           </div>
         </ScrollReveal>
 
         {courses.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
             {courses.map((course, index) => (
               <ScrollReveal
                 key={course.id}

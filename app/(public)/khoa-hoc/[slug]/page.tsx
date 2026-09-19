@@ -176,30 +176,30 @@ export default async function CourseDetailPage({ params }: PageProps) {
       </section>
 
       {/* 2. Main Content Grid */}
-      <section className="py-16">
+      <section className="py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-10">
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
 
             {/* Left Column: Details (span 7) */}
-            <div className="lg:col-span-7 flex flex-col gap-10 animate-slide-up">
+            <div className="lg:col-span-7 flex flex-col gap-6 sm:gap-10 animate-slide-up order-2 lg:order-1">
 
               {/* Introduction Card */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-xs space-y-4">
-                <h2 className="text-xl font-bold text-[#1e3a8a] flex items-center gap-2">
+              <div className="bg-white rounded-2xl border border-neutral-200/60 p-5 sm:p-8 shadow-xs space-y-4">
+                <h2 className="text-lg sm:text-xl font-bold text-[#1e3a8a] flex items-center gap-2">
                   <VehicleIcon className="w-5 h-5 text-amber-500" />
                   Mô tả khóa học
                 </h2>
-                <p className="text-neutral-600 text-sm leading-relaxed">
+                <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed">
                   {course.description}
                 </p>
-                <p className="text-neutral-600 text-sm leading-relaxed">
+                <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed">
                   {detailsExtra?.target}
                 </p>
               </div>
 
               {/* Course Parameters Grid */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-xs">
-                <h2 className="text-xl font-bold text-[#1e3a8a] mb-6 flex items-center gap-2">
+              <div className="bg-white rounded-2xl border border-neutral-200/60 p-5 sm:p-8 shadow-xs">
+                <h2 className="text-lg sm:text-xl font-bold text-[#1e3a8a] mb-5 sm:mb-6 flex items-center gap-2">
                   <FileText className="w-5 h-5 text-amber-500" />
                   Thông tin đào tạo chi tiết
                 </h2>
@@ -329,16 +329,16 @@ export default async function CourseDetailPage({ params }: PageProps) {
             </div>
 
             {/* Right Column: Pricing & Sidebar Form (span 5) */}
-            <div className="lg:col-span-5 flex flex-col gap-8">
+            <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-8 order-1 lg:order-2">
 
               {/* Sticky Sidebar Info */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-md space-y-6 lg:sticky lg:top-28">
+              <div className="bg-white rounded-2xl border border-neutral-200/60 p-5 sm:p-8 shadow-md space-y-5 sm:space-y-6 lg:sticky lg:top-28">
 
                 {/* Course Image Carousel */}
                 <CourseImageCarousel defaultImage={course.image_url} />
 
                 {/* Price Display */}
-                <div className="border-y border-neutral-100 py-5">
+                <div className="border-y border-neutral-100 py-4 sm:py-5">
                   <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">
                     Học phí khóa học
                   </div>

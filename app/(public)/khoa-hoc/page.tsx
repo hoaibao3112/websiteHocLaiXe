@@ -48,9 +48,9 @@ export default async function KhoaHocPage() {
   const courses = await getCourses();
 
   return (
-    <div className="pt-20 bg-white overflow-x-hidden">
+    <div className="pt-16 sm:pt-20 bg-white overflow-x-hidden">
       {/* Hero Header */}
-      <section className="relative bg-[#1f2937] text-white py-20 px-4 overflow-hidden">
+      <section className="relative bg-[#1f2937] text-white py-12 sm:py-20 px-4 overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0">
           <Image
@@ -66,17 +66,17 @@ export default async function KhoaHocPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal animation="fade-in">
             {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-6 uppercase tracking-wider font-semibold">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-4 sm:mb-6 uppercase tracking-wider font-semibold">
               <Link href="/" className="hover:text-white transition-colors">
                 Trang chủ
               </Link>
               <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
               <span className="text-amber-400">Khóa học đào tạo</span>
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-4 uppercase leading-tight text-white">
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-3 sm:mb-4 uppercase leading-tight text-white">
               CHƯƠNG TRÌNH ĐÀO TẠO LÁI XE
             </h1>
-            <p className="text-neutral-350 text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-neutral-350 text-xs sm:text-base max-w-2xl leading-relaxed">
               Lộ trình đào tạo chuẩn quy định, cam kết tay lái vững vàng cùng tỉ lệ đỗ thi sát hạch vượt trội tại Đồng Tháp.
             </p>
           </ScrollReveal>
@@ -84,25 +84,25 @@ export default async function KhoaHocPage() {
       </section>
 
       {/* Courses Grid Section */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 sm:py-24 bg-white relative">
         <div className="absolute top-1/4 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none animate-float" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade-in">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
+            <div className="text-center mb-10 sm:mb-16">
+              <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-3 sm:mb-4">
                 <Sparkles className="w-3.5 h-3.5 fill-amber-500" />
                 Lựa chọn tối ưu
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a]">
+              <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#1e3a8a]">
                 Các Khóa Học Tuyển Sinh Mới
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-4 rounded-full" />
+              <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-3 sm:mt-4 rounded-full" />
             </div>
           </ScrollReveal>
 
           {courses.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
               {courses.map((course, idx) => (
                 <ScrollReveal key={course.id} animation="slide-up" delay={idx * 150}>
                   <CourseCard course={course} />

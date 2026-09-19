@@ -10,24 +10,24 @@ const STATS = [
 
 export function StatsSection() {
   return (
-    <section className="relative -mt-12 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <section className="relative -mt-6 sm:-mt-12 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {STATS.map((stat, index) => (
           <ScrollReveal key={stat.label} animation="scale-in" delay={index * 100}>
-            <div className="hover-lift card-underline bg-white rounded-2xl shadow-lg border border-neutral-100/80 p-6 text-center relative overflow-hidden group">
+            <div className="hover-lift card-underline bg-white rounded-xl sm:rounded-2xl shadow-lg border border-neutral-100/80 p-3.5 sm:p-6 text-center relative overflow-hidden group">
               {/* Background gradient on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
               {/* Icon */}
-              <div className="text-3xl mb-3">{stat.icon}</div>
+              <div className="text-2xl sm:text-3xl mb-1.5 sm:mb-3">{stat.icon}</div>
 
               {/* Counter */}
-              <div className={`text-3xl xl:text-4xl font-extrabold bg-gradient-to-br ${stat.color} bg-clip-text text-transparent mb-1 tabular-nums`}>
+              <div className={`text-2xl sm:text-3xl xl:text-4xl font-extrabold bg-gradient-to-br ${stat.color} bg-clip-text text-transparent mb-1 tabular-nums`}>
                 <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2000} />
               </div>
 
               {/* Label */}
-              <p className="text-neutral-500 text-xs font-medium leading-snug">{stat.label}</p>
+              <p className="text-neutral-500 text-[11px] sm:text-xs font-medium leading-snug">{stat.label}</p>
             </div>
           </ScrollReveal>
         ))}

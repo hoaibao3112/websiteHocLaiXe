@@ -4,22 +4,22 @@ import { ScrollReveal } from "@/components/public/ScrollReveal";
 
 export function FacilitiesSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="fade-in">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-3 sm:gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 bg-slate-50 text-slate-600 border border-slate-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-slate-50 text-slate-600 border border-slate-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-3 sm:mb-4">
                 <MapPin className="w-3.5 h-3.5" />
                 Cơ sở vật chất
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a]">
+              <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#1e3a8a]">
                 Hạ tầng hiện đại
               </h2>
-              <p className="text-neutral-400 text-sm mt-2 max-w-sm">
+              <p className="text-neutral-400 text-xs sm:text-sm mt-1.5 sm:mt-2 max-w-sm">
                 Hệ thống sân tập và phòng học đạt tiêu chuẩn Bộ Giao thông Vận tải.
               </p>
-              <div className="w-16 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mt-4 rounded-full" />
+              <div className="w-16 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mt-3 sm:mt-4 rounded-full" />
             </div>
             <a
               href="#"
@@ -32,10 +32,10 @@ export function FacilitiesSection() {
         </ScrollReveal>
 
         {/* Photo grid */}
-        <div className="grid lg:grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-2 gap-3 sm:gap-5">
           {/* Left large photo */}
           <ScrollReveal animation="slide-right" className="h-full">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-auto min-h-[380px] shadow-xl img-zoom group h-full">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-auto min-h-[260px] sm:min-h-[380px] shadow-lg sm:shadow-xl img-zoom group h-full">
               <Image
                 src="/gallery-1.jpg"
                 alt="Sân sát hạch chính thức"

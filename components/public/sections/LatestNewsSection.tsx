@@ -10,26 +10,26 @@ interface LatestNewsSectionProps {
 
 export function LatestNewsSection({ latestNews }: LatestNewsSectionProps) {
   return (
-    <section className="py-24 bg-slate-50 relative overflow-hidden">
+    <section className="py-12 sm:py-24 bg-slate-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="fade-in">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-14 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-14 gap-3 sm:gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-3 sm:mb-4">
                 <Sparkles className="w-3.5 h-3.5 fill-amber-500" />
                 Tin tức mới nhất
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a]">
+              <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#1e3a8a]">
                 Tin tức & Cẩm nang lái xe
               </h2>
-              <p className="text-neutral-400 text-sm mt-2 max-w-sm">
+              <p className="text-neutral-400 text-xs sm:text-sm mt-1.5 sm:mt-2 max-w-sm">
                 Cập nhật tin tức sự kiện mới nhất và những kinh nghiệm bổ ích khi học lái xe.
               </p>
-              <div className="w-16 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mt-4 rounded-full" />
+              <div className="w-16 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mt-3 sm:mt-4 rounded-full" />
             </div>
             <Link
               href="/tin-tuc"
@@ -42,7 +42,7 @@ export function LatestNewsSection({ latestNews }: LatestNewsSectionProps) {
         </ScrollReveal>
 
         {latestNews.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
             {latestNews.map((item, index) => (
               <ScrollReveal
                 key={item.id}
@@ -50,7 +50,7 @@ export function LatestNewsSection({ latestNews }: LatestNewsSectionProps) {
                 delay={index * 150}
                 className="flex flex-col"
               >
-                <article className="hover-lift bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group h-full">
+                <article className="hover-lift bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group h-full">
                   <div>
                     {/* Image & Category Tag */}
                     <div className="relative aspect-video overflow-hidden bg-slate-50 img-zoom border-b border-neutral-100/60">

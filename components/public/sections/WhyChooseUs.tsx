@@ -30,33 +30,33 @@ const WHY_US = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24">
+    <section className="py-12 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="fade-in">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
               <Star className="w-3.5 h-3.5 fill-amber-500" />
               Tại sao chọn chúng tôi
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1e3a8a] mb-4">
+            <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#1e3a8a] mb-3 sm:mb-4">
               Ưu điểm nổi bật của Chiến Thắng TG
             </h2>
-            <p className="text-neutral-500 text-sm max-w-xl mx-auto">
+            <p className="text-neutral-500 text-xs sm:text-sm max-w-xl mx-auto">
               Cam kết đào tạo chuyên nghiệp, an toàn và hiệu quả nhất cho mọi học viên.
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-5 rounded-full" />
+            <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-4 sm:mt-5 rounded-full" />
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {WHY_US.map((item, index) => {
             const Icon = item.icon;
             return (
               <ScrollReveal key={item.title} animation="slide-up" delay={index * 120}>
-                <div className="hover-lift card-underline group bg-white rounded-2xl border border-neutral-100 shadow-sm hover:shadow-xl transition-shadow duration-500 p-7 h-full flex flex-col">
+                <div className="hover-lift card-underline group bg-white rounded-2xl border border-neutral-100 shadow-sm hover:shadow-xl transition-shadow duration-500 p-5 sm:p-7 h-full flex flex-col">
                   {/* Icon bubble */}
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                    <Icon className="w-7 h-7 text-white" />
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 sm:mb-5 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
 
                   <h3 className="font-bold text-neutral-900 text-base mb-2 group-hover:text-amber-700 transition-colors">

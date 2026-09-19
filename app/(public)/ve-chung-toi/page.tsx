@@ -100,7 +100,7 @@ export default function VeChungToiPage() {
               </ScrollReveal>
 
               {/* Hạng badges */}
-              <div className="grid grid-cols-3 gap-4 py-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 py-3 sm:py-4">
                 {[
                   { label: "Hạng B (Tự động)", icon: Car, desc: "Xe ô tô số tự động" },
                   { label: "Hạng B (Số sàn)", icon: Car, desc: "Xe ô tô số sàn" },
@@ -113,8 +113,8 @@ export default function VeChungToiPage() {
                         <div className="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-amber-500/20">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <span className="text-xs font-bold text-neutral-800 mt-3 block">{item.label}</span>
-                        <span className="text-[10px] text-neutral-400 mt-1 block">{item.desc}</span>
+                        <span className="text-xs font-bold text-neutral-800 mt-2 sm:mt-3 block">{item.label}</span>
+                        <span className="text-[10px] text-neutral-400 mt-0.5 sm:mt-1 block">{item.desc}</span>
                       </div>
                     </ScrollReveal>
                   );
@@ -123,7 +123,7 @@ export default function VeChungToiPage() {
 
               {/* Address Box */}
               <ScrollReveal animation="slide-up" delay={200}>
-                <div className="flex items-start gap-4 bg-gradient-to-r from-amber-500/5 to-orange-500/5 border-l-4 border-amber-500 p-5 rounded-r-2xl shadow-xs">
+                <div className="flex items-start gap-3 sm:gap-4 bg-gradient-to-r from-amber-500/5 to-orange-500/5 border-l-4 border-amber-500 p-4 sm:p-5 rounded-r-2xl shadow-xs">
                   <div className="w-8 h-8 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
                     <MapPin className="w-4 h-4" />
                   </div>
@@ -140,7 +140,7 @@ export default function VeChungToiPage() {
             </div>
 
             {/* Right Graphics (span 5) */}
-            <div className="lg:col-span-5 relative">
+            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
               {/* Image Carousel */}
               <ScrollReveal animation="slide-left" className="h-full">
                 <AboutUsImageCarousel />
@@ -148,15 +148,15 @@ export default function VeChungToiPage() {
 
               {/* Floating Badge Card */}
               <ScrollReveal animation="scale-in" delay={300}>
-                <div className="absolute left-6 bottom-[-28px] bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-neutral-100 p-5 max-w-[280px] flex gap-4 animate-glow">
-                  <div className="w-12 h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/30">
-                    <Award className="w-6 h-6" />
+                <div className="relative sm:absolute left-0 sm:left-6 mt-4 sm:mt-0 bottom-0 sm:bottom-[-28px] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl sm:shadow-2xl border border-neutral-100 p-4 sm:p-5 max-w-full sm:max-w-[280px] flex gap-3 sm:gap-4 animate-glow">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/30">
+                    <Award className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
                     <h4 className="text-xs font-black text-neutral-900 uppercase tracking-wider">
                       Đạt chuẩn Bộ GTVT
                     </h4>
-                    <p className="text-[10px] text-neutral-500 leading-relaxed mt-1 font-medium">
+                    <p className="text-[10px] text-neutral-500 leading-relaxed mt-0.5 sm:mt-1 font-medium">
                       Hệ thống xe cảm biến hiện đại kết hợp sân sát hạch chính thức đạt tiêu chuẩn cao nhất.
                     </p>
                   </div>

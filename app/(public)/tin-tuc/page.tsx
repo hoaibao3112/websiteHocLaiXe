@@ -115,9 +115,9 @@ export default async function NewsListingPage({ searchParams }: PageProps) {
   const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
 
   return (
-    <main className="py-20 bg-white min-h-screen overflow-x-hidden">
+    <main className="py-12 sm:py-20 bg-white min-h-screen overflow-x-hidden">
       {/* Dark Breadcrumb and Header Banner */}
-      <section className="relative bg-[#1f2937] text-white py-20 px-4 mb-16 overflow-hidden">
+      <section className="relative bg-[#1f2937] text-white py-12 sm:py-20 px-4 mb-8 sm:mb-16 overflow-hidden">
         {/* Background Overlay */}
         <div className="absolute inset-0">
           <Image
@@ -133,17 +133,17 @@ export default async function NewsListingPage({ searchParams }: PageProps) {
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal animation="fade-in">
             {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-6 uppercase tracking-wider font-semibold">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-4 sm:mb-6 uppercase tracking-wider font-semibold">
               <Link href="/" className="hover:text-white transition-colors">
                 Trang chủ
               </Link>
               <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
               <span className="text-amber-400">Tin tức & Sự kiện</span>
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-4 uppercase leading-tight text-white">
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-1 mb-3 sm:mb-4 uppercase leading-tight text-white">
               TIN TỨC & SỰ KIỆN CHIẾN THẮNG
             </h1>
-            <p className="text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+            <p className="text-neutral-300 text-xs sm:text-base max-w-2xl leading-relaxed">
               Cập nhật quy định mới, mẹo thi sát hạch lý thuyết & thực hành dễ đỗ, và các hoạt động sôi nổi từ trung tâm.
             </p>
           </ScrollReveal>
@@ -151,14 +151,14 @@ export default async function NewsListingPage({ searchParams }: PageProps) {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column: Sidebar Filters (span 4) */}
-          <aside className="lg:col-span-4 space-y-8">
+          {/* Left Column: Sidebar Filters (desktop first, mobile after grid) */}
+          <aside className="lg:col-span-4 space-y-6 sm:space-y-8 order-2 lg:order-1">
             
             {/* Search Box */}
             <ScrollReveal animation="slide-right">
-              <div className="bg-slate-50 rounded-2xl border border-neutral-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-50 rounded-2xl border border-neutral-100 p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xs font-black text-neutral-400 uppercase tracking-widest border-b border-neutral-200/60 pb-3.5 mb-5 flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-amber-500 fill-amber-500" />
                   Tìm kiếm bài viết
@@ -252,13 +252,40 @@ export default async function NewsListingPage({ searchParams }: PageProps) {
           </aside>
 
           {/* Right Column: News Grid & Pagination (span 8) */}
-          <div className="lg:col-span-8 space-y-10">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-10 order-1 lg:order-2">
+            {/* Mobile Category Horizontal Scroll */}
+            <div className="flex lg:hidden overflow-x-auto no-scrollbar gap-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+              <Link
+                href="/tin-tuc"
+                className={`whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-bold transition-all shrink-0 ${
+                  !currentCategory
+                    ? "bg-amber-600 text-white shadow-sm"
+                    : "bg-slate-100 text-neutral-600 hover:bg-slate-200"
+                }`}
+              >
+                Tất cả ({categories.reduce((acc, cat) => acc + cat.count, 0)})
+              </Link>
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={`/tin-tuc?category=${cat.slug}`}
+                  className={`whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-bold transition-all shrink-0 ${
+                    currentCategory === cat.slug
+                      ? "bg-amber-600 text-white shadow-sm"
+                      : "bg-slate-100 text-neutral-600 hover:bg-slate-200"
+                  }`}
+                >
+                  {cat.name} ({cat.count})
+                </Link>
+              ))}
+            </div>
+
             {news.length > 0 ? (
               <div>
-                <div className="grid sm:grid-cols-2 gap-8">
+                <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
                   {news.map((item, idx) => (
                     <ScrollReveal key={item.id} animation="slide-up" delay={idx * 100}>
-                      <article className="hover-lift card-underline bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group h-full">
+                      <article className="hover-lift card-underline bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group h-full">
                         <div>
                           {/* Image & tag */}
                           <div className="relative aspect-video overflow-hidden bg-slate-50 img-zoom border-b border-neutral-100/60">
