@@ -136,150 +136,204 @@ export default async function CourseDetailPage({ params }: PageProps) {
   }[classCode as "B01" | "B" | "C1" | "A1" | "A" | "NH"];
 
   return (
-    <div className="pt-20 bg-neutral-50/50 min-h-screen">
+    <div className="pt-16 sm:pt-20 bg-neutral-50/50 min-h-screen pb-12 sm:pb-16 overflow-x-hidden">
       {/* 1. Breadcrumb & Header */}
-      <section className="bg-[#1f2937] text-white py-14 px-4 animate-fade-in">
+      <section className="bg-[#1f2937] text-white py-8 sm:py-12 px-4 border-b border-neutral-800">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 text-sm text-neutral-400 mb-4">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-neutral-400 mb-3 sm:mb-4">
             <Link href="/" className="hover:text-white transition-colors">
               Trang chủ
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
             <Link href="/khoa-hoc" className="hover:text-white transition-colors">
               Khóa học
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-neutral-200">
+            <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
+            <span className="text-amber-400 font-semibold">
               {course.class_code.toUpperCase() === "NH"
                 ? "Nâng Hạng"
                 : course.class_code.toUpperCase() === "B01"
-                  ? "Hạng B"
+                  ? "Hạng B (Số tự động)"
                   : `Hạng ${course.class_code}`}
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 mb-2">
-            <span className="inline-flex items-center gap-1 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+          <div className="flex flex-wrap items-center gap-2 mb-2.5">
+            <span className="inline-flex items-center gap-1 bg-amber-500 text-neutral-950 text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider">
               Khóa học sát hạch
             </span>
             {course.badge && (
-              <span className="bg-[#1e3a8a] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <span className="bg-blue-600 text-white text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                 {course.badge}
               </span>
             )}
           </div>
 
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             {course.name}
           </h1>
         </div>
       </section>
 
       {/* 2. Main Content Grid */}
-      <section className="py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
+      <section className="py-6 sm:py-12">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-start">
 
-            {/* Left Column: Details (span 7) */}
-            <div className="lg:col-span-7 flex flex-col gap-6 sm:gap-10 animate-slide-up order-2 lg:order-1">
+            {/* Right Column (Sidebar) -> Displayed FIRST on mobile (order-1), sticky on desktop (order-2) */}
+            <div className="lg:col-span-5 w-full min-w-0 flex flex-col gap-4 sm:gap-6 order-1 lg:order-2">
+
+              {/* Sticky Card */}
+              <div className="bg-white rounded-2xl border border-neutral-200/80 p-3.5 sm:p-6 shadow-sm space-y-4 sm:space-y-5 lg:sticky lg:top-24 w-full min-w-0">
+
+                {/* Course Image Carousel */}
+                <CourseImageCarousel defaultImage={course.image_url} />
+
+                {/* Price Display */}
+                <div className="border-t border-neutral-100 pt-3 sm:pt-4">
+                  <div className="text-[10px] sm:text-xs font-bold text-neutral-400 uppercase tracking-wider mb-1.5">
+                    Học phí khóa học
+                  </div>
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-900 text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-xl border border-amber-200/80 uppercase tracking-wide">
+                      Liên hệ để nhận báo giá tốt nhất
+                    </span>
+                  </div>
+                </div>
+
+                {/* Features points check */}
+                <ul className="space-y-2 sm:space-y-2.5 text-xs text-neutral-600 font-semibold border-t border-neutral-100 pt-3 sm:pt-4">
+                  <li className="flex gap-2 items-start">
+                    <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <span>Cam kết trọn gói học phí, không phát sinh chi phí xăng xe, sân tập.</span>
+                  </li>
+                  <li className="flex gap-2 items-start">
+                    <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <span>Học thực hành 1 kèm 1 với giáo viên tận tâm, xe đời mới 100%.</span>
+                  </li>
+                  <li className="flex gap-2 items-start">
+                    <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                    <span>Đào tạo tại Đồng Tháp (Tiền Giang Cũ), thi sát hạch tại Cần Thơ.</span>
+                  </li>
+                </ul>
+
+                {/* Direct Contact Buttons */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                  <a
+                    href="https://zalo.me/0902868928"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 text-center bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-sm active:scale-98 uppercase tracking-wider"
+                  >
+                    <span>Đăng ký qua Zalo</span>
+                  </a>
+                  <a
+                    href="tel:0902868928"
+                    className="flex items-center justify-center gap-2 text-center border border-amber-600/30 bg-amber-50/60 hover:bg-amber-100 active:bg-amber-200 text-amber-900 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all uppercase tracking-wider active:scale-98"
+                  >
+                    <Phone className="w-4 h-4 text-amber-700" />
+                    <span>0902.868.928</span>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Left Column: Details (order-2 on mobile, order-1 on desktop) */}
+            <div className="lg:col-span-7 w-full min-w-0 flex flex-col gap-4 sm:gap-6 order-2 lg:order-1">
+
+              {/* Course Parameters 2x2 Grid */}
+              <div className="bg-white rounded-2xl border border-neutral-200/80 p-4 sm:p-6 shadow-xs">
+                <h2 className="text-base sm:text-lg font-bold text-[#1e3a8a] mb-3 sm:mb-4 flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-amber-500" />
+                  Thông tin đào tạo cốt lõi
+                </h2>
+
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
+                  {/* Item 1: Duration */}
+                  <div className="p-3 bg-amber-50/50 rounded-xl border border-amber-100/60 flex flex-col justify-between min-w-0">
+                    <div className="flex items-center gap-1.5 text-amber-700 mb-1">
+                      <Clock className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+                        Thời gian học
+                      </span>
+                    </div>
+                    <p className="text-neutral-900 font-bold text-xs sm:text-sm mt-0.5">
+                      {detailsExtra?.duration}
+                    </p>
+                  </div>
+
+                  {/* Item 2: Vehicles */}
+                  <div className="p-3 bg-amber-50/50 rounded-xl border border-amber-100/60 flex flex-col justify-between min-w-0">
+                    <div className="flex items-center gap-1.5 text-amber-700 mb-1">
+                      <VehicleIcon className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+                        Phương tiện tập
+                      </span>
+                    </div>
+                    <p className="text-neutral-900 font-bold text-xs sm:text-sm mt-0.5 leading-snug">
+                      {detailsExtra?.vehicleType}
+                    </p>
+                  </div>
+
+                  {/* Item 3: Requirements */}
+                  <div className="p-3 bg-amber-50/50 rounded-xl border border-amber-100/60 flex flex-col justify-between min-w-0">
+                    <div className="flex items-center gap-1.5 text-amber-700 mb-1">
+                      <UserCheck className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+                        Điều kiện học
+                      </span>
+                    </div>
+                    <p className="text-neutral-900 font-bold text-xs sm:text-sm mt-0.5 leading-snug">
+                      {detailsExtra?.requirements}
+                    </p>
+                  </div>
+
+                  {/* Item 4: Location */}
+                  <div className="p-3 bg-amber-50/50 rounded-xl border border-amber-100/60 flex flex-col justify-between min-w-0">
+                    <div className="flex items-center gap-1.5 text-amber-700 mb-1">
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+                        Địa điểm học & thi
+                      </span>
+                    </div>
+                    <p className="text-neutral-900 font-bold text-xs sm:text-sm mt-0.5 leading-snug">
+                      Mỹ Thành, Đồng Tháp & Cần Thơ
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               {/* Introduction Card */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-5 sm:p-8 shadow-xs space-y-4">
-                <h2 className="text-lg sm:text-xl font-bold text-[#1e3a8a] flex items-center gap-2">
-                  <VehicleIcon className="w-5 h-5 text-amber-500" />
+              <div className="bg-white rounded-2xl border border-neutral-200/80 p-4 sm:p-6 shadow-xs space-y-3">
+                <h2 className="text-base sm:text-lg font-bold text-[#1e3a8a] flex items-center gap-2">
+                  <VehicleIcon className="w-4 h-4 text-amber-500" />
                   Mô tả khóa học
                 </h2>
                 <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed">
                   {course.description}
                 </p>
-                <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed">
-                  {detailsExtra?.target}
-                </p>
-              </div>
-
-              {/* Course Parameters Grid */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-5 sm:p-8 shadow-xs">
-                <h2 className="text-lg sm:text-xl font-bold text-[#1e3a8a] mb-5 sm:mb-6 flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-amber-500" />
-                  Thông tin đào tạo chi tiết
-                </h2>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {/* Item 1: Duration */}
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-700 flex-shrink-0">
-                      <Clock className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
-                        Thời gian đào tạo
-                      </h4>
-                      <p className="text-neutral-800 font-bold text-sm mt-0.5">
-                        {detailsExtra?.duration}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Item 2: Vehicles */}
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-700 flex-shrink-0">
-                      <VehicleIcon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
-                        Phương tiện tập lái
-                      </h4>
-                      <p className="text-neutral-800 font-bold text-sm mt-0.5 leading-snug">
-                        {detailsExtra?.vehicleType}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Item 3: Requirements */}
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-700 flex-shrink-0">
-                      <UserCheck className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
-                        Điều kiện học viên
-                      </h4>
-                      <p className="text-neutral-800 font-bold text-sm mt-0.5 leading-snug">
-                        {detailsExtra?.requirements}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Item 4: Location */}
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-700 flex-shrink-0">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
-                        Địa điểm học & thi
-                      </h4>
-                      <p className="text-neutral-800 font-bold text-sm mt-0.5 leading-snug">
-                        Trung tâm Sát hạch Chiến Thắng Mỹ Thành, Đồng Tháp (Tiền Giang Cũ)
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                {detailsExtra?.target && (
+                  <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed border-t border-neutral-100 pt-2.5">
+                    {detailsExtra.target}
+                  </p>
+                )}
               </div>
 
               {/* Course Features / Syllabus */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-xs space-y-6">
-                <h2 className="text-xl font-bold text-[#1e3a8a]">
+              <div className="bg-white rounded-2xl border border-neutral-200/80 p-4 sm:p-6 shadow-xs space-y-3 sm:space-y-4">
+                <h2 className="text-base sm:text-lg font-bold text-[#1e3a8a]">
                   Điểm vượt trội của khóa học tại Chiến Thắng
                 </h2>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   {course.features && course.features.map((feature, idx) => (
-                    <div key={idx} className="flex gap-3 items-start p-3.5 bg-neutral-50 rounded-xl border border-neutral-100">
-                      <div className="w-5 h-5 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3 h-3 stroke-[3]" />
+                    <div key={idx} className="flex gap-2.5 items-start p-2.5 sm:p-3 bg-neutral-50/80 rounded-xl border border-neutral-100">
+                      <div className="w-4 h-4 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </div>
-                      <span className="text-xs text-neutral-600 font-medium leading-relaxed">
+                      <span className="text-xs text-neutral-700 font-medium leading-relaxed">
                         {feature}
                       </span>
                     </div>
@@ -288,102 +342,111 @@ export default async function CourseDetailPage({ params }: PageProps) {
               </div>
 
               {/* Required Registration Profile */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-8 shadow-xs space-y-6">
-                <h2 className="text-xl font-bold text-[#1e3a8a]">
+              <div className="bg-white rounded-2xl border border-neutral-200/80 p-4 sm:p-6 shadow-xs space-y-3 sm:space-y-4">
+                <h2 className="text-base sm:text-lg font-bold text-[#1e3a8a]">
                   Hồ sơ chuẩn bị đăng ký học
                 </h2>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <p className="text-neutral-600 text-xs leading-relaxed">
-                    Học viên cần chuẩn bị đầy đủ các giấy tờ sau để trung tâm hoàn tất hồ sơ đăng ký thi sát hạch lên Sở GTVT Đồng Tháp:
+                    Học viên cần chuẩn bị các giấy tờ sau để trung tâm hoàn tất hồ sơ đăng ký thi sát hạch lên Sở GTVT Đồng Tháp:
                   </p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-neutral-600 font-medium">
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 text-xs text-neutral-700 font-medium">
+                    <li className="flex items-center gap-2 p-2 bg-neutral-50/80 rounded-lg border border-neutral-100">
+                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0" />
                       02 Bản sao CCCD (Không cần công chứng)
                     </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
+                    <li className="flex items-center gap-2 p-2 bg-neutral-50/80 rounded-lg border border-neutral-100">
+                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0" />
                       03 Đơn đề nghị học và thi sát hạch
                     </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
+                    <li className="flex items-center gap-2 p-2 bg-neutral-50/80 rounded-lg border border-neutral-100">
+                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0" />
                       Giấy khám sức khỏe lái xe (Còn hạn 6 tháng)
                     </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
-                      Ảnh chụp chân dung phông nền xanh (Tại TT)
+                    <li className="flex items-center gap-2 p-2 bg-neutral-50/80 rounded-lg border border-neutral-100">
+                      <span className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0" />
+                      Ảnh chụp chân dung (Chụp miễn phí tại TT)
                     </li>
                   </ul>
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <Link
                       href="/ho-so-dang-ky"
-                      className="inline-flex items-center gap-1.5 text-xs text-brand-700 hover:text-brand-800 font-bold hover:underline"
+                      className="inline-flex items-center gap-1.5 text-xs text-amber-700 hover:text-amber-800 font-bold hover:underline"
                     >
-                      Xem hướng dẫn chuẩn bị chi tiết
-                      <ChevronRight className="w-4 h-4" />
+                      Xem hướng dẫn thủ tục chi tiết
+                      <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>
               </div>
 
-            </div>
-
-            {/* Right Column: Pricing & Sidebar Form (span 5) */}
-            <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-8 order-1 lg:order-2">
-
-              {/* Sticky Sidebar Info */}
-              <div className="bg-white rounded-2xl border border-neutral-200/60 p-5 sm:p-8 shadow-md space-y-5 sm:space-y-6 lg:sticky lg:top-28">
-
-                {/* Course Image Carousel */}
-                <CourseImageCarousel defaultImage={course.image_url} />
-
-                {/* Price Display */}
-                <div className="border-y border-neutral-100 py-4 sm:py-5">
-                  <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">
-                    Học phí khóa học
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-800 text-xs font-black px-4 py-2 rounded-xl border border-amber-200/60 uppercase tracking-wider">
-                      Liên hệ để nhận báo giá tốt nhất
-                    </span>
-                  </div>
-                </div>
-
-                {/* Features points check */}
-                <ul className="space-y-3.5 text-xs text-neutral-600 font-semibold">
-                  <li className="flex gap-2.5 items-start">
-                    <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                    Cam kết trọn gói học phí, không phát sinh chi phí xăng xe, sân tập.
-                  </li>
-                  <li className="flex gap-2.5 items-start">
-                    <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                    Học thực hành 1 kèm 1 với giáo viên tận tâm.
-                  </li>
-                  <li className="flex gap-2.5 items-start">
-                    <Shield className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                    Đào tạo tại Đồng Tháp (Tiền Giang Cũ) thi tại Cần Thơ.
-                  </li>
-                </ul>
-
-                {/* Register Link */}
-                <div className="space-y-3 pt-2">
-                  <a
-                    href="https://zalo.me/0902868928"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center bg-amber-600 hover:bg-amber-700 text-white font-bold py-3.5 rounded-xl text-xs transition-colors shadow-md hover:shadow-lg uppercase tracking-wider"
+              {/* Other Courses Switcher */}
+              <div className="bg-white rounded-2xl border border-neutral-200/80 p-4 sm:p-6 shadow-xs">
+                <h3 className="text-xs sm:text-sm font-bold text-neutral-400 uppercase tracking-wider mb-3">
+                  Các khóa học lái xe khác tại Chiến Thắng
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <Link
+                    href="/khoa-hoc/b1"
+                    className={`text-center py-2.5 px-2 rounded-xl text-xs font-bold border transition-colors ${
+                      slug.toLowerCase() === "b1"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                        : "bg-neutral-50 hover:bg-amber-50 text-neutral-700 hover:text-amber-800 border-neutral-200"
+                    }`}
                   >
-                    Đăng ký khóa học ngay
-                  </a>
-                  <a
-                    href="tel:0902868928"
-                    className="flex items-center justify-center gap-2 text-center border border-neutral-200 text-neutral-700 font-bold py-3.5 rounded-xl text-xs hover:bg-neutral-50 transition-colors uppercase tracking-wider"
+                    Hạng B (Số Tự Động)
+                  </Link>
+                  <Link
+                    href="/khoa-hoc/b2"
+                    className={`text-center py-2.5 px-2 rounded-xl text-xs font-bold border transition-colors ${
+                      slug.toLowerCase() === "b2"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                        : "bg-neutral-50 hover:bg-amber-50 text-neutral-700 hover:text-amber-800 border-neutral-200"
+                    }`}
                   >
-                    <Phone className="w-4 h-4 text-amber-600" />
-                    Gọi điện hỗ trợ
-                  </a>
+                    Hạng B (Số Sàn)
+                  </Link>
+                  <Link
+                    href="/khoa-hoc/c"
+                    className={`text-center py-2.5 px-2 rounded-xl text-xs font-bold border transition-colors ${
+                      slug.toLowerCase() === "c"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                        : "bg-neutral-50 hover:bg-amber-50 text-neutral-700 hover:text-amber-800 border-neutral-200"
+                    }`}
+                  >
+                    Hạng C (Xe Tải)
+                  </Link>
+                  <Link
+                    href="/khoa-hoc/a1"
+                    className={`text-center py-2.5 px-2 rounded-xl text-xs font-bold border transition-colors ${
+                      slug.toLowerCase() === "a1"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                        : "bg-neutral-50 hover:bg-amber-50 text-neutral-700 hover:text-amber-800 border-neutral-200"
+                    }`}
+                  >
+                    Hạng A1 (Xe Máy)
+                  </Link>
+                  <Link
+                    href="/khoa-hoc/a"
+                    className={`text-center py-2.5 px-2 rounded-xl text-xs font-bold border transition-colors ${
+                      slug.toLowerCase() === "a"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                        : "bg-neutral-50 hover:bg-amber-50 text-neutral-700 hover:text-amber-800 border-neutral-200"
+                    }`}
+                  >
+                    Hạng A (Mô Tô PKL)
+                  </Link>
+                  <Link
+                    href="/khoa-hoc/nang-hang"
+                    className={`text-center py-2.5 px-2 rounded-xl text-xs font-bold border transition-colors ${
+                      slug.toLowerCase() === "nang-hang"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                        : "bg-neutral-50 hover:bg-amber-50 text-neutral-700 hover:text-amber-800 border-neutral-200"
+                    }`}
+                  >
+                    Nâng Hạng Bằng
+                  </Link>
                 </div>
-
               </div>
 
             </div>

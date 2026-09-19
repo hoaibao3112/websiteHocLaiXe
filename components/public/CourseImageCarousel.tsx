@@ -68,26 +68,51 @@ export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) 
     return () => clearInterval(interval);
   }, [isPlaying, isLightboxOpen, nextSlide]);
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPlaying(false);
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    setTouchStartX(null);
+    setIsPlaying(true);
+  };
+
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3 sm:gap-4 w-full min-w-0">
       {/* Main Slide Card */}
       <div
-        className="relative aspect-video w-full rounded-2xl overflow-hidden bg-neutral-900 shadow-md group border border-neutral-100/60"
+        className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900 shadow-md group border border-neutral-200/60 touch-pan-y"
+        style={{ aspectRatio: "16 / 9" }}
         onMouseEnter={() => setIsPlaying(false)}
         onMouseLeave={() => setIsPlaying(true)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <Image
           src={images[currentIndex]}
           alt={`Hình ảnh khóa học ${currentIndex + 1}`}
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-103"
-          sizes="(max-width: 1024px) 100vw, 30vw"
+          className="object-cover transition-transform duration-500 ease-out"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={currentIndex === 0}
         />
 
-        {/* Top Gradient Overlay */}
-        <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-black/40 to-transparent p-4 flex items-center justify-between text-white pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-          <span className="text-[10px] font-bold uppercase tracking-wider bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-xs">
+        {/* Top Overlay Badge & Zoom Button */}
+        <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent p-2.5 sm:p-3.5 flex items-center justify-between text-white pointer-events-none">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-black/60 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full backdrop-blur-xs border border-white/15">
             Ảnh {currentIndex + 1} / {images.length}
           </span>
           <button
@@ -95,38 +120,40 @@ export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) 
               e.stopPropagation();
               setIsLightboxOpen(true);
             }}
-            className="p-1.5 rounded-lg bg-black/40 hover:bg-black/60 transition-colors pointer-events-auto cursor-pointer"
+            className="p-1.5 rounded-lg bg-black/60 hover:bg-black/80 text-white backdrop-blur-xs transition-colors pointer-events-auto cursor-pointer border border-white/15"
             title="Xem toàn màn hình"
           >
-            <Maximize2 className="w-4 h-4" />
+            <Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows: clearly visible on touch/mobile, hover on desktop */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             prevSlide();
           }}
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/25 hover:bg-white/40 text-white flex items-center justify-center backdrop-blur-xs transition-all opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 cursor-pointer"
+          aria-label="Ảnh trước"
+          className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center backdrop-blur-xs transition-all opacity-85 sm:opacity-0 sm:group-hover:opacity-100 cursor-pointer shadow-sm active:scale-95"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
         <button
           onClick={(e) => {
             e.stopPropagation();
             nextSlide();
           }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/25 hover:bg-white/40 text-white flex items-center justify-center backdrop-blur-xs transition-all opacity-0 group-hover:opacity-100 translate-x-[10px] group-hover:translate-x-0 cursor-pointer"
+          aria-label="Ảnh tiếp theo"
+          className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center backdrop-blur-xs transition-all opacity-85 sm:opacity-0 sm:group-hover:opacity-100 cursor-pointer shadow-sm active:scale-95"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {/* Progress Bar indicator */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/25">
           <div
             key={currentIndex}
-            className="h-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all"
+            className="h-full bg-gradient-to-r from-amber-400 to-amber-600 transition-all"
             style={{
               animation: isPlaying && !isLightboxOpen ? "shimmerProgress 3.5s linear forwards" : "none",
               width: isPlaying && !isLightboxOpen ? "100%" : "0%",
@@ -136,14 +163,14 @@ export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) 
       </div>
 
       {/* Thumbnails Navigation Row */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none snap-x select-none">
+      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full min-w-0 max-w-full pb-1.5 scrollbar-none snap-x select-none">
         {images.map((img, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`relative w-16 aspect-video rounded-lg overflow-hidden border-2 flex-shrink-0 snap-start cursor-pointer transition-all ${
+            className={`relative w-14 sm:w-16 h-9 sm:h-11 rounded-lg overflow-hidden border-2 flex-shrink-0 snap-start cursor-pointer transition-all ${
               idx === currentIndex
-                ? "border-amber-500 scale-95 shadow-md"
+                ? "border-amber-500 scale-95 shadow-md ring-1 ring-amber-500/30"
                 : "border-transparent opacity-60 hover:opacity-100"
             }`}
           >
@@ -152,7 +179,7 @@ export function CourseImageCarousel({ defaultImage }: CourseImageCarouselProps) 
               alt={`Thumbnail ${idx + 1}`}
               fill
               className="object-cover"
-              sizes="80px"
+              sizes="64px"
             />
           </button>
         ))}
