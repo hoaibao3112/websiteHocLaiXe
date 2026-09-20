@@ -86,30 +86,30 @@ export default async function NewsDetailPage({ params }: PageProps) {
   const recentNews = await getRecentNews(news.id);
 
   return (
-    <main className="py-12 bg-neutral-50 min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-16 sm:pb-24 bg-neutral-50/70 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-neutral-400 text-sm mb-8">
-          <Link href="/" className="hover:text-brand-600 transition-colors">
+        <nav className="flex flex-wrap items-center gap-1.5 text-neutral-400 text-xs sm:text-sm mb-6">
+          <Link href="/" className="hover:text-amber-600 transition-colors">
             Trang chủ
           </Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link href="/tin-tuc" className="hover:text-brand-600 transition-colors">
+          <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+          <Link href="/tin-tuc" className="hover:text-amber-600 transition-colors">
             Tin tức
           </Link>
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-3.5 h-3.5 shrink-0" />
           {news.news_categories && (
             <>
               <Link
                 href={`/tin-tuc?category=${news.news_categories.slug}`}
-                className="hover:text-brand-600 transition-colors"
+                className="hover:text-amber-600 transition-colors"
               >
                 {news.news_categories.name}
               </Link>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
             </>
           )}
-          <span className="text-neutral-600 truncate max-w-[200px] md:max-w-sm">
+          <span className="text-neutral-600 truncate max-w-[180px] sm:max-w-xs md:max-w-sm">
             {news.title}
           </span>
         </nav>
@@ -117,24 +117,24 @@ export default async function NewsDetailPage({ params }: PageProps) {
         {/* Back Link */}
         <Link
           href="/tin-tuc"
-          className="inline-flex items-center gap-2 text-neutral-500 hover:text-brand-600 text-sm font-semibold mb-6 transition-colors group"
+          className="inline-flex items-center gap-1.5 text-neutral-500 hover:text-amber-600 text-xs sm:text-sm font-semibold mb-6 transition-colors group"
         >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-          Quay lại danh sách tin
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span>Quay lại danh sách tin</span>
         </Link>
 
         {/* Layout Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
           {/* Main content */}
-          <article className="lg:col-span-2 bg-white rounded-3xl p-6 md:p-10 border border-neutral-100 shadow-sm">
+          <article className="lg:col-span-2 bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-10 border border-neutral-200/90 shadow-2xs min-w-0">
             {/* Header info */}
             {news.news_categories && (
-              <span className="inline-flex items-center gap-1 bg-brand-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              <span className="inline-flex items-center gap-1 bg-amber-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
                 <Tag className="w-3 h-3" />
                 {news.news_categories.name}
               </span>
             )}
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 mb-6 leading-tight">
+            <h1 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6 leading-tight break-words">
               {news.title}
             </h1>
 
@@ -227,6 +227,6 @@ export default async function NewsDetailPage({ params }: PageProps) {
           </aside>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
